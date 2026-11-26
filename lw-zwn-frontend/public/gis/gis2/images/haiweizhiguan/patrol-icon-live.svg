@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 -58 128 180" width="50" role="img" aria-label="动态巡查图标">
+  <title>动态巡查图标（50px 清晰版 + 亮黄绿配色：迈步与踏步幅度加大、动作更夸张）</title>
+  <desc>亮黄绿定位气泡内白色小人大幅迈步行走并随步伐左右踏步，脚点波纹扩散表达巡查覆盖，整体轻微浮动。配色 #d6f96b/#6cb81a（气泡） / #b8f04a（波纹） / #4f8a10（内盘）。腿摆 ±42°、臂摆 ±32°、踏步 ±4。</desc>
+  <defs>
+    <linearGradient id="ptPin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d6f96b"/>
+      <stop offset="1" stop-color="#6cb81a"/>
+    </linearGradient>
+    <filter id="ptGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <ellipse cx="0" cy="58" rx="24" ry="6" fill="#000000" opacity="0.45">
+    <animate attributeName="rx" values="22;30;22" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.3;0.5" dur="2.4s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <circle cx="0" cy="56" r="12" fill="none" stroke="#b8f04a" stroke-width="4">
+    <animate attributeName="r" values="8;60" dur="2.0s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.95;0" dur="2.0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="0" cy="56" r="12" fill="none" stroke="#b8f04a" stroke-width="4">
+    <animate attributeName="r" values="8;60" dur="2.0s" begin="1.0s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.95;0" dur="2.0s" begin="1.0s" repeatCount="indefinite"/>
+  </circle>
+
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 -7;0 0" dur="2.4s" repeatCount="indefinite"/>
+    <path d="M0 -52 C-26 -52 -44 -34 -44 -10 C-44 10 -20 32 0 52 C20 32 44 10 44 -10 C44 -34 26 -52 0 -52 Z" fill="url(#ptPin)" stroke="#eaffbe" stroke-width="1.2" filter="url(#ptGlow)"/>
+    <circle cx="0" cy="-12" r="31" fill="#4f8a10" opacity="0.55"/>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="4 0;-4 0;4 0" dur="0.7s" repeatCount="indefinite"/>
+      <g stroke="#ffffff" stroke-linecap="round" fill="none">
+        <circle cx="0" cy="-17" r="5.0" fill="#ffffff" stroke="none"/>
+        <line x1="0" y1="-10" x2="0" y2="4" stroke-width="5.4"/>
+        <g>
+          <animateTransform attributeName="transform" type="rotate" values="-42 0 4;42 0 4;-42 0 4" dur="0.7s" repeatCount="indefinite"/>
+          <line x1="0" y1="4" x2="0" y2="16" stroke-width="4.6"/>
+        </g>
+        <g>
+          <animateTransform attributeName="transform" type="rotate" values="42 0 4;-42 0 4;42 0 4" dur="0.7s" repeatCount="indefinite"/>
+          <line x1="0" y1="4" x2="0" y2="16" stroke-width="4.6"/>
+        </g>
+        <g>
+          <animateTransform attributeName="transform" type="rotate" values="32 0 -8;-32 0 -8;32 0 -8" dur="0.7s" repeatCount="indefinite"/>
+          <line x1="0" y1="-8" x2="0" y2="2" stroke-width="4.0"/>
+        </g>
+        <g>
+          <animateTransform attributeName="transform" type="rotate" values="-32 0 -8;32 0 -8;-32 0 -8" dur="0.7s" repeatCount="indefinite"/>
+          <line x1="0" y1="-8" x2="0" y2="2" stroke-width="4.0"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

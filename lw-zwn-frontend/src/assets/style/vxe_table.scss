@@ -1,0 +1,33 @@
+
+//@use 'vxe-pc-ui/lib/style.css' as vxePcUi;
+//@use 'vxe-table/lib/style.css' as vxeTable;
+@use 'vxe-pc-ui/styles/variable.scss' as vxePcUi_variable with (
+$vxe-ui-font-primary-color: #1586f0,
+);
+
+@use 'vxe-table/styles/variable.scss' as vxe_table_variable with (
+  $vxe-ui-font-primary-color: #1586f0,
+);
+@use 'vxe-pc-ui/styles/all.scss' as vxePcUi_all;
+@use 'vxe-table/styles/all.scss' as vxe_table_all;
+:root {
+  /*定义全局字体*/
+  /*font*/
+  --vxe-ui-font-family:
+          RobotoCondensed, 'Source Han Sans CN', -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
+          Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif,
+          Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol !important;
+  /*font size*/
+  --vxe-ui-font-size-large: 15px !important;
+  --vxe-ui-font-size-default: 14px !important;
+  //--vxe-ui-font-size-default: 16px!important;
+  --vxe-ui-font-size-medium: 14px !important;
+  --vxe-ui-font-size-small: 14px !important;
+  --vxe-ui-font-size-mini: 12px !important;
+}
+/* 明亮主题 */
+html[data-vxe-ui-theme='light'] {
+}
+/* 暗黑主题 */
+html[data-vxe-ui-theme='dark'] {
+}

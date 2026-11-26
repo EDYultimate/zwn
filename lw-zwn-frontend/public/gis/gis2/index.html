@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <style>
+      @font-face {
+        font-family: "SourceHanSansCN-Regular";
+        src: url("./fonts/SourceHanSansCN-Regular.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* 2. 定义思源黑体 粗体 700 */
+      @font-face {
+        font-family: "SourceHanSansCN-Bold";
+        src: url("./fonts/SourceHanSansCN-Bold.otf") format("opentype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      *{
+        font-family: "SourceHanSansCN-Regular", sans-serif;
+      }
+      .my-popup .mapboxgl-popup-tip {
+        display: none !important;
+      }
+      .my-popup .mapboxgl-popup-content {
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        pointer-events: none !important;
+      }
+
+
+      /**
+      测试树 图层控制-------------------开始
+       */
+      .tree {
+        width: 380px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        background: #fff;
+      }
+      .level1 { margin-left: 0; margin-bottom: 8px; }
+      .level2 { margin-left: 24px; margin-bottom: 6px; }
+      .layer { margin-left: 48px; display: flex; align-items: center; gap: 6px; line-height: 26px; }
+      .label {
+        cursor: pointer;
+        padding: 2px 6px;
+        border-radius: 3px;
+        user-select: none;
+        display: flex;
+        align-items: center; gap: 6px;
+      }
+      .label:hover { background: #e8f4ff; }
+      input[type="checkbox"] {
+        cursor: pointer; width: 16px; height: 16px;
+      }
+      #tool button{
+        pointer-events:auto;
+      }
+      /**
+     测试树 图层控制-------------------结束
+      */
+      .popup-zindex-1{
+        z-index: 10000;
+      }
+      .popup-zindex-2{
+        z-index: 10001;
+      }
+      .popup-zindex-3{
+        z-index: 10002;
+      }
+      .popup-zindex-4{
+        z-index: 10003;
+      }
+    </style>
+    <script src="./turf.js"></script>
+    <script type="module" crossorigin src="./assets/index-Ct9eziGy.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C7PmjHoJ.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="tool" style="position:absolute;left:100px;top:100px;display: none;pointer-events: none;">
+      <div>
+        <button onclick="map.getMapView$()">获取视角</button>
+      </div>
+      <button id="measureArea" onclick="map.measureLength()">测量长度</button>
+      <button id="measureArea" onclick="map.measureArea()">测量面积</button>
+      <button id="measureClear" onclick="map.measureStop()">清除测量</button>
+      <button onclick="map.drawPoint()">绘制点</button>
+      <button onclick="map.drawCircle()">绘制圆形</button>
+      <button onclick="map.drawLine()">绘制线</button>
+      <button onclick="map.drawPolygon()">绘制多边形</button>
+      <button onclick="map.drawRect()">拉框</button>
+      <button onclick="boxQuery()">拉框查询</button>
+      <button onclick="changeModule('daping')">切换到大屏大屏模块</button>
+      <button onclick="changeModule('kong')">切换到空模块</button>
+      <button onclick="changeModule('popup')">切换到popup测试</button>
+      <button onclick="changeModule('wmtstest')">切换到wmtstest测试</button>
+      <button onclick="changeModule('yizhangtu')">切换到一张图模块</button>
+      <button onclick="changeModule('dengzhimian')">切换到等值面</button>
+      <button onclick="changeModule('shangshengqutishi')">上升区提示</button>
+      <button onclick="changeModule('shuiziyuan')">水资源</button>
+      <button onclick="changeModule('liudongxian')">流动线</button>
+      <button onclick="changeModule('haiweizhishugongcheng')">海委直属工程</button>
+      <button onclick="changeModule('chutu')">切换到出图</button>
+      <button onclick="changeModule('vuedemo')">切换到Vue示例模块</button>
+      <button onclick="changeModule('shipinjiankong')">切换到视频监控模块</button>
+      <button onclick="changeModule('liudongxianvue')">切换流动线模块</button>
+      <div>
+        <button onclick="m_ochangeBaseMap([['tianditu_img'],['tianditu_ter'],['tianditu_eva']],['tianditu_img'])">切换到影像</button>
+        <button onclick="m_ochangeBaseMap([['tianditu_img'],['tianditu_ter'],['tianditu_eva']],['tianditu_ter'])">切换到地形</button>
+        <button onclick="m_ochangeBaseMap([['tianditu_img'],['tianditu_ter'],['tianditu_eva']],['tianditu_eva'])">切换到行政区</button>
+      </div>
+      <div>
+        <button onclick="PointCollect()">获取坐标</button>
+        <button onclick="pointSeClear()">清空</button>
+        <input id="xValue"/>
+        <input id="yValue" />
+        <button onclick="PointPositioning({lgtd:113.4809,lttd:39.5146})">定位</button>
+      </div>
+      <div>
+        <button onclick="m_oselectTool('area')">测量面积</button>
+        <button onclick="m_oselectTool('length')">测量长度</button>
+        <button onclick="m_oselectTool('clear')">清空</button>
+        <button onclick="m_oselectTool('query')">拉框查询</button>
+
+      </div>
+      <div>
+
+        <button onclick="m_ozoom('1')">放大</button>
+        <button onclick="m_ozoom('2')">缩小</button>
+        <button onclick="m_oselectTool('fullview')">复原视角</button>
+      </div>
+      <button onclick="initTree()">显示树</button>
+      <button onclick="locate('daping','1')">定位到点要素</button>
+      <button onclick="locate('line-source-test','1')">定位到线要素</button>
+      <button onclick="locate('polygon-source','1')">定位到面要素</button>
+      <div id="tree" class="tree" style="height:600px;width:400px;overflow: scroll"></div>
+    </div>
+    <script>
+      //监听F2,使tool显示
+      document.onkeydown = function(e) {
+        var key = window.event.keyCode;
+        if (key == 113) {
+          document.getElementById("tool").style.display = "block";
+        }
+      };
+      //全景控制 java调用，防止报错
+      function quanjingcontrol(para) {
+          return
+          window.quanjing.setVisible(para);
+      }
+
+    </script>
+  </body>
+</html>

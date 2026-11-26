@@ -1,0 +1,283 @@
+//全局样式可以在这里定义
+@use '@/assets/font/SourceHanSansCN-Regular/SourceHanSansCNRegular.css';
+@use '@/assets/font/SourceHanSansCN-Bold/SourceHanSansCNBold.css';
+@use '@/assets/style/pro-table.scss';
+/*@font-face {
+  font-family: 'SourceHanSansCN';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/src/assets/font/SourceHanSansCN-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'SourceHanSansCN';
+  font-style: normal;
+  font-weight: bold;
+  src: url('/src/assets/font/SourceHanSansCN-Bold.woff2') format('woff2');
+}*/
+@font-face {
+  font-family: 'RobotoCondensed';
+  font-style: normal;
+  font-weight: auto;
+  src: url('/src/assets/font/Roboto-Condensed.ttf');
+}
+:root {
+  // 全局正文字体变量，供各组件（如 DatePicker 输入框）复用
+  --body-font-family: 'Source Han Sans CN', 'SourceHanSansCN', sans-serif;
+}
+
+html,
+body {
+  font-family: var(--body-font-family);
+  width: 100%;
+  height: 100vh;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// zoom-out
+.zoom-out-enter-active,
+.zoom-out-leave-active {
+  transition:
+    opacity 0.1s ease-in-out,
+    transform 0.15s ease-out;
+}
+
+.zoom-out-enter-from,
+.zoom-out-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+
+// zoom-fade
+.zoom-fade-enter-active,
+.zoom-fade-leave-active {
+  transition:
+    transform 0.2s,
+    opacity 0.3s ease-out;
+}
+
+.zoom-fade-enter-from {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.zoom-fade-leave-to {
+  opacity: 1;
+  transform: scale(1.01);
+}
+//设置全局选中的颜色,覆盖浏览器默认颜色
+::selection {
+  //background-color: rgba(59, 112, 246, 0.3);
+}
+//修复vxe-page内部左插槽表现不一样的问题
+#app .vxe-pager--wrapper {
+  text-align: initial !important;
+  display: inline-flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+#app .vxe-pager--left-wrapper {
+  flex: 1 !important;
+}
+
+// 全局滚动条样式 - 模仿 naive-ui n-scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+// Firefox
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
+}
+
+/* ============================
+   单位标签：标题行右侧的浅蓝底小标签（如「单位：万立方米」）
+   ============================
+   可选引用：给单位文字元素加 class="unit-tag" 即可（不引用则无任何影响）。
+   样式提取自水源地页（waterSource/sourcePanel）「水源地数量：个」，2026-09-23 提为公共类。
+   标题行控件排序约定：下拉框 → 时间选择 → 单位（unit-tag）。
+   ============================ */
+.unit-tag {
+  font-size: 0.8rem;
+  color: #18439a;
+  margin-left: 8px;
+  font-weight: bold;
+  background-color: rgba(26, 148, 214, 0.13);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-style: italic;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+/* ============================
+   表格全局标准（唯一来源）
+   ============================
+   1. vxe-table / ProTable 的视觉细节由 src/assets/style/pro-table.scss 的
+      --pt-* 令牌 + vxe 变量桥接统一驱动，本文件不再二次覆盖其字号与配色
+      （此前的 body.page-map / body.page-main 双套覆盖会把同一张弹框表格
+       渲染成两种样式，是样式冲突的根因，已移除）。
+   2. 非 ProTable 实现的表格——原生 <table> 与 naive-ui n-data-table——
+      在本节引用同一套 --pt-* 令牌，保证三种实现视觉完全一致。
+   3. 数据表判定：含 <th> 的原生表格视为数据表；纯 <td> 的表单/文档表格
+      （如计划填报 .pwt）不受影响，仍由各自的 mixin 控制。
+   ============================ */
+
+/* ---------- 原生数据表格 ---------- */
+table:has(th):not([class*='vxe']):not([class*='n-data-table']) {
+  font-family: var(--pt-font-family);
+
+  th {
+    height: var(--pt-header-height);
+    font-family: var(--pt-font-family);
+    line-height: var(--pt-row-line-height);
+    font-size: var(--pt-header-font-size) !important;
+    font-weight: var(--pt-header-font-weight) !important;
+    color: var(--pt-header-color) !important;
+    background: var(--pt-header-bg) !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-right: 1px solid var(--pt-header-divider) !important;
+  }
+
+  td {
+    font-family: var(--pt-font-family);
+    line-height: var(--pt-row-line-height);
+    font-size: var(--pt-body-font-size) !important;
+    color: var(--pt-body-color) !important;
+  }
+
+  tbody tr:hover td {
+    background: var(--pt-row-hover-bg);
+  }
+}
+
+/* 单元格内边距：以低权重默认值给出，文档型表格可用类选择器自行微调 */
+:where(table:has(th):not([class*='vxe']):not([class*='n-data-table'])) {
+  th,
+  td {
+    padding: var(--pt-cell-padding);
+  }
+}
+
+/* ---------- naive-ui n-data-table ---------- */
+.n-data-table {
+  font-family: var(--pt-font-family);
+
+  .n-data-table-th {
+    height: var(--pt-header-height);
+    font-family: var(--pt-font-family);
+    font-size: var(--pt-header-font-size) !important;
+    font-weight: var(--pt-header-font-weight) !important;
+    color: var(--pt-header-color) !important;
+    background-color: var(--pt-header-bg) !important;
+    border-right: 1px solid var(--pt-header-divider) !important;
+  }
+
+  .n-data-table-td {
+    font-family: var(--pt-font-family);
+    font-size: var(--pt-body-font-size) !important;
+    color: var(--pt-body-color) !important;
+    background-color: var(--pt-body-bg);
+    border-color: var(--pt-border-color);
+  }
+
+  .n-data-table-tr:hover .n-data-table-td {
+    background-color: var(--pt-row-hover-bg);
+  }
+}
+
+/* ============================
+   按钮字体全局默认值
+   ============================
+   n-button 默认 font-size: var(--n-font-size)（14px 等，随 size 变化），
+   此处统一默认为 1rem（16px）。
+   刻意不加 !important：各页面如有自己的按钮字体设置
+   （scoped 样式 / :deep / !important，特异性均高于 body .n-button），
+   以页面自身设置为准
+   ============================ */
+body .n-button {
+  font-size: 1rem;
+}
+
+.map-mask-layer {
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  background-image: url('@/assets/img/map/map-shade-dep.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none; /* 点击穿透至地图层 */
+}
+
+/* ============================
+   可点击数值：统一"此处可点"的视觉提示
+   ============================
+   可选引用：给承载了点击事件的数值元素加 class="num-click" 即可（不引用则无任何影响）。
+   悬停加下划线 + 蓝色辉光，来源为水源地页（waterSource/sourcePanel）既有写法，提取为公共类
+   以便各页统一；该页自有的 scoped .num-click 特异性更高、观感一致，未做改动。
+   ============================ */
+.num-click {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    filter: drop-shadow(0 0 4px rgba(4, 144, 255, 0.5));
+  }
+}
+
+.div-back-item-in {
+  padding: 10px;
+  background: linear-gradient(160deg, rgba(22, 61, 127, 0.3), rgba(22, 61, 127, 0.45));
+  border: 1px solid rgba(134, 177, 218, 0.4);
+  border-radius: 2px;
+  margin: 8px 5px;
+}
+
+.div-back-item-line {
+  padding: 3px;
+  background: linear-gradient(160deg, rgba(22, 71, 152, 0.8), rgba(22, 71, 152, 0.2));
+  border: 1px solid rgba(86, 164, 239, 0.7);
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.big-label-back {
+  position: relative;
+  /* 关键：让 ::before 的 z-index: -1 只在自身层叠上下文内比较，
+     否则会被祖先（如 .lsec 的白色背景）盖住而不可见 */
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70%;
+    height: 0.5em;
+    background-color: #B2D1F6;
+    z-index: -1;
+  }
+}
+
+.vxe-cell--col-resizable {
+  &::before{
+
+    background-color: transparent !important;
+  }
+}

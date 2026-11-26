@@ -1,0 +1,1 @@
+import{q as a,s as p}from"./index-Ct9eziGy.js";function l(){const u=a("map",null)?.value??window.map,e=[],t=[];function c(n,o){e.push(n),window[n]=o}function s(n){t.push(n)}return p(()=>{t.forEach(n=>{try{n()}catch(o){console.error("[useModule] cleanup 执行失败:",o)}}),e.forEach(n=>{delete window[n]})}),{map:u,exportFunction:c,onCleanup:s}}export{l as u};

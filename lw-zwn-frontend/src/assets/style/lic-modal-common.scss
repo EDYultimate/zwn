@@ -1,0 +1,397 @@
+// ============================================================
+// 证照管理弹框公共文字样式（基准：LicNewModal.vue 已调好的样式）
+// 约定：以后根据原型仿写「新增/编辑/详情」等弹框页面时，
+//       文字大小、颜色、输入框字体一律引用本文件的 token / mixin，
+//       不要再在各组件里硬编码，保证视觉统一。
+// 用法：<style scoped lang="scss"> 顶部
+//       @use '@/assets/style/lic-modal-common.scss' as lic;
+//       然后使用 lic.$font-title、lic.$c-text、@include lic.input 等。
+// ============================================================
+
+/* ---------------- 颜色 ---------------- */
+$c-text: #1c1c1c; // 主文字 / 表单 label / 输入框文字
+$c-secondary: #3b4757; // 次要文字（单位、备注、统计卡标题）
+$c-muted: #9fb3cc; // 弱提示文字（字段下方说明、卡片时间）
+$c-head: #1e1e1e; // 明细表头文字 / 图表轴文字
+$c-blue: #1f7ae0; // 主题蓝（分组标题、页签、分段选中）
+$c-blue-deep: #1f6fd6; // 深蓝（渐变终点、数据强调）
+$c-req: #e2564a; // 必填星号 / 删除按钮
+$c-border: #dadada; // 输入框边框
+$c-blue-border: #7db4ee; // 蓝色小按钮边框
+$c-focus: #3f97f2; // 输入框聚焦边框
+
+/* ---------------- 字号 ---------------- */
+$font-title: 14px; // 分组标题 / 表单 label / 输入框 / 详情正文值
+$font-btn: 13px; // 按钮 / 页签文字
+$font-md: 13px; // 表格数据等普通文字
+$font-sm: 12.5px; // 单选组 / 分段按钮 / 统计卡标题
+$font-xs: 12px; // 单位 / 备注 / 图例
+$font-head: 11.5px; // 明细表表头
+$font-hint: 11px; // 字段下方说明文字
+
+/* ---------------- 输入框 / 下拉框（字体大小、颜色） ---------------- */
+@mixin input {
+  box-sizing: border-box;
+  height: 28px;
+  padding: 0 8px;
+  font-size: $font-title;
+  color: $c-text;
+  background: #fff;
+  border: 1px solid $c-border;
+  border-radius: 3px;
+  outline: none;
+
+  &:focus {
+    border-color: $c-focus;
+    box-shadow: 0 0 0 2px rgba(63, 151, 242, 0.15);
+  }
+}
+
+/* ---------------- 分组标题（左蓝条 + 右渐隐分隔线） ---------------- */
+@mixin sect-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: $font-title;
+  font-weight: 700;
+  color: $c-blue;
+
+  &::before {
+    content: '';
+    flex: none;
+    width: 3px;
+    height: 13px;
+    background: linear-gradient(180deg, #4fa0f4, $c-blue-deep);
+    border-radius: 2px;
+  }
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #dbe9f9, rgba(219, 233, 249, 0));
+  }
+}
+
+/* ---------------- 详情字段栅格（四列：标签 | 值）× 2 ---------------- */
+/* 用法：
+     <div class="xxx">
+       <span class="k">标签</span><span class="v">值</span>
+       <span class="k">标签</span><span class="v">值</span>
+     </div>
+     .xxx { @include detail-kv; }
+   标签定宽，两列数值各自左对齐；值支持 .empty 弱化为空值样式 */
+@mixin detail-kv($label-width: 150px, $gap: 22px) {
+  display: grid;
+  grid-template-columns: $label-width minmax(0, 1fr) $label-width minmax(0, 1fr);
+  align-items: start;
+  column-gap: $gap;
+
+  .k,
+  .v {
+    min-width: 0;
+    padding: 8px 0;
+    font-size: $font-title;
+    line-height: 1.5;
+    border-bottom: 1px dashed #edf3fb;
+  }
+
+  .k {
+    color: $c-secondary;
+    white-space: nowrap;
+  }
+
+  .v {
+    color: $c-text;
+    word-break: break-all;
+
+    &.empty {
+      font-weight: 400;
+      color: $c-muted;
+    }
+  }
+}
+
+/* ---------------- 分栏填报表单（两列，左标签 + 右控件） ---------------- */
+/* 用法：
+     <div class="xxx">
+       <div class="sect">分组标题</div>
+       <div class="fitem"><span class="lbl">标签</span><span class="ctl"><input /></span></div>
+       <div class="fitem span2">…跨两列…</div>
+     </div>
+     .xxx { @include two-col-form; } */
+@mixin two-col-form($label-width: 145px, $gap: 9px 42px) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gap;
+
+  .sect {
+    @include sect-title;
+
+    grid-column: 1/-1;
+    margin: 6px 0 1px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .fitem {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+
+    &.span2 {
+      grid-column: 1/-1;
+    }
+
+    &.top {
+      align-items: flex-start;
+
+      > .lbl {
+        padding-top: 6px;
+      }
+    }
+
+    > .lbl {
+      flex: none;
+      width: $label-width;
+      padding-right: 10px;
+      font-size: $font-title;
+      color: $c-text;
+      text-align: left;
+
+      &.req::before {
+        content: '*';
+        margin-right: 2px;
+        color: $c-req;
+      }
+
+      /* 字段下方的说明文字 */
+      i {
+        display: block;
+        margin-top: 1px;
+        font-size: $font-hint;
+        font-style: normal;
+        font-weight: 400;
+        color: $c-muted;
+      }
+    }
+
+    .ctl {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    input[type='date'],
+    select {
+      @include input;
+
+      width: 100%;
+    }
+
+    .unit {
+      flex: none;
+      font-size: $font-xs;
+      color: $c-secondary;
+    }
+  }
+}
+
+/* ---------------- 文档式统计表（取水月报类：浅蓝表头 + 36px 行高） ---------------- */
+/* 用法：
+     <table class="xxx">…</table>
+     .xxx { @include doc-table; }
+   用于导出/打印的整表（含合计行、分组单元格、说明行），故仍用原生 table */
+@mixin doc-table {
+  width: max-content;
+  min-width: 100%;
+  font-size: $font-title;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 9px 8px;
+    font-weight: 600;
+    color: #20517e;
+    text-align: center;
+    white-space: nowrap;
+    background: #e2eefb;
+    border-bottom: 1px solid #cfe0f3;
+  }
+
+  td {
+    height: 36px;
+    padding: 8px;
+    color: #2a3f5c;
+    text-align: center;
+    white-space: nowrap;
+    background: #fff;
+    border-bottom: 1px solid #eef3fa;
+  }
+
+  tbody tr:hover td {
+    background: #f6fbff;
+  }
+
+  /* 数值列 */
+  td.m {
+    min-width: 52px;
+    padding: 8px 4px;
+    color: #3d5c85;
+  }
+
+  /* 名称列（左对齐） */
+  td.own {
+    padding-left: 12px;
+    text-align: left;
+  }
+
+  /* 合计 / 小计行 */
+  .sum-row td {
+    font-weight: 700;
+    color: $c-blue;
+  }
+
+  .total-row td {
+    text-align: center;
+  }
+
+  /* 分组单元格（rowspan 纵向合并） */
+  .group-cell {
+    width: 64px;
+    font-weight: 600;
+    color: #17456f;
+    vertical-align: middle;
+  }
+
+  /* 说明行：左标签 + 跨列正文 */
+  .desc-label {
+    min-width: 110px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .desc-cell {
+    padding: 10px 14px;
+    line-height: 1.9;
+    text-align: left;
+    white-space: normal;
+    text-indent: 2em;
+  }
+}
+
+/* ---------------- 统计表标题 / 日期 ---------------- */
+@mixin doc-title {
+  padding: 6px 0 2px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #17456f;
+  text-align: center;
+}
+
+@mixin doc-date {
+  padding: 0 14px 6px;
+  font-size: $font-sm;
+  color: #5a7ba6;
+  text-align: right;
+}
+
+@mixin doc-note {
+  padding: 8px 12px;
+  font-size: $font-sm;
+  color: #5a7ba6;
+}
+
+/* ---------------- 填报表单表格（含 rowspan/colspan 与 input） ---------------- */
+/* 用法：<table class="xxx">…</table>；.xxx { @include form-table; } */
+@mixin form-table {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: $font-title;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  td {
+    padding: 3px 4px;
+    vertical-align: middle;
+  }
+
+  .lb {
+    padding-right: 8px;
+    font-weight: 400;
+    color: $c-text;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  input,
+  select {
+    @include input;
+
+    width: 100%;
+  }
+
+  /* 合计行 */
+  .tot td {
+    padding: 7px 6px;
+    font-weight: 600;
+    color: $c-blue-deep;
+    text-align: center;
+    background: #f4f9ff;
+  }
+}
+
+/* ---------------- 文档式建议表（导出/打印用，宋体正文） ---------------- */
+/* 用法：<table class="xxx">…</table>；.xxx { @include sheet-table; } */
+@mixin sheet-table {
+  width: 100%;
+  font-size: $font-sm;
+  border-collapse: collapse;
+
+  td {
+    padding: 5px 6px;
+    color: #000;
+    text-align: center;
+    word-break: break-all;
+    border: 1px solid #b9d4f0;
+  }
+
+  .lb {
+    font-weight: 600;
+    white-space: nowrap;
+    background: #eef6ff;
+  }
+
+  .side {
+    font-weight: 600;
+    line-height: 1.6;
+    background: #eef6ff;
+  }
+
+  .sect {
+    font-weight: 700;
+    color: $c-blue;
+    background: #f6faff;
+  }
+
+  .stamp {
+    height: 66px;
+    font-size: $font-xs;
+    line-height: 1.9;
+    color: $c-secondary;
+    vertical-align: bottom;
+  }
+
+  .remark {
+    height: 34px;
+  }
+}

@@ -1,0 +1,147 @@
+// ============================================================
+// 水利业务（waterUse）页面「筛选/表单」标签 + 输入框公共样式
+// 基准：zhengzhaoguanli/index.vue 筛选行（用户已调好的效果）
+// 约定：waterUse 下所有浅色页面的筛选标签、输入框、下拉框统一引用本文件，
+//       不要再在组件里各写一套字号/颜色/边框。
+// 用法：<style scoped lang="scss"> 顶部
+//       @use '@/assets/style/water-filter.scss' as wf;
+//       容器：@include wf.row;
+//       字段：@include wf.field;   // 标签 + 后面的 input/select 一起生效
+//       单独输入框：@include wf.input;
+// 注意：深色主题页面（如 shipinjiankong 监控大屏）不适用。
+// ============================================================
+
+/* ---------------- 颜色 ---------------- */
+$c-label: #2c2c2c; // 标签文字
+$c-input: #222; // 输入框 / 下拉框文字
+$c-border: #ccc; // 输入框边框
+$c-focus: #3f97f2; // 聚焦边框
+
+/* ---------------- 字号 ---------------- */
+$fs: 14px; // 标签与输入框文字
+
+/* ---------------- 输入框 / 下拉框 ---------------- */
+@mixin input {
+  box-sizing: border-box;
+  height: 26px;
+  padding: 0 6px;
+  font-family: inherit;
+  font-size: $fs;
+  color: $c-input;
+  background: #fff;
+  border: 1px solid $c-border;
+  border-radius: 3px;
+  outline: none;
+
+  &:focus {
+    border-color: $c-focus;
+    box-shadow: 0 0 0 2px rgba(63, 151, 242, 0.15);
+  }
+}
+
+/* ---------------- 一行式筛选字段（标签 + 输入框） ---------------- */
+@mixin field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: $fs;
+  color: $c-label;
+  white-space: nowrap;
+
+  select,
+  input[type='text'],
+  input[type='number'],
+  input[type='date'],
+  input[type='month'] {
+    @include input;
+  }
+
+  select {
+    cursor: pointer;
+  }
+}
+
+/* ---------------- 筛选行容器 ---------------- */
+@mixin row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ---------------- Naive UI 输入框统一外观 ---------------- */
+/* 用法：外层容器包一层 :deep(.n-input) { @include ninput; }
+   <span class="xxx"><n-input size="small" /></span>
+   .xxx { width: 118px; :deep(.n-input) { @include ninput; } }
+   naive-ui 会把主题变量写成元素的行内样式，故此处必须加 !important 才能覆盖，
+   以此让 n-input 与同屏原生 select 的高度、边框、圆角、聚焦效果完全一致。 */
+@mixin ninput(
+  $height: 26px,
+  $font-size: $fs,
+  $border: $c-border,
+  $text: $c-input,
+  $focus: $c-focus
+) {
+  --n-height: #{$height} !important;
+  --n-font-size: #{$font-size} !important;
+  --n-border-radius: 3px !important;
+  --n-padding-left: 6px !important;
+  --n-padding-right: 6px !important;
+  --n-color: #fff !important;
+  --n-color-focus: #fff !important;
+  --n-color-disabled: #f5f7fa !important;
+  --n-text-color: #{$text} !important;
+  --n-text-color-disabled: #9aa7b8 !important;
+  --n-placeholder-color: #9aa7b8 !important;
+  --n-placeholder-color-disabled: #c2ccda !important;
+  --n-caret-color: #{$focus} !important;
+  --n-border: 1px solid #{$border} !important;
+  --n-border-hover: 1px solid #{$focus} !important;
+  --n-border-focus: 1px solid #{$focus} !important;
+  --n-border-disabled: 1px solid #e2e8f0 !important;
+  --n-box-shadow-focus: 0 0 0 2px rgba(63, 151, 242, 0.15) !important;
+  --n-clear-color: #96a7bd !important;
+  --n-clear-color-hover: #5b7fa8 !important;
+  --n-clear-color-pressed: #3f6f9f !important;
+  width: 100%;
+}
+
+/* ---------------- Naive UI 下拉框统一外观 ---------------- */
+/* 用法：<span class="xxx"><n-select /></span>
+   .xxx { width: 118px; :deep(.n-select) { width: 100%; .n-base-selection { @include nselect; } } }
+   n-select 的主题变量写在内部 .n-base-selection 的行内样式上，故必须作用在该元素并加 !important；
+   内边距对应 --n-padding-single-* 四个离散变量（naive 在内部再用它们拼出简写）。 */
+@mixin nselect(
+  $height: 26px,
+  $font-size: $fs,
+  $border: $c-border,
+  $text: $c-input,
+  $focus: $c-focus
+) {
+  --n-height: #{$height} !important;
+  --n-font-size: #{$font-size} !important;
+  --n-border-radius: 3px !important;
+  --n-padding-single-top: 0 !important;
+  --n-padding-single-right: 22px !important;
+  --n-padding-single-bottom: 0 !important;
+  --n-padding-single-left: 6px !important;
+  --n-padding-multiple-top: 0 !important;
+  --n-padding-multiple-right: 22px !important;
+  --n-padding-multiple-bottom: 0 !important;
+  --n-padding-multiple-left: 6px !important;
+  --n-color: #fff !important;
+  --n-color-active: #fff !important;
+  --n-color-disabled: #f5f7fa !important;
+  --n-text-color: #{$text} !important;
+  --n-text-color-disabled: #9aa7b8 !important;
+  --n-placeholder-color: #9aa7b8 !important;
+  --n-placeholder-color-disabled: #c2ccda !important;
+  --n-border: 1px solid #{$border} !important;
+  --n-border-hover: 1px solid #{$focus} !important;
+  --n-border-active: 1px solid #{$focus} !important;
+  --n-border-focus: 1px solid #{$focus} !important;
+  --n-box-shadow-focus: 0 0 0 2px rgba(63, 151, 242, 0.15) !important;
+  --n-box-shadow-active: none !important;
+  --n-arrow-color: #7f93ad !important;
+  width: 100%;
+}

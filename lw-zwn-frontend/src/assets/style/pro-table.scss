@@ -1,0 +1,356 @@
+/**
+ * ============================================================================
+ * 全局表格样式标准（唯一基准）
+ * ============================================================================
+ * 基准页面：src/views/business/waterUse/jihuashangbao/index.vue（计划上报）
+ *   → 表头 40px / 16px·500 / #e2eefb 底 / 白色列分隔线
+ *   → 数据行 40px / 15px / #3b4962 / 8px 单元格内边距
+ *   → 容器 1px #e3ebf5 描边 + 8px 圆角
+ *
+ * 设计原则：
+ *   1. 只有「浅色 / 深色」两套主题，全部视觉细节由 --pt-* 令牌定义；
+ *      浅色为 :root 默认值，深色由 .pro-table--dark 或 html[data-theme='dark'] 覆盖。
+ *   2. 尺寸与配色优先通过 vxe 官方变量（--vxe-ui-table-*）驱动，
+ *      不再直接对 .vxe-cell 写 padding / font-size 补丁。
+ *   3. 任何页面 / 弹框都不得再单独覆盖表头底色、行高、内边距、
+ *      斑马纹、hover、选中态；仅允许语义化扩展（数值强调、可换行单元格、可点击文本），
+ *      做法见文件末尾「语义化扩展」说明。
+ *   4. 非 ProTable 实现的表格（原生 table、naive-ui n-data-table）
+ *      由 src/assets/style/main.scss 引用同一套 --pt-* 令牌保持完全一致。
+ *
+ * 主题切换：
+ *   - 局部：<pro-table table-theme="dark"> → 根节点加 .pro-table--dark
+ *   - 全局：document.documentElement.dataset.theme = 'dark'
+ * ============================================================================
+ */
+
+/* ============================
+   1. 令牌：浅色主题（默认，基准值）
+   ============================ */
+:root {
+  /* 字体 */
+  --pt-font-family: 'Source Han Sans CN', 'SourceHanSansCN', sans-serif;
+
+  /* 表头 */
+  --pt-header-bg: #e2eefb;
+  --pt-header-color: #131313;
+  --pt-header-font-size: 16px;
+  --pt-header-font-weight: 500;
+  --pt-header-height: 40px;
+  --pt-header-divider: #ffffff; /* 表头列分隔线（白） */
+
+  /* 数据区 */
+  --pt-body-bg: #ffffff;
+  --pt-body-color: #3b4962;
+  --pt-body-font-size: 15px;
+  --pt-border-color: #e2ebf7;
+  --pt-empty-color: #8a9bb4;
+
+  /* 尺寸 */
+  --pt-cell-padding: 8px;
+  --pt-row-height: 40px;
+  --pt-row-line-height: 22px;
+
+  /* 行状态 */
+  --pt-row-hover-bg: #f6fbff;
+  --pt-row-stripe-bg: #fafcff;
+  --pt-row-selected-bg: #e8f3ff;
+
+  /* 合计行（footer）数值强调色 */
+  --pt-footer-color: #1f7ae0;
+
+  /* 容器 */
+  --pt-radius: 8px;
+  --pt-wrap-border-color: #e3ebf5;
+  --pt-wrap-bg: #ffffff;
+
+  /* 分页器 */
+  --pt-pager-bg: #ffffff;
+  --pt-pager-color: #2a3f5c;
+  --pt-pager-active-bg: #1f7ae0;
+  --pt-pager-active-color: #ffffff;
+
+  /* 加载中 */
+  --pt-loading-color: #5b6f8c;
+  --pt-loading-mask-bg: rgba(255, 255, 255, 0.72);
+  --pt-loading-ring-track: #d8e6f7;
+  --pt-loading-ring-accent: #1f7ae0;
+}
+
+/* ============================
+   2. 令牌：深色主题
+   ============================
+   同一套令牌有两种生效方式：
+   - 局部：<pro-table table-theme="dark">，令牌只作用于该表格
+   - 全局：html[data-theme='dark']，令牌作用于整页（含 .pt-table-wrap 容器）
+   ============================ */
+@mixin pt-dark-tokens {
+  --pt-header-bg: #143583;
+  --pt-header-color: #ffffff;
+  --pt-header-divider: #1f467e;
+
+  /* 表格体必须为不透明底色：冻结列依赖它遮挡横向滚动的内容 */
+  --pt-body-bg: #0a1f62;
+  --pt-body-color: #ffffff;
+  --pt-border-color: #1f467e;
+  --pt-empty-color: rgba(255, 255, 255, 0.65);
+
+  --pt-row-hover-bg: rgba(17, 68, 118, 0.6);
+  --pt-row-stripe-bg: rgba(10, 30, 90, 0.2);
+  --pt-row-selected-bg: rgba(17, 68, 118, 0.8);
+
+  --pt-footer-color: #7fc4ff;
+
+  --pt-wrap-border-color: #1f467e;
+  --pt-wrap-bg: #0a1f62;
+
+  --pt-pager-bg: transparent;
+  --pt-pager-color: #ffffff;
+  --pt-pager-active-bg: #2c7ecf;
+  --pt-pager-active-color: #ffffff;
+
+  --pt-loading-color: rgba(255, 255, 255, 0.85);
+  --pt-loading-mask-bg: rgba(10, 31, 98, 0.72);
+  --pt-loading-ring-track: rgba(127, 196, 255, 0.25);
+  --pt-loading-ring-accent: #7fc4ff;
+}
+
+html[data-theme='dark'] {
+  @include pt-dark-tokens;
+}
+
+.pro-table--dark {
+  @include pt-dark-tokens;
+
+  background-color: var(--pt-body-bg);
+}
+
+/* ============================
+   3. vxe 变量桥接
+   ============================
+   ProTable 内部全部为 vxe-grid（全局 size=small），
+   此处把官方变量指向令牌，尺寸类补丁（padding/行高）由此一次性统一。
+   ============================ */
+.pro-table {
+  --vxe-ui-font-family: var(--pt-font-family);
+  --vxe-ui-table-font-color: var(--pt-body-color);
+  --vxe-ui-table-header-font-color: var(--pt-header-color);
+  --vxe-ui-table-header-font-weight: var(--pt-header-font-weight);
+  --vxe-ui-table-header-background-color: var(--pt-header-bg);
+
+  /* 行高：各 size 归一，保证任何页面传 size 都不走样 */
+  --vxe-ui-table-row-height-default: var(--pt-row-height);
+  --vxe-ui-table-row-height-medium: var(--pt-row-height);
+  --vxe-ui-table-row-height-small: var(--pt-row-height);
+  --vxe-ui-table-row-height-mini: var(--pt-row-height);
+  --vxe-ui-table-row-line-height: var(--pt-row-line-height);
+
+  /* 单元格内边距：各 size 归一 */
+  --vxe-ui-table-cell-padding-default: var(--pt-cell-padding);
+  --vxe-ui-table-cell-padding-medium: var(--pt-cell-padding);
+  --vxe-ui-table-cell-padding-small: var(--pt-cell-padding);
+  --vxe-ui-table-cell-padding-mini: var(--pt-cell-padding);
+
+  /* 边框与背景 */
+  --vxe-ui-table-border-color: var(--pt-border-color);
+  --vxe-ui-layout-background-color: var(--pt-body-bg);
+  --vxe-ui-table-footer-background-color: var(--pt-body-bg);
+
+  /* 加载中遮罩 */
+  --vxe-ui-loading-color: var(--pt-loading-color);
+  --vxe-ui-loading-background-color: var(--pt-loading-mask-bg);
+
+  /* 行状态 */
+  --vxe-ui-table-row-hover-background-color: var(--pt-row-hover-bg);
+  --vxe-ui-table-row-hover-striped-background-color: var(--pt-row-hover-bg);
+  --vxe-ui-table-row-striped-background-color: var(--pt-row-stripe-bg);
+  --vxe-ui-table-row-current-background-color: var(--pt-row-selected-bg);
+  --vxe-ui-table-row-hover-current-background-color: var(--pt-row-selected-bg);
+  --vxe-ui-table-column-hover-background-color: var(--pt-row-hover-bg);
+  --vxe-ui-table-column-current-background-color: var(--pt-row-selected-bg);
+  --vxe-ui-table-column-hover-current-background-color: var(--pt-row-selected-bg);
+}
+
+/* ============================
+   4. 核心视觉：表头 / 数据区 / 合计行
+   ============================ */
+.pro-table {
+  .vxe-table--header-wrapper,
+  .vxe-header--row {
+    background-color: var(--pt-header-bg) !important;
+  }
+
+  .vxe-header--column {
+    height: var(--pt-header-height);
+    font-family: var(--pt-font-family);
+    font-size: var(--pt-header-font-size) !important;
+    font-weight: var(--pt-header-font-weight) !important;
+    color: var(--pt-header-color) !important;
+    background-color: var(--pt-header-bg) !important;
+    border-right: 1px solid var(--pt-header-divider) !important;
+
+    > .vxe-cell {
+      min-height: var(--pt-header-height);
+      padding: var(--pt-cell-padding) !important;
+      line-height: var(--pt-row-line-height);
+    }
+  }
+
+  .vxe-table--header-border-line {
+    border-bottom-color: var(--pt-border-color) !important;
+  }
+
+  /* ---------- 数据区 ----------
+     行底色交由容器与 vxe 变量控制（hover / 选中 / 斑马纹都由 vxe 类名着色），
+     切勿在 .vxe-body--row 上写 !important 底色，否则会盖掉 hover 与选中态。
+     ---------- */
+  .vxe-table--body-wrapper {
+    background-color: var(--pt-body-bg) !important;
+  }
+
+  .vxe-body--column,
+  .vxe-footer--column {
+    font-family: var(--pt-font-family);
+    font-size: var(--pt-body-font-size) !important;
+    color: var(--pt-body-color) !important;
+    border-color: var(--pt-border-color) !important;
+
+    > .vxe-cell {
+      padding: var(--pt-cell-padding) !important;
+      line-height: var(--pt-row-line-height);
+    }
+  }
+
+  /* 行高：内容换行时允许自然撑高，不低于标准行高 */
+  .vxe-body--row > .vxe-body--column > .vxe-cell {
+    min-height: var(--pt-row-height);
+  }
+
+  /* 空数据 */
+  .vxe-table--empty-placeholder,
+  .vxe-table--empty-block {
+    color: var(--pt-empty-color);
+  }
+
+  .n-empty .n-empty__description {
+    color: var(--pt-empty-color);
+  }
+
+  /* ---------- 合计行（footer） ----------
+     尺寸 / 内边距与数据行完全一致，仅做「加粗 + 主题强调色」的语义强调，
+     各页面不再自行覆写 footer 的 padding 与字号。
+     ---------- */
+  .vxe-table--footer-wrapper {
+    background-color: var(--pt-body-bg) !important;
+
+    .vxe-footer--column {
+      font-weight: 700;
+      color: var(--pt-footer-color) !important;
+      background-color: var(--pt-body-bg) !important;
+      border-color: var(--pt-border-color) !important;
+    }
+  }
+}
+
+/* ============================
+   6. 分页器
+   ============================ */
+.pro-table__pager {
+  padding: 8px 0;
+  background-color: var(--pt-pager-bg);
+  border-radius: 0 0 var(--pt-radius) var(--pt-radius);
+
+  .vxe-pager--wrapper {
+    background-color: var(--pt-pager-bg) !important;
+  }
+
+  .vxe-pager--num-btn {
+    color: var(--pt-pager-color) !important;
+    background-color: transparent !important;
+    border-color: var(--pt-border-color) !important;
+
+    &.is--active {
+      color: var(--pt-pager-active-color) !important;
+      background-color: var(--pt-pager-active-bg) !important;
+      border-color: var(--pt-pager-active-bg) !important;
+    }
+  }
+
+  .vxe-pager--jump-prev,
+  .vxe-pager--jump-next,
+  .vxe-pager--prev-btn,
+  .vxe-pager--next-btn {
+    color: var(--pt-pager-color) !important;
+    border-color: var(--pt-border-color) !important;
+  }
+
+  .vxe-pager--sizes .vxe-input--inner {
+    color: var(--pt-pager-color) !important;
+    border-color: var(--pt-border-color) !important;
+  }
+
+  .vxe-pager--count {
+    color: var(--pt-pager-color) !important;
+  }
+}
+
+/* ============================
+   7. 统一表格容器
+   ============================
+   用法：<div class="pt-table-wrap"><pro-table ... /></div>
+   页面、弹框、弹窗内的表格容器一律使用它，避免各处自写描边 / 圆角。
+   ============================ */
+.pt-table-wrap {
+  overflow: hidden;
+  background: var(--pt-wrap-bg);
+  border: 1px solid var(--pt-wrap-border-color);
+  border-radius: var(--pt-radius);
+
+  /* 容器内的表格不再自带圆角，避免与容器圆角叠加出现双弧 */
+  .pro-table {
+    border-radius: 0;
+  }
+}
+
+/* ============================
+   8. 语义化扩展（允许，且仅限以下类型）
+   ============================
+   - 数值强调：给列加 className，再设置 font-weight / color
+   - 可换行单元格：给列加 className，再设置 white-space: normal / text-align
+   - 可点击文本：行内元素内的链接型样式
+   禁止再设置：表头底色 / 行高 / 单元格 padding / 斑马纹 / hover / 选中态
+   ============================ */
+
+/* ============================
+   9. 加载中动画
+   ============================
+   用法：<pro-table :loading="loading" loading-text="数据加载中..." />
+   页面无需再自行实现遮罩 / spinner；如需自定义，直接提供 #loading 插槽即可。
+   ============================ */
+.pro-table {
+  .pt-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--pt-loading-color);
+    font-family: var(--pt-font-family);
+    font-size: var(--pt-body-font-size);
+    line-height: 1;
+
+    &__ring {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--pt-loading-ring-track);
+      border-top-color: var(--pt-loading-ring-accent);
+      border-radius: 50%;
+      animation: pt-loading-rotate 0.75s linear infinite;
+    }
+  }
+}
+
+@keyframes pt-loading-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

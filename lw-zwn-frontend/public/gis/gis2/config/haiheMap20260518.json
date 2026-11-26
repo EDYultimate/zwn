@@ -1,0 +1,950 @@
+{
+    "version": 8,
+    "terrain": {
+        "source": "sourceHaiheTerrain",
+        "exaggeration": 1.5
+    },
+    "fog": {
+        "range": [0.5, 10],
+        "color": "#ffffff",
+        "high-color": "#245cdf",
+        "space-color": ["interpolate", ["linear"],
+            ["zoom"], 4, "#010b19", 7, "#367ab9"
+        ],
+        "horizon-blend": ["interpolate", ["linear"],
+            ["zoom"], 4, 0.2, 7, 0.1
+        ],
+        "star-intensity": ["interpolate", ["linear"],
+            ["zoom"], 5, 0.35, 6, 0
+        ],
+        "vertical-range": [0, 0]
+    },
+    "sprite": "http://10.3.247.18:10134/mapglsource/sprites/sprite@2x",
+    "glyphs": "http://10.3.247.18:10134/mapglsource/fonts/{fontstack}/{range}.pbf",
+    "sources": {
+        "tianditu_img": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "tianditu_ter": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/ter_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ter&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "tianditu_eva": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "sourceEarthSurface": {
+            "type": "raster",
+            "tiles": ["http://10.3.247.18:8090/iserver/services/map-agscachev2-shantiyinying/wmts100/shantiyinying/default/GoogleMapsCompatible_shantiyinying/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "sourceHaiheTerrain": {
+            "type": "raster-dem",
+            "tiles": ["http://10.3.247.18:10134/mapglsource/terrain-rgb/terrain-rgb/{z}/{x}/{y}.webp"],
+            "tileSize": 256,
+            "minzoom": 5,
+            "maxzoom": 14
+        },
+        "sourceHaihe": {
+            "type": "vector",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-mbtiles-haihe/restjsr/v1/vectortile/maps/haiheRiverLabel.mbtiles%20%2B%20haiheContourPZ8.mbtiles%20%2B%20haiheRiverQJLabel.mbtiles%20%2B%20haiheRiverQJ.mbtiles%20%2B%20riverL3Label.mbtiles%20%2B%20riverL3.mbtiles%20%2B%20reservoirL1Pt.mbtiles%20%2B%20reservoirL1.mbtiles%20%2B%20riverL1Label.mbtiles%20%2B%20riverL1.mbtiles%20%2B%20reservoirL2Pt.mbtiles/tiles/{z}/{x}/{y}.mvt"],
+            "scheme": "xyz"
+        },
+        "sourceVTMap": {
+            "type": "vector",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-mbtiles-vt-map-basic2/restjsr/v1/vectortile/maps/nationalMotorway.mbtiles%20%2B%20haiheExpressway.mbtiles%20%2B%20haiheCountyRoad.mbtiles%20%2B%20haiheMotorway.mbtiles%20%2B%20haiheStreetRoad.mbtiles%20%2B%20haiheProvinceRoad.mbtiles%20%2B%20haiheNationRoad.mbtiles%20%2B%20railway.mbtiles/tiles/{z}/{x}/{y}.mvt"],
+            "scheme": "xyz"
+        },
+        "szyfq_shuiziyuanerjifenqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/szyfq_shuiziyuanerjifenqu/default/GoogleMapsCompatible_szyfq_shuiziyuanerjifenqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "szyfq_shuiziyuansanjifenqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/szyfq_shuiziyuansanjifenqu/default/GoogleMapsCompatible_szyfq_shuiziyuansanjifenqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzdy_yijishuiwendizhidanyuan": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzdy_yijishuiwendizhidanyuan/default/GoogleMapsCompatible_swdzdy_yijishuiwendizhidanyuan/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzdy_erjishuiwendizhidanyuan": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzdy_erjishuiwendizhidanyuan/default/GoogleMapsCompatible_swdzdy_erjishuiwendizhidanyuan/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzdy_sanjishuiwendizhidanyuan": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzdy_sanjishuiwendizhidanyuan/default/GoogleMapsCompatible_swdzdy_sanjishuiwendizhidanyuan/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzdy_sijishuiwendizhidanyuan": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzdy_sijishuiwendizhidanyuan/default/GoogleMapsCompatible_swdzdy_sijishuiwendizhidanyuan/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzcs_qiancengshentouxishu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzcs_qiancengshentouxishu/default/GoogleMapsCompatible_swdzcs_qiancengshentouxishu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzcs_shengtanshentouxishu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzcs_shengtanshentouxishu/default/GoogleMapsCompatible_swdzcs_shengtanshentouxishu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzcs_jiangshuirushenxishu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzcs_jiangshuirushenxishu/default/GoogleMapsCompatible_swdzcs_jiangshuirushenxishu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzcs_qiancenggeishuidu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzcs_qiancenggeishuidu/default/GoogleMapsCompatible_swdzcs_qiancenggeishuidu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "swdzcs_shengtanxingshishuixishu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/swdzcs_shengtanxingshishuixishu/default/GoogleMapsCompatible_swdzcs_shengtanxingshishuixishu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_jinghangdayunheguantongbushui": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_jinghangdayunheguantongbushui/default/GoogleMapsCompatible_hhbs_jinghangdayunheguantongbushui/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_jinghangdayunheguantongbushui_10km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_jinghangdayunheguantongbushui_10km/default/GoogleMapsCompatible_hhbs_jinghangdayunheguantongbushui_10km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_jinghangdayunheguantongbushui_2km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_jinghangdayunheguantongbushui_2km/default/GoogleMapsCompatible_hhbs_jinghangdayunheguantongbushui_2km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_jinghangdayunheguantongbushui_5km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_jinghangdayunheguantongbushui_5km/default/GoogleMapsCompatible_hhbs_jinghangdayunheguantongbushui_5km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_huabeidiqubushuihe": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_huabeidiqubushuihe/default/GoogleMapsCompatible_hhbs_huabeidiqubushuihe/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_huabeidiqubushuihehu_10km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_huabeidiqubushuihehu_10km/default/GoogleMapsCompatible_hhbs_huabeidiqubushuihehu_10km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_huabeidiqubushuihehu_2km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_huabeidiqubushuihehu_2km/default/GoogleMapsCompatible_hhbs_huabeidiqubushuihehu_2km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_huabeidiqubushuihehu_5km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_huabeidiqubushuihehu_5km/default/GoogleMapsCompatible_hhbs_huabeidiqubushuihehu_5km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_huabeidiqubushuihu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_huabeidiqubushuihu/default/GoogleMapsCompatible_hhbs_huabeidiqubushuihu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_changtaihuapingguhe": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_changtaihuapingguhe/default/GoogleMapsCompatible_hhbs_changtaihuapingguhe/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_changtaihuapingguhehu_10km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_changtaihuapingguhehu_10km/default/GoogleMapsCompatible_hhbs_changtaihuapingguhehu_10km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_changtaihuapingguhehu_2km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_changtaihuapingguhehu_2km/default/GoogleMapsCompatible_hhbs_changtaihuapingguhehu_2km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_changtaihuapingguhehu_5km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_changtaihuapingguhehu_5km/default/GoogleMapsCompatible_hhbs_changtaihuapingguhehu_5km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_changtaihuapingguhu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_changtaihuapingguhu/default/GoogleMapsCompatible_hhbs_changtaihuapingguhu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuhe": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuhe/default/GoogleMapsCompatible_hhbs_muqinhefusuhe/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuhehu_10km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuhehu_10km/default/GoogleMapsCompatible_hhbs_muqinhefusuhehu_10km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuhehu_2km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuhehu_2km/default/GoogleMapsCompatible_hhbs_muqinhefusuhehu_2km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuhehu_5km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuhehu_5km/default/GoogleMapsCompatible_hhbs_muqinhefusuhehu_5km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuhu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuhu/default/GoogleMapsCompatible_hhbs_muqinhefusuhu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuliuyuzhiguanhe": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuliuyuzhiguanhe/default/GoogleMapsCompatible_hhbs_muqinhefusuliuyuzhiguanhe/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "quanshuifenbuqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/quanshuifenbuqu/default/GoogleMapsCompatible_quanshuifenbuqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "dixiashuichubeiqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/dixiashuichubeiqu/default/GoogleMapsCompatible_dixiashuichubeiqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "shengjie": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/shengjie/default/GoogleMapsCompatible_shengjie/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "shijie": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/shijie/default/GoogleMapsCompatible_shijie/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "quxianjie": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/quxianjie/default/GoogleMapsCompatible_quxianjie/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "daxingshuiku": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/daxingshuiku/default/GoogleMapsCompatible_daxingshuiku/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "gaosugonglu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/gaosugonglu/default/GoogleMapsCompatible_gaosugonglu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "tielu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/tielu/default/GoogleMapsCompatible_tielu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "lyccq_qiancengyibanchaocaiqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/lyccq_qiancengyibanchaocaiqu/default/GoogleMapsCompatible_lyccq_qiancengyibanchaocaiqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "lyccq_qiancengyanzhongchaocaiqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/lyccq_qiancengyanzhongchaocaiqu/default/GoogleMapsCompatible_lyccq_qiancengyanzhongchaocaiqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "lyccq_shengcengyibanchaocaiqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/lyccq_shengcengyibanchaocaiqu/default/GoogleMapsCompatible_lyccq_shengcengyibanchaocaiqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "lyccq_shengcengyanzhongchaocaiqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/lyccq_shengcengyanzhongchaocaiqu/default/GoogleMapsCompatible_lyccq_shengcengyanzhongchaocaiqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "yijiheliu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/yijiheliu/default/GoogleMapsCompatible_yijiheliu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "erjiheliu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/erjiheliu/default/GoogleMapsCompatible_erjiheliu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_lijiaanyinhuang": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_lijiaanyinhuang/default/GoogleMapsCompatible_ydslx_lijiaanyinhuang/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_nanshuibeidiaozhongxian": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_nanshuibeidiaozhongxian/default/GoogleMapsCompatible_ydslx_nanshuibeidiaozhongxian/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_yinhuangrujibudian": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_yinhuangrujibudian/default/GoogleMapsCompatible_ydslx_yinhuangrujibudian/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_weishanyinhuang": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_weishanyinhuang/default/GoogleMapsCompatible_ydslx_weishanyinhuang/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_wanjiazhaiyinhuang": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_wanjiazhaiyinhuang/default/GoogleMapsCompatible_ydslx_wanjiazhaiyinhuang/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_tianjinganqu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_tianjinganqu/default/GoogleMapsCompatible_ydslx_tianjinganqu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_panzhuangyinhuang": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_panzhuangyinhuang/default/GoogleMapsCompatible_ydslx_panzhuangyinhuang/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "ydslx_nanshuibeidiaodongxian": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/ydslx_nanshuibeidiaodongxian/default/GoogleMapsCompatible_ydslx_nanshuibeidiaodongxian/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_xiajibushuibushuihe": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_xiajibushuibushuihe/default/GoogleMapsCompatible_hhbs_xiajibushuibushuihe/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_xiajibushuibushuihehu_10km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_xiajibushuibushuihehu_10km/default/GoogleMapsCompatible_hhbs_xiajibushuibushuihehu_10km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_xiajibushuibushuihehu_2km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_xiajibushuibushuihehu_2km/default/GoogleMapsCompatible_hhbs_xiajibushuibushuihehu_2km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_xiajibushuibushuihehu_5km": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_xiajibushuibushuihehu_5km/default/GoogleMapsCompatible_hhbs_xiajibushuibushuihehu_5km/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_xiajibushuibushuihu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_xiajibushuibushuihu/default/GoogleMapsCompatible_hhbs_xiajibushuibushuihu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhbs_muqinhefusuliuyuzhiguanhehu": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhbs_muqinhefusuliuyuzhiguanhehu/default/GoogleMapsCompatible_hhbs_muqinhefusuliuyuzhiguanhehu/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "liuyujie": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/liuyujie/default/GoogleMapsCompatible_liuyujie/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        },
+        "hhlydxsyztdysdt": {
+            "type": "raster",
+            "tiles": ["http://10.3.34.228:8090/iserver/services/map-hhlydxsyzt/wmts100/hhlydxsyztdysdt/default/GoogleMapsCompatible_hhlydxsyztdysdt/{z}/{y}/{x}.png"],
+            "tileSize": 256
+        }
+    },
+    "layers": [
+        {
+            "id": "tianditu_eva",
+            "type": "raster",
+            "source": "tianditu_eva",
+            "minzoom": 1,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "none"
+            }
+        },
+        {
+            "id": "tianditu_ter",
+            "type": "raster",
+            "source": "tianditu_ter",
+            "minzoom": 1,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "visible"
+            }
+        },
+        {
+            "id": "tianditu_img",
+            "type": "raster",
+            "source": "tianditu_img",
+            "minzoom": 1,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "none"
+            }
+        },
+        {
+            "id": "hhlydxsyztdysdt",
+            "type": "raster",
+            "source": "hhlydxsyztdysdt",
+            "minzoom": 0,
+            "maxzoom": 18,
+            "layout": {
+                "visibility": "visible"
+            }
+        },
+        {
+        "id": "szyfq_shuiziyuanerjifenqu",
+        "type": "raster",
+        "source": "szyfq_shuiziyuanerjifenqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "szyfq_shuiziyuansanjifenqu",
+        "type": "raster",
+        "source": "szyfq_shuiziyuansanjifenqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzdy_yijishuiwendizhidanyuan",
+        "type": "raster",
+        "source": "swdzdy_yijishuiwendizhidanyuan",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzdy_erjishuiwendizhidanyuan",
+        "type": "raster",
+        "source": "swdzdy_erjishuiwendizhidanyuan",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzdy_sanjishuiwendizhidanyuan",
+        "type": "raster",
+        "source": "swdzdy_sanjishuiwendizhidanyuan",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzdy_sijishuiwendizhidanyuan",
+        "type": "raster",
+        "source": "swdzdy_sijishuiwendizhidanyuan",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzcs_qiancengshentouxishu",
+        "type": "raster",
+        "source": "swdzcs_qiancengshentouxishu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzcs_shengtanshentouxishu",
+        "type": "raster",
+        "source": "swdzcs_shengtanshentouxishu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzcs_jiangshuirushenxishu",
+        "type": "raster",
+        "source": "swdzcs_jiangshuirushenxishu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzcs_qiancenggeishuidu",
+        "type": "raster",
+        "source": "swdzcs_qiancenggeishuidu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "swdzcs_shengtanxingshishuixishu",
+        "type": "raster",
+        "source": "swdzcs_shengtanxingshishuixishu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_jinghangdayunheguantongbushui",
+        "type": "raster",
+        "source": "hhbs_jinghangdayunheguantongbushui",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_jinghangdayunheguantongbushui_10km",
+        "type": "raster",
+        "source": "hhbs_jinghangdayunheguantongbushui_10km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_jinghangdayunheguantongbushui_2km",
+        "type": "raster",
+        "source": "hhbs_jinghangdayunheguantongbushui_2km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_jinghangdayunheguantongbushui_5km",
+        "type": "raster",
+        "source": "hhbs_jinghangdayunheguantongbushui_5km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_huabeidiqubushuihe",
+        "type": "raster",
+        "source": "hhbs_huabeidiqubushuihe",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_huabeidiqubushuihehu_10km",
+        "type": "raster",
+        "source": "hhbs_huabeidiqubushuihehu_10km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_huabeidiqubushuihehu_2km",
+        "type": "raster",
+        "source": "hhbs_huabeidiqubushuihehu_2km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_huabeidiqubushuihehu_5km",
+        "type": "raster",
+        "source": "hhbs_huabeidiqubushuihehu_5km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_huabeidiqubushuihu",
+        "type": "raster",
+        "source": "hhbs_huabeidiqubushuihu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_changtaihuapingguhe",
+        "type": "raster",
+        "source": "hhbs_changtaihuapingguhe",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_changtaihuapingguhehu_10km",
+        "type": "raster",
+        "source": "hhbs_changtaihuapingguhehu_10km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_changtaihuapingguhehu_2km",
+        "type": "raster",
+        "source": "hhbs_changtaihuapingguhehu_2km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_changtaihuapingguhehu_5km",
+        "type": "raster",
+        "source": "hhbs_changtaihuapingguhehu_5km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_changtaihuapingguhu",
+        "type": "raster",
+        "source": "hhbs_changtaihuapingguhu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuhe",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuhe",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuhehu_10km",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuhehu_10km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuhehu_2km",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuhehu_2km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuhehu_5km",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuhehu_5km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuhu",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuhu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuliuyuzhiguanhe",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuliuyuzhiguanhe",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "quanshuifenbuqu",
+        "type": "raster",
+        "source": "quanshuifenbuqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "dixiashuichubeiqu",
+        "type": "raster",
+        "source": "dixiashuichubeiqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "shengjie",
+        "type": "raster",
+        "source": "shengjie",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "visible"
+        }
+    }, {
+        "id": "shijie",
+        "type": "raster",
+        "source": "shijie",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "visible"
+        }
+    }, {
+        "id": "quxianjie",
+        "type": "raster",
+        "source": "quxianjie",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "daxingshuiku",
+        "type": "raster",
+        "source": "daxingshuiku",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "visible"
+        }
+    }, {
+        "id": "gaosugonglu",
+        "type": "raster",
+        "source": "gaosugonglu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "tielu",
+        "type": "raster",
+        "source": "tielu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "lyccq_qiancengyibanchaocaiqu",
+        "type": "raster",
+        "source": "lyccq_qiancengyibanchaocaiqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "lyccq_qiancengyanzhongchaocaiqu",
+        "type": "raster",
+        "source": "lyccq_qiancengyanzhongchaocaiqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "lyccq_shengcengyibanchaocaiqu",
+        "type": "raster",
+        "source": "lyccq_shengcengyibanchaocaiqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "lyccq_shengcengyanzhongchaocaiqu",
+        "type": "raster",
+        "source": "lyccq_shengcengyanzhongchaocaiqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "yijiheliu",
+        "type": "raster",
+        "source": "yijiheliu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "visible"
+        }
+    }, {
+        "id": "erjiheliu",
+        "type": "raster",
+        "source": "erjiheliu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_lijiaanyinhuang",
+        "type": "raster",
+        "source": "ydslx_lijiaanyinhuang",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_nanshuibeidiaozhongxian",
+        "type": "raster",
+        "source": "ydslx_nanshuibeidiaozhongxian",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_yinhuangrujibudian",
+        "type": "raster",
+        "source": "ydslx_yinhuangrujibudian",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_weishanyinhuang",
+        "type": "raster",
+        "source": "ydslx_weishanyinhuang",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_wanjiazhaiyinhuang",
+        "type": "raster",
+        "source": "ydslx_wanjiazhaiyinhuang",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_tianjinganqu",
+        "type": "raster",
+        "source": "ydslx_tianjinganqu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_panzhuangyinhuang",
+        "type": "raster",
+        "source": "ydslx_panzhuangyinhuang",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "ydslx_nanshuibeidiaodongxian",
+        "type": "raster",
+        "source": "ydslx_nanshuibeidiaodongxian",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_xiajibushuibushuihe",
+        "type": "raster",
+        "source": "hhbs_xiajibushuibushuihe",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_xiajibushuibushuihehu_10km",
+        "type": "raster",
+        "source": "hhbs_xiajibushuibushuihehu_10km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_xiajibushuibushuihehu_2km",
+        "type": "raster",
+        "source": "hhbs_xiajibushuibushuihehu_2km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_xiajibushuibushuihehu_5km",
+        "type": "raster",
+        "source": "hhbs_xiajibushuibushuihehu_5km",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_xiajibushuibushuihu",
+        "type": "raster",
+        "source": "hhbs_xiajibushuibushuihu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "hhbs_muqinhefusuliuyuzhiguanhehu",
+        "type": "raster",
+        "source": "hhbs_muqinhefusuliuyuzhiguanhehu",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "none"
+        }
+    }, {
+        "id": "liuyujie",
+        "type": "raster",
+        "source": "liuyujie",
+        "minzoom": 0,
+        "maxzoom": 18,
+        "layout": {
+            "visibility": "visible"
+        }
+    }]
+}

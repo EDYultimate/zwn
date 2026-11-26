@@ -1,0 +1,3362 @@
+{
+    "version": 8,
+    "terrain": {
+        "source": "sourceHaiheTerrain",
+        "exaggeration": 1.5
+    },
+    "fog": {
+        "range": [
+            0.5,
+            10
+        ],
+        "color": "#ffffff",
+        "high-color": "#245cdf",
+        "space-color": [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "zoom"
+            ],
+            4,
+            "#010b19",
+            7,
+            "#367ab9"
+        ],
+        "horizon-blend": [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "zoom"
+            ],
+            4,
+            0.2,
+            7,
+            0.1
+        ],
+        "star-intensity": [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "zoom"
+            ],
+            5,
+            0.35,
+            6,
+            0
+        ],
+        "vertical-range": [
+            0,
+            0
+        ]
+    },
+    "sprite": "http://10.3.247.18:10134/mapglsource/sprites/sprite@2x",
+    "glyphs": "http://10.3.247.18:10134/mapglsource/fonts/{fontstack}/{range}.pbf",
+    "sources": {
+        "sourceTdtImage": {
+            "type": "raster",
+            "tiles": [
+                "https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileCol={x}&TileRow={y}&TileMatrix={z}&tk=23140f11eca0f949fc3ebff3dbd8686a"
+            ],
+            "tileSize": 256
+        },
+        "sourceEarthSurface": {
+            "type": "raster",
+            "tiles": [
+                "http://10.3.247.18:8090/iserver/services/map-agscachev2-shantiyinying/wmts100/shantiyinying/default/GoogleMapsCompatible_shantiyinying/{z}/{y}/{x}.png"
+            ],
+            "tileSize": 256
+        },
+        "sourceHaiheTerrain": {
+            "type": "raster-dem",
+            "tiles": [
+                "http://10.3.247.18:10134/mapglsource/terrain-rgb/terrain-rgb/{z}/{x}/{y}.webp"
+            ],
+            "tileSize": 256,
+            "minzoom": 5,
+            "maxzoom": 14
+        },
+        "sourceHaihe": {
+            "type": "vector",
+            "tiles": [
+                "http://10.3.34.228:8090/iserver/services/map-mbtiles-haihe/restjsr/v1/vectortile/maps/haiheRiverLabel.mbtiles%20%2B%20haiheContourPZ8.mbtiles%20%2B%20haiheRiverQJLabel.mbtiles%20%2B%20haiheRiverQJ.mbtiles%20%2B%20riverL3Label.mbtiles%20%2B%20riverL3.mbtiles%20%2B%20reservoirL1Pt.mbtiles%20%2B%20reservoirL1.mbtiles%20%2B%20riverL1Label.mbtiles%20%2B%20riverL1.mbtiles%20%2B%20reservoirL2Pt.mbtiles/tiles/{z}/{x}/{y}.mvt"
+            ],
+            "scheme": "xyz"
+        },
+        "sourceVTMap": {
+            "type": "vector",
+            "tiles": [
+                "http://10.3.34.228:8090/iserver/services/map-mbtiles-vt-map-basic2/restjsr/v1/vectortile/maps/nationalMotorway.mbtiles%20%2B%20haiheExpressway.mbtiles%20%2B%20haiheCountyRoad.mbtiles%20%2B%20haiheMotorway.mbtiles%20%2B%20haiheStreetRoad.mbtiles%20%2B%20haiheProvinceRoad.mbtiles%20%2B%20haiheNationRoad.mbtiles%20%2B%20railway.mbtiles/tiles/{z}/{x}/{y}.mvt"
+            ],
+            "scheme": "xyz"
+        }
+    },
+    "layers": [
+        {
+            "id": "bohai",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "bohai",
+            "minzoom": 8,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "#85b1d1",
+                "fill-outline-color": "transparent",
+                "fill-antialias": false
+            }
+        },
+        {
+            "id": "earthSurface",
+            "type": "raster",
+            "source": "sourceEarthSurface",
+            "minzoom": 0,
+            "maxzoom": 9,
+            "layout": {
+                "visibility": "visible"
+            }
+        },
+        {
+            "id": "haiheTerrain",
+            "type": "hillshade",
+            "source": "sourceHaiheTerrain",
+            "minzoom": 6,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "hillshade-illumination-direction": 315,
+                "hillshade-exaggeration": 0.5,
+                "hillshade-shadow-color": "#1a1a1a",
+                "hillshade-highlight-color": "#8b8680",
+                "hillshade-accent-color": "#0d0d0d"
+            }
+        },
+        {
+            "id": "tdtImage",
+            "type": "raster",
+            "source": "sourceTdtImage",
+            "minzoom": 13,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "visible"
+            }
+        },
+        {
+            "id": "contourP-1",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "haiheContourPZ8",
+            "minzoom": 5,
+            "maxzoom": 8,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": [
+                    "step",
+                    [
+                        "get",
+                        "id"
+                    ],
+                    "hsl(97, 36%, 89%)",
+                    2,
+                    "hsl(97, 36%, 89%)",
+                    3,
+                    "hsl(110, 30%, 83%)"
+                ],
+                "fill-outline-color": "transparent",
+                "fill-antialias": false,
+                "fill-opacity": 0.6
+            }
+        },
+        {
+            "id": "contourP-2",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "haiheContourP",
+            "minzoom": 8,
+            "maxzoom": 13,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": [
+                    "step",
+                    [
+                        "get",
+                        "id"
+                    ],
+                    "hsl(97, 36%, 89%)",
+                    2,
+                    "hsl(97, 36%, 89%)",
+                    3,
+                    "hsl(110, 30%, 83%)",
+                    4,
+                    "hsl(100, 45%, 76%)",
+                    5,
+                    "hsl(97, 62%, 81%)",
+                    6,
+                    "hsl(90, 55%, 70%)",
+                    7,
+                    "hsl(80, 50%, 60%)"
+                ],
+                "fill-outline-color": "transparent",
+                "fill-antialias": false,
+                "fill-opacity": 0.6
+            }
+        },
+        {
+            "id": "nationalForest",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "nationalForest",
+            "minzoom": 0,
+            "maxzoom": 5,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsla(97, 62%, 81%, 0.60)",
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "nationalUrbanA",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "nationalUrbanA",
+            "minzoom": 4,
+            "maxzoom": 7,
+            "filter": [
+                ">=",
+                [
+                    "zoom"
+                ],
+                [
+                    "get",
+                    "min_zoom"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": {
+                    "stops": [
+                        [
+                            6,
+                            "hsla(0, 0%, 71%, 0.3)"
+                        ],
+                        [
+                            16,
+                            "hsla(0, 0%, 89%, 0.3)"
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "haiheGrey",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "haiheGrey",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": {
+                    "stops": [
+                        [
+                            6,
+                            "hsla(0, 0%, 71%, 0.3)"
+                        ],
+                        [
+                            16,
+                            "hsla(0, 0%, 89%, 0.3)"
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "haiheHosp",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "haiheHosp",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsl(31, 54%, 92%)",
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "haiheEdu",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "haiheEdu",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsl(31, 54%, 92%)",
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "haiheSta",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "haiheSta",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsl(31, 54%, 92%)",
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "haiheGreen",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "haiheGreen",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "layout": {
+                "visibility": "none"
+            },
+            "paint": {
+                "fill-color": "hsla(97, 62%, 81%, 0.60)",
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "nationalLake",
+            "type": "fill",
+            "source": "sourceVTMap",
+            "source-layer": "nationalLake",
+            "minzoom": 3,
+            "maxzoom": 7,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    6,
+                    "hsl(206, 78%, 80%)",
+                    22,
+                    "hsl(206, 78%, 75%)"
+                ]
+            }
+        },
+        {
+            "id": "railway",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "railway",
+            "minzoom": 11,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 50%)",
+                "line-opacity": 1,
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    0.5,
+                    10,
+                    2,
+                    14,
+                    1.5,
+                    16,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "nationalMotorway",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "nationalMotorway",
+            "minzoom": 5,
+            "maxzoom": 9,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0.5,
+                    7,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "haiheMotorway",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheMotorway",
+            "minzoom": 9,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    1,
+                    9,
+                    2,
+                    14,
+                    5,
+                    16,
+                    10
+                ]
+            }
+        },
+        {
+            "id": "haiheExpressway",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheExpressway",
+            "minzoom": 8,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    1,
+                    9,
+                    2,
+                    14,
+                    1,
+                    16,
+                    4.6
+                ]
+            }
+        },
+        {
+            "id": "haiheNationRoad",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheNationRoad",
+            "minzoom": 7,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    1,
+                    9,
+                    2,
+                    14,
+                    1,
+                    16,
+                    4.6
+                ]
+            }
+        },
+        {
+            "id": "haiheProvinceRoad",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheProvinceRoad",
+            "minzoom": 7,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    1,
+                    9,
+                    2,
+                    14,
+                    1,
+                    16,
+                    4.6
+                ]
+            }
+        },
+        {
+            "id": "haiheCountyRoad",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheCountyRoad",
+            "minzoom": 9,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    9,
+                    0,
+                    14,
+                    0.5,
+                    16,
+                    3
+                ]
+            }
+        },
+        {
+            "id": "haiheStreetRoad",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheStreetRoad",
+            "minzoom": 12,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 100%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    9,
+                    0,
+                    14,
+                    0.5,
+                    16,
+                    3
+                ]
+            }
+        },
+        {
+            "id": "railway dash",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "railway",
+            "minzoom": 8,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 96%)",
+                "line-dasharray": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    [
+                        "literal",
+                        [
+                            2,
+                            2
+                        ]
+                    ],
+                    9,
+                    [
+                        "literal",
+                        [
+                            2.5,
+                            3
+                        ]
+                    ]
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    0,
+                    9,
+                    0.5,
+                    14,
+                    1,
+                    16,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "haiheMotorway Label",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "haiheMotorway",
+            "minzoom": 9,
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    250,
+                    22,
+                    500
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    14,
+                    11,
+                    16,
+                    13
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 20%)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.9)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "haiheExpressway Label",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "haiheExpressway",
+            "minzoom": 10,
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    250,
+                    22,
+                    500
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    14,
+                    11,
+                    16,
+                    13
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 20%)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.9)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "haiheNationRoad Label",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "haiheNationRoad",
+            "minzoom": 10,
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    250,
+                    22,
+                    500
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    14,
+                    11,
+                    16,
+                    13
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 20%)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.9)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "haiheProvinceRoad Label",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "haiheProvinceRoad",
+            "minzoom": 10,
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    250,
+                    22,
+                    500
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    14,
+                    11,
+                    16,
+                    13
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 20%)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.9)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "haiheCountyRoad Label",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "haiheCountyRoad",
+            "minzoom": 12,
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    250,
+                    22,
+                    500
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    14,
+                    11,
+                    16,
+                    13
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 20%)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.9)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "haiheStreetRoad Label",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "haiheStreetRoad",
+            "minzoom": 12,
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    250,
+                    22,
+                    500
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    14,
+                    11,
+                    16,
+                    13
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 20%)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.9)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "provinceLine",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "provinceLine",
+            "minzoom": 3,
+            "maxzoom": 13,
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    "hsl(120, 2%, 55%)",
+                    16,
+                    "rgb(35,24,21)"
+                ],
+                "line-dasharray": [
+                    2,
+                    1
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    0.75,
+                    11,
+                    1.75,
+                    18,
+                    3
+                ]
+            }
+        },
+        {
+            "id": "haiheProvinceLine",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "haiheProvinceLine",
+            "minzoom": 13,
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    "hsl(120, 2%, 55%)",
+                    16,
+                    "rgb(35,24,21)"
+                ],
+                "line-dasharray": [
+                    2,
+                    1
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    0.75,
+                    11,
+                    1.75,
+                    18,
+                    3
+                ]
+            }
+        },
+        {
+            "id": "cityLine",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "cityLine",
+            "minzoom": 8,
+            "maxzoom": 12,
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(120, 2%, 55%)",
+                "line-dasharray": [
+                    2,
+                    6
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    0.8,
+                    11,
+                    1,
+                    18,
+                    1.5
+                ]
+            }
+        },
+        {
+            "id": "countyLine",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "countyLine",
+            "minzoom": 8,
+            "maxzoom": 12,
+            "layout": {
+                "line-join": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    "hsl(120, 2%, 55%)",
+                    16,
+                    "rgb(35,24,21)"
+                ],
+                "line-dasharray": [
+                    2,
+                    1
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    0.75,
+                    11,
+                    1.75,
+                    18,
+                    3
+                ]
+            }
+        },
+        {
+            "id": "Ring-1",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 5,
+            "maxzoom": 7,
+            "filter": [
+                "==",
+                "layer",
+                "r8000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(20, 185, 134, 0.2)"
+            }
+        },
+        {
+            "id": "Ring-1b",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 5,
+            "maxzoom": 7,
+            "filter": [
+                "==",
+                "layer",
+                "r4000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(11, 146, 109, 0.5)"
+            }
+        },
+        {
+            "id": "Ring-2",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 7,
+            "maxzoom": 8,
+            "filter": [
+                "==",
+                "layer",
+                "r4000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(20, 185, 134, 0.2)"
+            }
+        },
+        {
+            "id": "Ring-2b",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 7,
+            "maxzoom": 8,
+            "filter": [
+                "==",
+                "layer",
+                "r2000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(11, 146, 109, 0.5)"
+            }
+        },
+        {
+            "id": "Ring-3",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 8,
+            "maxzoom": 10,
+            "filter": [
+                "==",
+                "layer",
+                "r2000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(20, 185, 134, 0.2)"
+            }
+        },
+        {
+            "id": "Ring-3b",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 8,
+            "maxzoom": 10,
+            "filter": [
+                "==",
+                "layer",
+                "r1000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(11, 146, 109, 0.5)"
+            }
+        },
+        {
+            "id": "Ring-4",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 10,
+            "maxzoom": 12,
+            "filter": [
+                "==",
+                "layer",
+                "r1000"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(20, 185, 134, 0.2)"
+            }
+        },
+        {
+            "id": "Ring-4b",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 10,
+            "maxzoom": 12,
+            "filter": [
+                "==",
+                "layer",
+                "r500"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(11, 146, 109, 0.5)"
+            }
+        },
+        {
+            "id": "Ring-5",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "filter": [
+                "==",
+                "layer",
+                "r500"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(20, 185, 134, 0.2)"
+            }
+        },
+        {
+            "id": "Ring-5b",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "filter": [
+                "==",
+                "layer",
+                "r250"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(11, 146, 109, 0.5)"
+            }
+        },
+        {
+            "id": "Ring-6",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 13,
+            "filter": [
+                "==",
+                "layer",
+                "r125"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(20, 185, 134, 0.2)"
+            }
+        },
+        {
+            "id": "Ring-6b",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "watershedRing",
+            "minzoom": 13,
+            "filter": [
+                "==",
+                "layer",
+                "r62"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(11, 146, 109, 0.5)"
+            }
+        },
+        {
+            "id": "watershed-0",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "watershedL",
+            "minzoom": 9,
+            "layout": {
+                "symbol-placement": "line",
+                "icon-image": "流域边界b",
+                "symbol-spacing": 32,
+                "icon-rotation-alignment": "map",
+                "icon-allow-overlap": true,
+                "icon-rotate": 180
+            },
+            "paint": {
+                "icon-color": "#000000"
+            }
+        },
+        {
+            "id": "watershed-1",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "watershedL",
+            "minzoom": 5,
+            "maxzoom": 9,
+            "paint": {
+                "line-color": "#ffffff",
+                "line-width": 3
+            }
+        },
+        {
+            "id": "haiheRiverQJ",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverQJ",
+            "minzoom": 5,
+            "maxzoom": 7,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    "hsl(206, 78%, 75%)",
+                    7,
+                    "hsl(214, 99%, 50%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    [
+                        "case",
+                        [
+                            "==",
+                            [
+                                "get",
+                                "mt"
+                            ],
+                            0
+                        ],
+                        1,
+                        0.5
+                    ],
+                    7,
+                    [
+                        "case",
+                        [
+                            "==",
+                            [
+                                "get",
+                                "mt"
+                            ],
+                            0
+                        ],
+                        2,
+                        1
+                    ],
+                    13,
+                    [
+                        "case",
+                        [
+                            "==",
+                            [
+                                "get",
+                                "mt"
+                            ],
+                            0
+                        ],
+                        4,
+                        2
+                    ]
+                ]
+            }
+        },
+        {
+            "id": "riverL1-1",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "riverL1",
+            "minzoom": 7,
+            "filter": [
+                "any",
+                [
+                    "==",
+                    "rank",
+                    0
+                ],
+                [
+                    "==",
+                    "mt",
+                    1
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(214, 99%, 50%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0.5,
+                    7,
+                    1,
+                    13,
+                    2
+                ],
+                "line-opacity": {
+                    "stops": [
+                        [
+                            12,
+                            1
+                        ],
+                        [
+                            16,
+                            0.8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "riverL1-2",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "riverL1",
+            "minzoom": 7,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "rank",
+                    1
+                ],
+                [
+                    "!=",
+                    "mt",
+                    1
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(214, 99%, 50%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    1,
+                    7,
+                    2,
+                    13,
+                    4
+                ],
+                "line-opacity": {
+                    "stops": [
+                        [
+                            12,
+                            1
+                        ],
+                        [
+                            16,
+                            0.8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "riverL2",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "riverL2",
+            "minzoom": 8,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(214, 99%, 50%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.8,
+                    13,
+                    1.5
+                ],
+                "line-opacity": {
+                    "stops": [
+                        [
+                            10,
+                            1
+                        ],
+                        [
+                            16,
+                            0.3
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "riverL3",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "riverL3",
+            "minzoom": 9,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": "hsl(214, 99%, 50%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.5,
+                    13,
+                    1
+                ],
+                "line-opacity": {
+                    "stops": [
+                        [
+                            10,
+                            1
+                        ],
+                        [
+                            16,
+                            0.3
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "riverL4",
+            "type": "line",
+            "source": "sourceHaihe",
+            "source-layer": "riverL4",
+            "minzoom": 10,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": "hsl(214, 99%, 50%)",
+                "line-width": 0.5,
+                "line-opacity": {
+                    "stops": [
+                        [
+                            10,
+                            1
+                        ],
+                        [
+                            16,
+                            0.3
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "reservoirL1-qj",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL1",
+            "minzoom": 5,
+            "maxzoom": 7,
+            "filter": [
+                "in",
+                [
+                    "get",
+                    "name"
+                ],
+                [
+                    "literal",
+                    [
+                        "白洋淀",
+                        "大黑汀水库",
+                        "潘家口水库",
+                        "官厅水库",
+                        "密云水库",
+                        "岳城水库"
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    "hsl(206, 78%, 75%)",
+                    7,
+                    "hsl(214, 99%, 50%)"
+                ],
+                "fill-outline-color": "transparent",
+                "fill-antialias": false
+            }
+        },
+        {
+            "id": "reservoirL1",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL1",
+            "minzoom": 7,
+            "maxzoom": 13,
+            "paint": {
+                "fill-color": "hsl(214, 99%, 50%)",
+                "fill-outline-color": "hsl(214, 99%, 50%)"
+            }
+        },
+        {
+            "id": "reservoirL2",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL2",
+            "minzoom": 9,
+            "maxzoom": 13,
+            "paint": {
+                "fill-color": "hsl(214, 99%, 50%)",
+                "fill-outline-color": "hsl(214, 99%, 50%)"
+            }
+        },
+        {
+            "id": "reservoirL3",
+            "type": "fill",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL3",
+            "minzoom": 12,
+            "maxzoom": 13,
+            "paint": {
+                "fill-color": "hsl(214, 99%, 50%)",
+                "fill-outline-color": "hsl(214, 99%, 50%)"
+            }
+        },
+        {
+            "id": "villageLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "village",
+            "minzoom": 10,
+            "layout": {
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-letter-spacing": 0,
+                "text-max-width": 8,
+                "text-offset": [
+                    0,
+                    -0.2
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    12,
+                    16,
+                    18
+                ],
+                "text-transform": "none",
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-color": "hsl(0, 0%, 100%)",
+                "icon-halo-blur": 0,
+                "icon-halo-color": "hsl(0, 0%, 35%)",
+                "icon-halo-width": 1,
+                "text-color": "hsl(48, 4%, 44%)",
+                "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+                "text-halo-width": 1.6
+            }
+        },
+        {
+            "id": "educationLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "education",
+            "minzoom": 13,
+            "layout": {
+                "icon-anchor": "bottom",
+                "icon-image": "学校",
+                "icon-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    22,
+                    1
+                ],
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 6,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    11,
+                    16,
+                    14
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-color": "#FFFFFF",
+                "icon-halo-blur": 0.5,
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1.5,
+                "text-color": "rgb(62, 58, 57)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 1.5,
+                "text-opacity": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    0,
+                    15,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "hospitalLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "hospital",
+            "minzoom": 13,
+            "layout": {
+                "icon-anchor": "bottom",
+                "icon-image": "医院",
+                "icon-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    22,
+                    1
+                ],
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 6,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    11,
+                    16,
+                    14
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-color": "#FFFFFF",
+                "icon-halo-blur": 0.5,
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1.5,
+                "text-color": "rgb(62, 58, 57)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 1.5,
+                "text-opacity": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    0,
+                    15,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "townLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "town",
+            "minzoom": 10,
+            "layout": {
+                "text-anchor": "bottom",
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 8,
+                "text-offset": [
+                    0,
+                    0.1
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    6,
+                    9,
+                    9,
+                    12,
+                    16,
+                    20
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-color": "hsl(0, 0%, 100%)",
+                "icon-halo-blur": 0,
+                "icon-halo-color": "hsl(0, 0%, 35%)",
+                "icon-halo-width": 1,
+                "text-color": "hsl(48, 4%, 44%)",
+                "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+                "text-halo-width": 1.6
+            }
+        },
+        {
+            "id": "countyLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "county",
+            "minzoom": 8,
+            "maxzoom": 16,
+            "layout": {
+                "text-anchor": "bottom",
+                "text-field": [
+                    "get",
+                    "NAME"
+                ],
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 8,
+                "text-padding": 2,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    10,
+                    7,
+                    12,
+                    9,
+                    14,
+                    11,
+                    16,
+                    14,
+                    22
+                ],
+                "text-offset": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    6,
+                    [
+                        "literal",
+                        [
+                            0,
+                            -0.5
+                        ]
+                    ],
+                    14,
+                    [
+                        "literal",
+                        [
+                            0,
+                            -1
+                        ]
+                    ]
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1,
+                "text-color": "hsl(48, 4%, 22%)",
+                "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+                "text-halo-width": 1.6
+            }
+        },
+        {
+            "id": "capitalLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "city",
+            "minzoom": 5,
+            "maxzoom": 16,
+            "filter": [
+                "==",
+                "capital",
+                1
+            ],
+            "layout": {
+                "icon-allow-overlap": false,
+                "icon-image": "首都",
+                "icon-optional": false,
+                "icon-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    6,
+                    0.7,
+                    14,
+                    0.9
+                ],
+                "text-anchor": "bottom",
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "微软雅黑 Bold"
+                ],
+                "text-max-width": 8,
+                "text-padding": 2,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    16,
+                    7,
+                    18,
+                    9,
+                    25,
+                    11,
+                    28
+                ],
+                "text-offset": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    6,
+                    [
+                        "literal",
+                        [
+                            0,
+                            -0.5
+                        ]
+                    ],
+                    14,
+                    [
+                        "literal",
+                        [
+                            0,
+                            -1
+                        ]
+                    ]
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1,
+                "text-color": "hsl(48, 4%, 22%)",
+                "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+                "text-halo-width": 1.6
+            }
+        },
+        {
+            "id": "cityLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "city",
+            "minzoom": 5,
+            "maxzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "capital",
+                    1
+                ],
+                [
+                    "!=",
+                    "name",
+                    "天津市"
+                ]
+            ],
+            "layout": {
+                "text-anchor": "bottom",
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 8,
+                "text-padding": 2,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    10,
+                    7,
+                    12,
+                    9,
+                    16,
+                    11,
+                    20
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1,
+                "text-color": "hsl(48, 4%, 22%)",
+                "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+                "text-halo-width": 1.6
+            }
+        },
+        {
+            "id": "provinceLabel",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "province",
+            "minzoom": 3,
+            "maxzoom": 9,
+            "filter": [
+                "!=",
+                "name",
+                "北京市"
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "微软雅黑 Bold"
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-width": 8,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear",
+                        1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    12,
+                    7,
+                    14,
+                    9,
+                    22
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-halo-blur": 0,
+                "icon-halo-color": "hsla(0, 100%, 100%, 0.85)",
+                "icon-halo-width": 1.5,
+                "text-color": "hsl(240, 6%, 13%)",
+                "text-halo-blur": 0,
+                "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+                "text-halo-width": 1.5,
+                "text-opacity": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    0,
+                    3,
+                    0.6,
+                    5,
+                    0.8
+                ]
+            }
+        },
+        {
+            "id": "airPortLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "station",
+            "minzoom": 8,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    [
+                        "slice",
+                        [
+                            "get",
+                            "name"
+                        ],
+                        -1
+                    ],
+                    "站"
+                ],
+                [
+                    "any",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "name"
+                        ],
+                        "北京大兴国际机场"
+                    ],
+                    [
+                        "all",
+                        [
+                            "!=",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            "北京大兴国际机场"
+                        ],
+                        [
+                            ">=",
+                            [
+                                "zoom"
+                            ],
+                            11
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "icon-anchor": "bottom",
+                "icon-image": "机场",
+                "icon-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    22,
+                    1
+                ],
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 6,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    11,
+                    16,
+                    14
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-color": "#04647D",
+                "icon-halo-blur": 0.5,
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1.5,
+                "text-color": "#04647D",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "stationLabels",
+            "type": "symbol",
+            "source": "sourceVTMap",
+            "source-layer": "station",
+            "minzoom": 11,
+            "filter": [
+                "==",
+                [
+                    "slice",
+                    [
+                        "get",
+                        "name"
+                    ],
+                    -1
+                ],
+                "站"
+            ],
+            "layout": {
+                "icon-anchor": "bottom",
+                "icon-image": "火车站",
+                "icon-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    22,
+                    1
+                ],
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "微软雅黑 Regular"
+                ],
+                "text-max-width": 6,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    11,
+                    16,
+                    14
+                ],
+                "visibility": "visible"
+            },
+            "paint": {
+                "icon-color": "#04647D",
+                "icon-halo-blur": 0.5,
+                "icon-halo-color": "hsl(0, 0%, 100%)",
+                "icon-halo-width": 1.5,
+                "text-color": "#04647D",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "nationalRiverL0-1",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "nationalRiverL0",
+            "minzoom": 3,
+            "maxzoom": 5,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(206, 78%, 75%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    [
+                        "*",
+                        1,
+                        [
+                            "match",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            [
+                                "长江",
+                                "黄河"
+                            ],
+                            2,
+                            1
+                        ]
+                    ],
+                    7,
+                    [
+                        "*",
+                        1.5,
+                        [
+                            "match",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            [
+                                "长江",
+                                "黄河"
+                            ],
+                            2,
+                            1
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "id": "nationalRiverL0-2",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "nationalRiverL0",
+            "minzoom": 5,
+            "maxzoom": 7,
+            "filter": [
+                "!",
+                [
+                    "match",
+                    [
+                        "get",
+                        "name"
+                    ],
+                    [
+                        "滦河",
+                        "永定河",
+                        "漳河",
+                        "桑干河",
+                        "海河",
+                        "闪电河"
+                    ],
+                    true,
+                    false
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(206, 78%, 75%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    [
+                        "*",
+                        1,
+                        [
+                            "match",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            [
+                                "长江",
+                                "黄河"
+                            ],
+                            2,
+                            1
+                        ]
+                    ],
+                    7,
+                    [
+                        "*",
+                        1.5,
+                        [
+                            "match",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            [
+                                "长江",
+                                "黄河"
+                            ],
+                            2,
+                            1
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "id": "nationalRiverL1",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "nationalRiverL1",
+            "minzoom": 7,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(206, 78%, 75%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    [
+                        "*",
+                        1.5,
+                        [
+                            "match",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            [
+                                "长江",
+                                "黄河"
+                            ],
+                            2,
+                            1
+                        ]
+                    ],
+                    9,
+                    [
+                        "*",
+                        2,
+                        [
+                            "match",
+                            [
+                                "get",
+                                "name"
+                            ],
+                            [
+                                "长江",
+                                "黄河"
+                            ],
+                            2,
+                            1
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "id": "nationalRiverL2",
+            "type": "line",
+            "source": "sourceVTMap",
+            "source-layer": "nationalRiverL2",
+            "minzoom": 7,
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(206, 78%, 75%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.5,
+                    9,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "haiheRiverQJLabel-1",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverQJLabel",
+            "minzoom": 3,
+            "maxzoom": 11,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "rank"
+                ],
+                1
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            3,
+                            14
+                        ],
+                        [
+                            7,
+                            18
+                        ]
+                    ]
+                },
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-allow-overlap": true
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "haiheRiverQJLabel-2",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverQJLabel",
+            "minzoom": 3,
+            "maxzoom": 5,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "rank"
+                ],
+                0
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            3,
+                            14
+                        ],
+                        [
+                            7,
+                            16
+                        ]
+                    ]
+                },
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-allow-overlap": true
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "haiheRiverQJLabel-3",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverQJLabel",
+            "minzoom": 5,
+            "maxzoom": 6.5,
+            "filter": [
+                "!",
+                [
+                    "in",
+                    [
+                        "get",
+                        "rank"
+                    ],
+                    [
+                        "literal",
+                        [
+                            0,
+                            1,
+                            2,
+                            4,
+                            5,
+                            9,
+                            13,
+                            24
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            5,
+                            12
+                        ],
+                        [
+                            6,
+                            18
+                        ]
+                    ]
+                },
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-allow-overlap": true
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "haiheRiverQJLabel-4",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverQJLabel",
+            "minzoom": 6.5,
+            "maxzoom": 7,
+            "filter": [
+                "!",
+                [
+                    "in",
+                    [
+                        "get",
+                        "rank"
+                    ],
+                    [
+                        "literal",
+                        [
+                            0,
+                            1
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": 18,
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-allow-overlap": true
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "riverL1Label-1",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverLabel",
+            "minzoom": 7,
+            "maxzoom": 9,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "rank"
+                ],
+                1
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            7,
+                            18
+                        ],
+                        [
+                            9,
+                            22
+                        ]
+                    ]
+                },
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-allow-overlap": true
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "riverL1Label-2",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "haiheRiverLabel",
+            "minzoom": 8,
+            "maxzoom": 9,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "rank"
+                ],
+                2
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            7,
+                            12
+                        ],
+                        [
+                            9,
+                            16
+                        ]
+                    ]
+                },
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-allow-overlap": true
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "riverL3Label",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "riverL3Label",
+            "minzoom": 10,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "layer"
+                ],
+                [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "1.2",
+                    10,
+                    "1.2",
+                    11,
+                    "0.6",
+                    12,
+                    "0.3",
+                    13,
+                    "0.15",
+                    14,
+                    "0.075",
+                    15,
+                    "0.0375"
+                ]
+            ],
+            "layout": {
+                "visibility": "none",
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            10,
+                            12
+                        ],
+                        [
+                            16,
+                            16
+                        ]
+                    ]
+                },
+                "text-letter-spacing": 0.1,
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-rotate": [
+                    "get",
+                    "angle"
+                ],
+                "text-rotation-alignment": "map",
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "riverL2Label",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "riverL2Label",
+            "minzoom": 10,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "layer"
+                ],
+                [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "1.2",
+                    10,
+                    "1.2",
+                    11,
+                    "0.6",
+                    12,
+                    "0.3",
+                    13,
+                    "0.15",
+                    14,
+                    "0.075",
+                    15,
+                    "0.0375"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible",
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            10,
+                            12
+                        ],
+                        [
+                            16,
+                            16
+                        ]
+                    ]
+                },
+                "text-letter-spacing": 0.1,
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-rotate": [
+                    "get",
+                    "angle"
+                ],
+                "text-rotation-alignment": "map",
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "riverL1Label",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "riverL1Label",
+            "minzoom": 9,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "layer"
+                ],
+                [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "1.2",
+                    10,
+                    "1.2",
+                    11,
+                    "0.6",
+                    12,
+                    "0.3",
+                    13,
+                    "0.15",
+                    14,
+                    "0.075",
+                    15,
+                    "0.0375"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "name"
+                ],
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-size": {
+                    "stops": [
+                        [
+                            10,
+                            18
+                        ],
+                        [
+                            16,
+                            24
+                        ]
+                    ]
+                },
+                "text-letter-spacing": 0.1,
+                "text-anchor": "center",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-rotate": [
+                    "get",
+                    "angle"
+                ],
+                "text-rotation-alignment": "map",
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "reservoirL3Pt",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL3Pt",
+            "minzoom": 12,
+            "layout": {
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-max-width": 6,
+                "text-offset": [
+                    0,
+                    0.8
+                ],
+                "text-justify": "auto",
+                "text-size": 12
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "reservoirL2Pt",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL2Pt",
+            "minzoom": 9,
+            "layout": {
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-max-width": 6,
+                "text-offset": [
+                    0.8,
+                    0
+                ],
+                "text-justify": "auto",
+                "text-size": 14
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "reservoirL1Pt-0",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL1Pt",
+            "minzoom": 7,
+            "filter": [
+                "in",
+                [
+                    "get",
+                    "name"
+                ],
+                [
+                    "literal",
+                    [
+                        "白洋淀",
+                        "大黑汀水库",
+                        "潘家口水库",
+                        "官厅水库",
+                        "密云水库",
+                        "岳城水库"
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-anchor": "right",
+                "text-field": "{name}",
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-max-width": 6,
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-justify": "auto",
+                "text-size": 16
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "reservoirL1Pt-2",
+            "type": "symbol",
+            "source": "sourceHaihe",
+            "source-layer": "reservoirL1Pt",
+            "minzoom": 8.5,
+            "filter": [
+                "!",
+                [
+                    "in",
+                    [
+                        "get",
+                        "name"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "白洋淀",
+                            "大黑汀水库",
+                            "潘家口水库",
+                            "官厅水库",
+                            "密云水库",
+                            "岳城水库"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "方正宋体左斜_GBK Regular"
+                ],
+                "text-max-width": 6,
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-justify": "auto",
+                "text-size": {
+                    "stops": [
+                        [
+                            8,
+                            12
+                        ],
+                        [
+                            9,
+                            14
+                        ],
+                        [
+                            10,
+                            16
+                        ]
+                    ]
+                }
+            },
+            "paint": {
+                "text-color": "hsl(214, 99%, 50%)",
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2
+            }
+        }
+    ]
+}

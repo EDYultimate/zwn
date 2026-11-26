@@ -1,0 +1,116 @@
+{
+    "version": 8,
+    "terrain": {
+        "source": "sourceHaiheTerrain",
+        "exaggeration": 1.5
+    },
+    "fog": {
+        "range": [
+            0.5,
+            10
+        ],
+        "color": "#ffffff",
+        "high-color": "#245cdf",
+        "space-color": [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "zoom"
+            ],
+            4,
+            "#010b19",
+            7,
+            "#367ab9"
+        ],
+        "horizon-blend": [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "zoom"
+            ],
+            4,
+            0.2,
+            7,
+            0.1
+        ],
+        "star-intensity": [
+            "interpolate",
+            [
+                "linear"
+            ],
+            [
+                "zoom"
+            ],
+            5,
+            0.35,
+            6,
+            0
+        ],
+        "vertical-range": [
+            0,
+            0
+        ]
+    },
+    "sprite": "http://10.3.247.18:10134/mapglsource/sprites/sprite@2x",
+    "glyphs": "http://10.3.247.18:10134/mapglsource/fonts/{fontstack}/{range}.pbf",
+    "sources": {
+        "tianditu_img": {
+            "type": "raster",
+            "tiles": [
+                "https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"
+            ],
+            "tileSize": 256
+        },
+        "tianditu_ter": {
+            "type": "raster",
+            "tiles": [
+                "https://t0.tianditu.gov.cn/ter_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ter&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"
+            ],
+            "tileSize": 256
+        },
+        "tianditu_eva": {
+            "type": "raster",
+            "tiles": [
+                "https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"
+            ],
+            "tileSize": 256
+        },
+        "sourceEarthSurface": {
+            "type": "raster",
+            "tiles": [
+                "http://10.3.247.18:8090/iserver/services/map-agscachev2-shantiyinying/wmts100/shantiyinying/default/GoogleMapsCompatible_shantiyinying/{z}/{y}/{x}.png"
+            ],
+            "tileSize": 256
+        },
+        "sourceHaiheTerrain": {
+            "type": "raster-dem",
+            "tiles": [
+                "http://10.3.247.18:10134/mapglsource/terrain-rgb/terrain-rgb/{z}/{x}/{y}.webp"
+            ],
+            "tileSize": 256,
+            "minzoom": 5,
+            "maxzoom": 14
+        },
+        "sourceHaihe": {
+            "type": "vector",
+            "tiles": [
+                "http://10.3.34.228:8090/iserver/services/map-mbtiles-haihe/restjsr/v1/vectortile/maps/haiheRiverLabel.mbtiles%20%2B%20haiheContourPZ8.mbtiles%20%2B%20haiheRiverQJLabel.mbtiles%20%2B%20haiheRiverQJ.mbtiles%20%2B%20riverL3Label.mbtiles%20%2B%20riverL3.mbtiles%20%2B%20reservoirL1Pt.mbtiles%20%2B%20reservoirL1.mbtiles%20%2B%20riverL1Label.mbtiles%20%2B%20riverL1.mbtiles%20%2B%20reservoirL2Pt.mbtiles/tiles/{z}/{x}/{y}.mvt"
+            ],
+            "scheme": "xyz"
+        },
+        "sourceVTMap": {
+            "type": "vector",
+            "tiles": [
+                "http://10.3.34.228:8090/iserver/services/map-mbtiles-vt-map-basic2/restjsr/v1/vectortile/maps/nationalMotorway.mbtiles%20%2B%20haiheExpressway.mbtiles%20%2B%20haiheCountyRoad.mbtiles%20%2B%20haiheMotorway.mbtiles%20%2B%20haiheStreetRoad.mbtiles%20%2B%20haiheProvinceRoad.mbtiles%20%2B%20haiheNationRoad.mbtiles%20%2B%20railway.mbtiles/tiles/{z}/{x}/{y}.mvt"
+            ],
+            "scheme": "xyz"
+        }
+    },
+    "layers": [
+
+    ]
+}

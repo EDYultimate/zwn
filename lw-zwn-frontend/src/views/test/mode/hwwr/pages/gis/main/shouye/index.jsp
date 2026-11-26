@@ -1,0 +1,137 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"";
+String dept="";
+   if(session.getAttribute("dept_id")!=null){
+	  dept=new String(session.getAttribute("dept_id").toString());
+   }
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>首页</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	
+<!-- 	<link rel="stylesheet" type="text/css" href="../../common/js/LayerControl/css/default/style.css"> -->
+	
+	<link rel="stylesheet" href="http://10.3.250.88:7001/3.15/esri/css/esri.css">
+       
+	<link rel="stylesheet" type="text/css" href="../../common/js/legendbar/style.css">
+	<link rel="stylesheet" type="text/css" href="../../common/js/jstree2/themes/default/style.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>/common/css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/shouye.css">
+  </head>
+  <body>
+    <div id="mapdivshouye"></div>
+    <div id="layershow"></div>
+    <div id="orgLayer"></div>
+    <div id="navigator_shouye"></div>
+    <div id="mapSwitch" style="position:absolute;top:0px;right:0px;"></div>
+   
+     <div id="rightTopBar" class="pointHandler">
+     	<div id="rightTopBar_layer" >
+     	    <div id="rightTopBar_layer_back" class="boxLayerClick" style="width:95px;height:24px;position:absolute;"></div>
+     		<div id="rightTopBar_layer_img" class="boxLayerClick"></div>
+     		<div id="rightTopBar_layer_label" class="unSelected boxLayerClick">图层</div>
+     		<div class="arrowDown boxLayerClick"></div>
+     		<div class="rightTopBar_break"></div>
+     	    <div id="bar_layer_content" ></div>
+     	</div>
+     	<div id="rightTopBar_tool">
+     	    <div id="rightTopBar_tool_back" class="boxToolClick" style="width:95px;height:24px;position:absolute;"></div>
+     		<div id="rightTopBar_tool_img" class="boxToolClick"></div>
+     		<div id="rightTopBar_tool_label" class="unSelected boxToolClick">工具</div>
+     		<div class="arrowDown boxToolClick "></div>
+     		<div class="rightTopBar_tool_break boxToolClick"></div>
+     		<div id="bar_tool_content" ></div>
+     	</div>
+     	<div id="rightTopBar_map" class="mapSelected">
+     		<div id="rightTopBar_map_img"></div>
+     		<div id="rightTopBar_map_label" class="unSelected">地图</div>
+     	</div>
+     	<div class="rightTopBar_break"></div>
+     	<div id="rightTopBar_vec" >
+     		<div id="rightTopBar_vec_img"></div>
+     		<div id="rightTopBar_vec_label" class="unSelected">地形</div>
+     	</div>
+     	<div class="rightTopBar_break"></div>
+     	<div id="rightTopBar_rate">
+     		<div id="rightTopBar_rate_img"></div>
+     		<div id="rightTopBar_rate_label" class="unSelected">影像</div>
+     	</div>
+<!--       	<input id="timeText" style="position:absolute;top:40px;right:100px" type="submit" value="000ZH130" onclick="pointLocat()"/>
+-->     </div>
+ <!-- 全局搜索div开始 -->
+     <div id="searchbtn" style="float: left;position: absolute;top: 10px;left:10px;height:30px;">
+	     <!--  <input id="searchText" style="float: left;width: 200px;height: 24px;" placeholder="请输入测站名" onkeydown="keyDown()"/>
+	     <div class="searchbar" title="搜索" onclick="search()">
+	     	 <img style="width:16px;height:16px;margin-top:3px;" title="搜索"  src="img/ico_search.png"/>
+	     </div>
+        
+		 <ul id="ulItems" style="position: absolute;top:24px; display: none; border:1px solid #cecece; border-top:none; width:150px; padding:2px; margin:0px;cursor:pointer"></ul> -->  
+	  <!--<select id="selectSM" name="inv_payee"  onchange="initXcgj(this.options[this.options.selectedIndex].value);" style="border:1px solid #ccc;">
+　　　　      <option value="2018-4-1" selected>2018-4-1</option>
+　　　　      <option value="2018-4-5">2018-4-5</option>
+　　　　       <option value="2018-4-7">2018-4-7</option>
+　　          </select>-->
+	</div>
+    <!-- 全局搜索div结束 -->
+    <div id="legendDiv"></div>
+    <div id="nameLabel"></div>
+      <!--目录树 -->
+    <div id="layercontrol">
+	    <img class="close" title="关闭" src="img/close_normal.png"/>
+	     <div class="titlelayer">查询结果
+	     </div>
+	     <div class="layercontainer">
+	     </div>
+    </div>
+    <script type="text/javascript" src="./js/dojoconfig.js"></script>
+    <script type="text/javascript" src="../../common/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src='../../common/js/LayerControl/js/LayerControl.js'></script>
+    <script type="text/javascript" src="../../common/js/raphael.js"></script>
+    <script type="text/javascript" src='../../common/js/layer/layer.js'></script>
+    <script type="text/javascript" src='../../common/js/jstree2/jstree.min.js'></script>
+   
+    <script src="http://10.3.250.88:7001/3.15/init.js"></script> 
+    
+    <script type="text/javascript" src="../../common/js/config.js"></script>
+    <script type="text/javascript" src="./js/config.js"></script>
+    <script type="text/javascript" src="js/layereach.js"></script>
+    <script type="text/javascript" src="./js/guangai.js"></script>
+    <script type="text/javascript" src='../../common/js/navigator/navigator.js'></script>
+    <script type="text/javascript" src='../../common/js/LayerSwitcher/LayerSwitcher.js'></script>
+    <script type="text/javascript" src='../../common/js/LayerCheckbox/LayerCheckbox.js'></script>
+    <script type="text/javascript" src='../../common/js/legendbar/LegendBar.js'></script>
+    <script type="text/javascript" src='../../common/js/TwoDropDown/TwoDropDown.js'></script>
+    <script type="text/javascript" src="./js/layercontrol.js"></script>
+    <script type="text/javascript" src="./js/init.js"></script>
+    <script type="text/javascript" src="./js/shouye.js"></script>
+    <script type="text/javascript" src="./js/GlobalSearch.js"></script>
+    <script type="text/javascript" src="./js/EnterSearch.js"></script>
+    <script type="text/javascript">
+    	var dept='<%=dept%>';  //调用java变量测试    
+    	commonConfig.basePath='<%=basePath%>';  //调用java变量测试   
+   	
+    	function getFun(path,ttile){
+    		layer.closeAll();
+    		layer.open({
+    	     	content:path,
+    	     	type: 2,
+    	     	area:["800px","550px"],
+    	     	title: [ttile,'background-color:#ffffff;color:#4bb588;font-weight: bold;font-size:15px;'],
+    	     	shade: 0,
+    	     	skin: 'map_layui_win'
+    	     });
+    	}
+    	function getFun1(){
+    		layer.closeAll();
+    	}
+    </script>
+  </body>
+</html>

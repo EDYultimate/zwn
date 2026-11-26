@@ -1,0 +1,1267 @@
+{
+    "version": 8,
+    "terrain": {
+        "source": "sourceHaiheTerrain",
+        "exaggeration": 1.5
+    },
+    "fog": {
+        "range": [0.5, 10],
+        "color": "#ffffff",
+        "high-color": "#245cdf",
+        "space-color": ["interpolate", ["linear"],
+            ["zoom"], 4, "#010b19", 7, "#367ab9"
+        ],
+        "horizon-blend": ["interpolate", ["linear"],
+            ["zoom"], 4, 0.2, 7, 0.1
+        ],
+        "star-intensity": ["interpolate", ["linear"],
+            ["zoom"], 5, 0.35, 6, 0
+        ],
+        "vertical-range": [0, 0]
+    },
+    "sprite": "http://10.3.247.18:10134/mapglsource/sprites/sprite@2x",
+    "glyphs": "http://10.3.247.18:10134/mapglsource/fonts/{fontstack}/{range}.pbf",
+    "sources": {
+        "sourceEarthSurface": {
+            "type": "raster",
+            "tiles": [
+                "http://10.3.247.18:8090/iserver/services/map-agscachev2-shantiyinying/wmts100/shantiyinying/default/GoogleMapsCompatible_shantiyinying/{z}/{y}/{x}.png"
+            ],
+            "tileSize": 256
+        },
+        "tianditu_img": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "tianditu_ter": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/ter_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ter&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "tianditu_eva": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "vector_layer_": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:8080/data/haiheliuyudixiashuiyizhangtu/{z}/{x}/{y}.pbf"
+            ],
+            "scheme": "xyz"
+        },
+        "sourceHaiheTerrain": {
+            "type": "raster-dem",
+            "tiles": ["http://10.3.247.18:10134/mapglsource/terrain-rgb/terrain-rgb/{z}/{x}/{y}.webp"],
+            "tileSize": 256,
+            "minzoom": 5,
+            "maxzoom": 14
+        }
+    },
+    "layers": [
+        {
+            "id": "earthSurface",
+            "type": "raster",
+            "source": "sourceEarthSurface",
+            "minzoom": 0,
+            "maxzoom": 9,
+            "layout": {
+                "visibility": "visible"
+            }
+        },
+        {
+            "id": "tianditu_eva",
+            "type": "raster",
+            "source": "tianditu_eva",
+            "minzoom": 1,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "none"
+            }
+        },
+        {
+            "id": "tianditu_ter",
+            "type": "raster",
+            "source": "tianditu_ter",
+            "minzoom": 1,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "none"
+            }
+        },
+        {
+            "id": "tianditu_img",
+            "type": "raster",
+            "source": "tianditu_img",
+            "minzoom": 1,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "none"
+            }
+        },
+        {
+            "id": "vector_layer__railway_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "railway",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(19, 173, 244, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__reservoirL1_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "reservoirL1_nameP",
+            "layout": {
+              "visibility": "visible"
+            },
+            "paint": {
+              "circle-color": "#63f995",
+              "circle-radius": 2.2,
+              "circle-stroke-color": "#ffffff",
+              "circle-stroke-width": 0.7,
+              "circle-opacity": 0.9
+            }
+          },
+          {
+            "id": "vector_layer__expressway_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "expressway",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(22, 22, 186, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ccq_qiancengyanzhongchaocaiqu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "ccq_qiancengyanzhongchaocaiqu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(3, 114, 29, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(3, 114, 29, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__ccq_qiancengyibanchaocaiqu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "ccq_qiancengyibanchaocaiqu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(15, 197, 252, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(15, 197, 252, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__province_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "province",
+            "layout": {
+              "visibility": "visible"
+            },
+            "paint": {
+              "fill-color": "rgba(51, 136, 255, 0.15)",
+              "fill-opacity": 0.9,
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(51, 136, 255, 0.8)"
+            }
+          },
+          {
+            "id": "vector_layer__city_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "city",
+            "layout": {
+              "visibility": "visible"
+            },
+            "paint": {
+              "fill-color": "rgba(185, 67, 224, 0.15)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(185, 67, 224, 0.7)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_changtaihehu2km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_changtaihehu2km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(188, 142, 62, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(188, 142, 62, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_huabeidiqubushuihehu2km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_huabeidiqubushuihehu2km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(112, 224, 47, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(112, 224, 47, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_muqinhefusuhehu2km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_muqinhefusuhehu2km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(191, 232, 97, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(191, 232, 97, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_xiajibushuibushuihehu2km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_xiajibushuibushuihehu2km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(10, 165, 204, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(10, 165, 204, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_changtaihe_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_changtaihe",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(224, 165, 98, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_changtaihe_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_changtaihe_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(23, 5, 119, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_changtaihehu10km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_changtaihehu10km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(193, 38, 59, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(193, 38, 59, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_huabeidiqubushuihe_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_huabeidiqubushuihe",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(154, 244, 75, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_huabeidiqubushuihe_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_huabeidiqubushuihe_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(247, 93, 224, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_huabeidiqubushuihehu10km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_huabeidiqubushuihehu10km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(204, 178, 16, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(204, 178, 16, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_jinghangdayunhe_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_jinghangdayunhe",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(204, 140, 51, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_jinghangdayunhe_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_jinghangdayunhe_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(75, 52, 168, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_jinghangdayunhe10km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_jinghangdayunhe10km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(229, 237, 80, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(229, 237, 80, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_muqinhefusuhe_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_muqinhefusuhe",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(174, 214, 14, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_muqinhefusuhe_nemeP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_muqinhefusuhe_nemeP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(244, 105, 135, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_muqinhefusuhehu10km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_muqinhefusuhehu10km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(247, 165, 71, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(247, 165, 71, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_xiajibushuibushuihe_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_xiajibushuibushuihe",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(37, 214, 234, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_xiajibushuibushuihe_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_xiajibushuibushuihe_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(239, 189, 52, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_xiajibushuibushuihehu10km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_xiajibushuibushuihehu10km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(78, 206, 136, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(78, 206, 136, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_muqinhefusuliuyuzhiguanhe_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_muqinhefusuliuyuzhiguanhe",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(226, 138, 74, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__county_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "county",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(242, 169, 96, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(242, 169, 96, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiziyuanfenquL3_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "shuiziyuanfenquL3",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(129, 252, 98, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(129, 252, 98, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiziyuanfenquL3_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "shuiziyuanfenquL3_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(249, 2, 146, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__shuiwendizhidanyuanL2_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "shuiwendizhidanyuanL2",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(97, 242, 92, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(97, 242, 92, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiwendizhidanyuanL3_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "shuiwendizhidanyuanL3",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(105, 234, 131, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(105, 234, 131, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiziyuanfenquL2_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "shuiziyuanfenquL2",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(126, 201, 64, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(126, 201, 64, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_huabeidiqubushuihu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_huabeidiqubushuihu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(229, 34, 161, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(229, 34, 161, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_jinghangdayunhe2km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_jinghangdayunhe2km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(31, 155, 3, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(31, 155, 3, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiwendizhidanyuanL3_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "shuiwendizhidanyuanL3_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(196, 13, 47, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_changtaihu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_changtaihu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(132, 66, 247, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(132, 66, 247, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_muqinhefusuhu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_muqinhefusuhu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(229, 80, 224, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(229, 80, 224, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_nsbddx_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_nsbddx",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(229, 194, 98, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__reservoirL1_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "reservoirL1",
+            "layout": {
+              "visibility": "visible"
+            },
+            "paint": {
+              "fill-color": "rgba(26, 160, 226, 0.25)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(26, 160, 226, 0.75)"
+            }
+          },
+          {
+            "id": "vector_layer__ccq_shencengyibanchaocaiqu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "ccq_shencengyibanchaocaiqu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(170, 108, 252, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(170, 108, 252, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__riverL1_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "riverL1",
+            "layout": {
+              "line-cap": "round",
+              "visibility": "visible"
+            },
+            "paint": {
+              "line-color": [
+                "interpolate",
+                [
+                  "linear"
+                ],
+                [
+                  "zoom"
+                ],
+                5,
+                "hsl(206, 78%, 75%)",
+                7,
+                "hsl(214, 99%, 50%)"
+              ],
+              "line-width": [
+                "interpolate",
+                [
+                  "linear"
+                ],
+                [
+                  "zoom"
+                ],
+                5,
+                [
+                  "case",
+                  [
+                    "==",
+                    [
+                      "get",
+                      "mt"
+                    ],
+                    0
+                  ],
+                  1,
+                  0.5
+                ],
+                7,
+                [
+                  "case",
+                  [
+                    "==",
+                    [
+                      "get",
+                      "mt"
+                    ],
+                    0
+                  ],
+                  2,
+                  1
+                ],
+                13,
+                [
+                  "case",
+                  [
+                    "==",
+                    [
+                      "get",
+                      "mt"
+                    ],
+                    0
+                  ],
+                  4,
+                  2
+                ]
+              ]
+            }
+          },
+          {
+            "id": "vector_layer__riverL2_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "riverL2",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(60, 190, 242, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_pzyh_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_pzyh",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(205, 85, 252, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_ljayh_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_ljayh",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(211, 38, 188, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_tjgq_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_tjgq",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(170, 23, 70, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_wjzyh_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_wjzyh",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(81, 234, 30, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_wsyh_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_wsyh",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(205, 85, 252, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_yhrjbd_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_yhrjbd",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(229, 194, 98, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_nsbdzx_line",
+            "type": "line",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_nsbdzx",
+            "layout": {
+              "line-join": "round",
+              "line-cap": "round",
+              "visibility": "none"
+            },
+            "paint": {
+              "line-color": "rgba(237, 59, 62, 0.6)"
+            }
+          },
+          {
+            "id": "vector_layer__province_name",
+            "type": "symbol",
+            "source": "vector_layer_",
+            "source-layer": "province_nameP",
+            "layout": {
+              "text-field": [
+                "get",
+                "name"
+              ],
+              "text-size": 14,
+              "text-font": [
+                "微软雅黑 Regular"
+              ],
+              "text-anchor": "center",
+              "text-allow-overlap": false,
+              "text-ignore-placement": false,
+              "visibility": "visible"
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "#11c1c1",
+              "text-halo-width": 2,
+              "text-halo-blur": 1
+            }
+          },
+          {
+            "id": "vector_layer__city_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "city_nameP",
+            "layout": {
+              "visibility": "visible"
+            },
+            "paint": {
+              "circle-color": "#4ed883",
+              "circle-radius": 2.2,
+              "circle-stroke-color": "#ffffff",
+              "circle-stroke-width": 0.8,
+              "circle-opacity": 0.9
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_huabeidiqubushuihu_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_huabeidiqubushuihu_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(39, 188, 186, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_changtaihehu5km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_changtaihehu5km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(122, 178, 17, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(122, 178, 17, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_jinghangdayunhe5km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_jinghangdayunhe5km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(55, 232, 149, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(55, 232, 149, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_huabeidiqubushuihehu5km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_huabeidiqubushuihehu5km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(91, 211, 133, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(91, 211, 133, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiwendizhidanyuanL4_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "shuiwendizhidanyuanL4",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(13, 170, 81, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(13, 170, 81, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_changtaihu_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_changtaihu_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(84, 247, 81, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_muqinhefusuhehu5km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_muqinhefusuhehu5km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(46, 244, 49, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(46, 244, 49, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_muqinhefusuhu_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_muqinhefusuhu_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(94, 224, 178, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_nsbddx_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_nsbddx_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(56, 6, 150, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbshcq_xiajibushuibushuihehu5km_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbshcq_xiajibushuibushuihehu5km",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(37, 45, 135, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(37, 45, 135, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_muqinhefusuliuyuzhiguanhe_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_muqinhefusuliuyuzhiguanhe_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(86, 82, 206, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__county_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "county_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(27, 4, 201, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ccq_shencengyanzhongchaocaiqu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "ccq_shencengyanzhongchaocaiqu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(62, 115, 155, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(62, 115, 155, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__riverL1_nameP_circle",
+            "type": "symbol",
+            "source": "vector_layer_",
+            "source-layer": "riverL1_nameP",
+            "layout": {
+              "text-field": [
+                "get",
+                "name"
+              ],
+              "text-font": [
+                "微软雅黑 Regular"
+              ],
+              "text-size": 18,
+              "text-anchor": "center",
+              "text-offset": [
+                0,
+                0
+              ],
+              "text-allow-overlap": true,
+              "visibility": "visible"
+            },
+            "paint": {
+              "text-color": "hsl(214, 99%, 50%)",
+              "text-halo-color": "hsl(0, 0%, 100%)",
+              "text-halo-width": 2
+            }
+          },
+          {
+            "id": "vector_layer__shuiwendizhidanyuanL1_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "shuiwendizhidanyuanL1",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(125, 252, 75, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(125, 252, 75, 0.3)"
+            }
+          },
+          {
+            "id": "vector_layer__shuiwendizhidanyuanL2_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "shuiwendizhidanyuanL2_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(239, 105, 161, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__shuiziyuanfenquL2_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "shuiziyuanfenquL2_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(216, 82, 192, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__riverL2_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "riverL2_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(84, 73, 237, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_pzyh_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_pzyh_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(99, 249, 149, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_ljayh_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_ljayh_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(44, 186, 150, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_tjgq_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_tjgq_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(27, 104, 137, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_wjzyh_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_wjzyh_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(242, 48, 171, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_wsyh_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_wsyh_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(99, 249, 149, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_yhrjbd_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_yhrjbd_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(56, 6, 150, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__ydslx_nsbdzx_nameP_circle",
+            "type": "circle",
+            "source": "vector_layer_",
+            "source-layer": "ydslx_nsbdzx_nameP",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "circle-color": "rgba(70, 130, 226, 0.8)",
+              "circle-radius": 2
+            }
+          },
+          {
+            "id": "vector_layer__hhbs_xiajibushuibushuihu_polygon",
+            "type": "fill",
+            "source": "vector_layer_",
+            "source-layer": "hhbs_xiajibushuibushuihu",
+            "layout": {
+              "visibility": "none"
+            },
+            "paint": {
+              "fill-color": "rgba(239, 230, 105, 0.3)",
+              "fill-antialias": true,
+              "fill-outline-color": "rgba(239, 230, 105, 0.3)"
+            }
+          }
+      
+    ]
+}

@@ -1,0 +1,3650 @@
+{
+    "version": 8,
+    "name": "海河地下水一张图-行业规范版",
+    "sprite": "http://10.3.247.18:10134/mapglsource/sprites/sprite@2x",
+    "glyphs": "http://10.3.247.18:10134/mapglsource/fonts/{fontstack}/{range}.pbf",
+    "fog": {
+      "range": [
+          0.5,
+          10
+      ],
+      "color": "#ffffff",
+      "high-color": "#245cdf",
+      "space-color": [
+          "interpolate",
+          [
+              "linear"
+          ],
+          [
+              "zoom"
+          ],
+          4,
+          "#010b19",
+          7,
+          "#367ab9"
+      ],
+      "horizon-blend": [
+          "interpolate",
+          [
+              "linear"
+          ],
+          [
+              "zoom"
+          ],
+          4,
+          0.2,
+          7,
+          0.1
+      ],
+      "star-intensity": [
+          "interpolate",
+          [
+              "linear"
+          ],
+          [
+              "zoom"
+          ],
+          5,
+          0.35,
+          6,
+          0
+      ],
+      "vertical-range": [
+          0,
+          0
+      ]
+  },
+    "sources": {
+        "sourceOverlay":{
+          "type": "image",
+          "url": "./map/haihe-overlay-s.png",
+          "coordinates": [
+            [109.5121, 43.0879],
+            [122.2672, 43.0879],
+            [122.2672, 34.6207],
+            [109.5121, 34.6207]
+          ]
+        },
+        "tianditu_img": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "tianditu_ter": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/ter_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ter&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "tianditu_eva": {
+            "type": "raster",
+            "tiles": ["https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=23140f11eca0f949fc3ebff3dbd8686a"],
+            "tileSize": 256
+        },
+        "chengshijianchengqu": {
+          "type": "vector",
+          "tiles": [
+            "http://10.3.34.228:8090/iserver/services/map-mbtiles-chengshijianchengqu/restjsr/v1/vectortile/maps/chengshijianchengqu.mbtiles/tiles/{z}/{x}/{y}.mvt"
+           ],
+           "scheme": "xyz"
+        },
+      "vector_layer_": {
+        "type": "vector",
+        "tiles": [
+          "http://10.3.34.228:8090/iserver/services/map-mbtiles-haiheliuyudixiashuiyizhangtu/restjsr/v1/vectortile/maps/ydslx_wjzyh_nameP.mbtiles--%20%2B%20ccq_qiancengyanzhongchaocaiqu.mbtiles--%20%2B%20ydslx_yhrjbd_nameP.mbtiles--%20%2B%20ydslx_nsbdzx_nameP.mbtiles--%20%2B%20ydslx_yhrjbd.mbtiles--%20%2B%20ydslx_nsbdzx.mbtiles--%20%2B%20beijing.mbtiles--%20%2B%20ydslx_pzyh_nameP.mbtiles--%20%2B%20ydslx_pzyh.mbtiles--/tiles/{z}/{x}/{y}.mvt"
+         ],
+         "scheme": "xyz"
+      },
+      "sourceEarthSurface": {
+        "type": "raster",
+        "tiles": [
+          "http://10.3.247.18:8090/iserver/services/map-agscachev2-shantiyinying/wmts100/shantiyinying/default/GoogleMapsCompatible_shantiyinying/{z}/{y}/{x}.png"
+        ],
+        "tileSize": 256
+      },
+      "2024_2M_3857" : {
+        "type": "raster",
+        "tiles": [
+          "http://10.3.247.17:8090/iserver/services/map-ugcv5-20242M3857/wmts100/2024_2M_3857/default/GoogleMapsCompatible_2024_2M_3857/{z}/{y}/{x}.png"
+        ],
+        "tileSize": 256
+      },
+      
+      "sourceHaihe": {
+        "type": "vector",
+        "tiles": [
+          "http://10.3.34.228:8090/iserver/services/map-mbtiles-haihe/restjsr/v1/vectortile/maps/haiheRiverLabel.mbtiles%20%2B%20haiheContourPZ8.mbtiles%20%2B%20haiheRiverQJLabel.mbtiles%20%2B%20haiheRiverQJ.mbtiles%20%2B%20riverL3Label.mbtiles%20%2B%20riverL3.mbtiles%20%2B%20reservoirL1Pt.mbtiles%20%2B%20reservoirL1.mbtiles%20%2B%20riverL1Label.mbtiles%20%2B%20riverL1.mbtiles%20%2B%20reservoirL2Pt.mbtiles/tiles/{z}/{x}/{y}.mvt"
+        ],
+        "scheme": "xyz"
+      },
+      "sourceVTMap": {
+        "type": "vector",
+        "tiles": [
+          "http://10.3.34.228:8090/iserver/services/map-mbtiles-vt-map-basic2/restjsr/v1/vectortile/maps/nationalMotorway.mbtiles%20%2B%20haiheExpressway.mbtiles%20%2B%20haiheCountyRoad.mbtiles%20%2B%20haiheMotorway.mbtiles%20%2B%20haiheStreetRoad.mbtiles%20%2B%20haiheProvinceRoad.mbtiles%20%2B%20haiheNationRoad.mbtiles%20%2B%20railway.mbtiles/tiles/{z}/{x}/{y}.mvt"
+        ],
+        "scheme": "xyz"
+      },
+      "zhszydd": {
+        "type": "geojson",
+        "data": "./data/zhszydd.geojson"
+      },
+      "zwnyh": {
+        "type": "geojson",
+        "data": "./data/zwnyh.geojson"
+      }
+    },
+    "layers": [
+      {
+        "id": "bohai",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "bohai",
+        "minzoom": 8,
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "#85b1d1",
+          "fill-outline-color": "transparent",
+          "fill-antialias": false
+        }
+      },
+      {
+        "id": "earthSurface",
+        "type": "raster",
+        "source": "sourceEarthSurface",
+        "minzoom": 0,
+        "maxzoom": 9,
+        "layout": {
+          "visibility": "visible"
+        }
+      },
+      {
+        "id": "tianditu_ter",
+        "type": "raster",
+        "source": "tianditu_ter",
+        "minzoom": 1,
+        "maxzoom": 17,
+        "layout": {
+            "visibility": "none"
+        }
+    },
+    {
+        "id": "tianditu_eva",
+        "type": "raster",
+        "source": "tianditu_eva",
+        "minzoom": 1,
+        "maxzoom": 17,
+        "layout": {
+            "visibility": "none"
+        }
+    },
+    {
+        "id": "tianditu_img",
+        "type": "raster",
+        "source": "tianditu_img",
+        "minzoom": 1,
+        "maxzoom": 17,
+        "layout": {
+            "visibility": "none"
+        }
+    },
+    {
+        "id": "2024_2M_3857",
+        "type": "raster",
+        "source": "2024_2M_3857",
+        "minzoom": 12,
+        "maxzoom": 17,
+        "layout": {
+            "visibility": "visible"
+        }
+    },
+    
+    {
+      "id": "overlay",
+      "type": "raster",
+      "source": "sourceOverlay",
+      "minzoom": 5,
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "raster-opacity": 1,
+        "raster-fade-duration": 0
+      }
+    },
+      {
+        "id": "contourP-1",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "haiheContourPZ8",
+        "minzoom": 5,
+        "maxzoom": 8,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": [
+            "step",
+            [
+              "get",
+              "id"
+            ],
+            "hsl(97, 36%, 89%)",
+            2,
+            "hsl(97, 36%, 89%)",
+            3,
+            "hsl(110, 30%, 83%)"
+          ],
+          "fill-outline-color": "transparent",
+          "fill-antialias": false,
+          "fill-opacity": 0.6
+        }
+      },
+      {
+        "id": "contourP-2",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "haiheContourP",
+        "minzoom": 8,
+        "maxzoom": 13,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": [
+            "step",
+            [
+              "get",
+              "id"
+            ],
+            "hsl(97, 36%, 89%)",
+            2,
+            "hsl(97, 36%, 89%)",
+            3,
+            "hsl(110, 30%, 83%)",
+            4,
+            "hsl(100, 45%, 76%)",
+            5,
+            "hsl(97, 62%, 81%)",
+            6,
+            "hsl(90, 55%, 70%)",
+            7,
+            "hsl(80, 50%, 60%)"
+          ],
+          "fill-outline-color": "transparent",
+          "fill-antialias": false,
+          "fill-opacity": 0.6
+        }
+      },
+      {
+        "id": "provinceLine",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "provinceLine",
+        "minzoom": 3,
+        "maxzoom": 13,
+        "layout": {
+          "line-join": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            "hsl(120, 2%, 55%)",
+            16,
+            "rgb(35,24,21)"
+          ],
+          "line-dasharray": [
+            2,
+            1
+          ],
+          "line-width": [
+            "interpolate",
+            [
+              "exponential",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            0.75,
+            11,
+            1.75,
+            18,
+            3
+          ]
+        }
+      },
+      {
+        "id": "haiheProvinceLine",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "haiheProvinceLine",
+        "minzoom": 13,
+        "layout": {
+          "line-join": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            "hsl(120, 2%, 55%)",
+            16,
+            "rgb(35,24,21)"
+          ],
+          "line-dasharray": [
+            2,
+            1
+          ],
+          "line-width": [
+            "interpolate",
+            [
+              "exponential",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            0.75,
+            11,
+            1.75,
+            18,
+            3
+          ]
+        }
+      },
+      {
+        "id": "cityLine",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "cityLine",
+        "minzoom": 8,
+        "maxzoom": 12,
+        "layout": {
+          "line-join": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(120, 2%, 55%)",
+          "line-dasharray": [
+            2,
+            6
+          ],
+          "line-width": [
+            "interpolate",
+            [
+              "exponential",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            8,
+            0.8,
+            11,
+            1,
+            18,
+            1.5
+          ]
+        }
+      },
+      {
+        "id": "countyLine",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "countyLine",
+        "minzoom": 8,
+        "maxzoom": 12,
+        "layout": {
+          "line-join": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            "hsl(120, 2%, 55%)",
+            16,
+            "rgb(35,24,21)"
+          ],
+          "line-dasharray": [
+            2,
+            1
+          ],
+          "line-width": [
+            "interpolate",
+            [
+              "exponential",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            0.75,
+            11,
+            1.75,
+            18,
+            3
+          ]
+        }
+      },
+      {
+        "id": "province",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "province",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#E8E8E8",
+          "fill-opacity": 0.2,
+          "fill-outline-color": "#999999"
+        }
+      },
+      {
+        "id": "Ring-1",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 5,
+        "maxzoom": 7,
+        "filter": [
+          "==",
+          "layer",
+          "r8000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(20, 185, 134, 0.2)"
+        }
+      },
+      {
+        "id": "Ring-1b",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 5,
+        "maxzoom": 7,
+        "filter": [
+          "==",
+          "layer",
+          "r4000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(11, 146, 109, 0.5)"
+        }
+      },
+      {
+        "id": "Ring-2",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 7,
+        "maxzoom": 8,
+        "filter": [
+          "==",
+          "layer",
+          "r4000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(20, 185, 134, 0.2)"
+        }
+      },
+      {
+        "id": "Ring-2b",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 7,
+        "maxzoom": 8,
+        "filter": [
+          "==",
+          "layer",
+          "r2000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(11, 146, 109, 0.5)"
+        }
+      },
+      {
+        "id": "Ring-3",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 8,
+        "maxzoom": 10,
+        "filter": [
+          "==",
+          "layer",
+          "r2000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(20, 185, 134, 0.2)"
+        }
+      },
+      {
+        "id": "Ring-3b",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 8,
+        "maxzoom": 10,
+        "filter": [
+          "==",
+          "layer",
+          "r1000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(11, 146, 109, 0.5)"
+        }
+      },
+      {
+        "id": "Ring-4",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 10,
+        "maxzoom": 12,
+        "filter": [
+          "==",
+          "layer",
+          "r1000"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(20, 185, 134, 0.2)"
+        }
+      },
+      {
+        "id": "Ring-4b",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 10,
+        "maxzoom": 12,
+        "filter": [
+          "==",
+          "layer",
+          "r500"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(11, 146, 109, 0.5)"
+        }
+      },
+      {
+        "id": "Ring-5",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 12,
+        "maxzoom": 13,
+        "filter": [
+          "==",
+          "layer",
+          "r500"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(20, 185, 134, 0.2)"
+        }
+      },
+      {
+        "id": "Ring-5b",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 12,
+        "maxzoom": 13,
+        "filter": [
+          "==",
+          "layer",
+          "r250"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(11, 146, 109, 0.5)"
+        }
+      },
+      {
+        "id": "Ring-6",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 13,
+        "filter": [
+          "==",
+          "layer",
+          "r125"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(20, 185, 134, 0.2)"
+        }
+      },
+      {
+        "id": "Ring-6b",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "watershedRing",
+        "minzoom": 13,
+        "filter": [
+          "==",
+          "layer",
+          "r62"
+        ],
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(11, 146, 109, 0.5)"
+        }
+      },
+      {
+        "id": "city",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "city",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#F2F2F2",
+          "fill-opacity": 0.15,
+          "fill-outline-color": "#AAAAAA"
+        }
+      },
+      {
+        "id": "county",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "county",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#F7F7F7",
+          "fill-opacity": 0.1,
+          "fill-outline-color": "#BBBBBB"
+        }
+      },
+      {
+        "id": "watershedL",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "watershedL",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#9CE59E",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#52B755"
+        }
+      },
+      {
+        "id": "shuiziyuanfenquL2",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "shuiziyuanfenquL2",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#94C9FF",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#5A9BD8"
+        }
+      },
+      {
+        "id": "shuiziyuanfenquL3",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "shuiziyuanfenquL3",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#8ABBF2",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#5A9BD8"
+        }
+      },
+      {
+        "id": "shuiwendizhidanyuanL1",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "shuiwendizhidanyuanL1",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#C2E896",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#84C358"
+        }
+      },
+      {
+        "id": "shuiwendizhidanyuanL2",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "shuiwendizhidanyuanL2",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#B8E58A",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#7AB84A"
+        }
+      },
+      {
+        "id": "shuiwendizhidanyuanL3",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "shuiwendizhidanyuanL3",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#AEDF7F",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#70AD40"
+        }
+      },
+      {
+        "id": "shuiwendizhidanyuanL4",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "shuiwendizhidanyuanL4",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#A4D975",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#66A333"
+        }
+      },
+      {
+        "id": "swdzcs_qiancengshentouxishu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_qiancengshentouxishu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(296, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "swdzcs_shencengshentouxishu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_shencengshentouxishu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(329, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "swdzcs_jiangshuirushenxishu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_jiangshuirushenxishu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(343, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "swdzcs_geishuidu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_geishuidu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(64, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "swdzcs_shishuixishu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_shishuixishu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(23, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "ccq_qiancengyibanchaocaiqu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "ccq_qiancengyibanchaocaiqu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFE066",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E6B800"
+        }
+      },
+      {
+        "id": "ccq_qiancengyanzhongchaocaiqu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "ccq_qiancengyanzhongchaocaiqu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFA666",
+          "fill-opacity": 0.4,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "ccq_shencengyibanchaocaiqu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "ccq_shencengyibanchaocaiqu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFC066",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E69F00"
+        }
+      },
+      {
+        "id": "ccq_shencengyanzhongchaocaiqu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "ccq_shencengyanzhongchaocaiqu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FF8C66",
+          "fill-opacity": 0.4,
+          "fill-outline-color": "#E67300"
+        }
+      },
+      {
+        "id": "hhbshcq_jinghangdayunhe10km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_jinghangdayunhe10km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFE066",
+          "fill-opacity": 0.2,
+          "fill-outline-color": "#E6B800"
+        }
+      },
+      {
+        "id": "hhbshcq_jinghangdayunhe5km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_jinghangdayunhe5km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFD966",
+          "fill-opacity": 0.25,
+          "fill-outline-color": "#E6B800"
+        }
+      },
+      {
+        "id": "hhbshcq_jinghangdayunhe2km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_jinghangdayunhe2km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFD166",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E6B800"
+        }
+      },
+      {
+        "id": "hhbshcq_huabeidiqubushuihehu10km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_huabeidiqubushuihehu10km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFC066",
+          "fill-opacity": 0.2,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_huabeidiqubushuihehu5km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_huabeidiqubushuihehu5km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFB366",
+          "fill-opacity": 0.25,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_huabeidiqubushuihehu2km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_huabeidiqubushuihehu2km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFA666",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_changtaihehu10km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_changtaihehu10km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFB366",
+          "fill-opacity": 0.2,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_changtaihehu5km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_changtaihehu5km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFA666",
+          "fill-opacity": 0.25,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_changtaihehu2km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_changtaihehu2km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FF9966",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_muqinhefusuhehu10km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_muqinhefusuhehu10km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFA666",
+          "fill-opacity": 0.2,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_muqinhefusuhehu5km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_muqinhefusuhehu5km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FF9966",
+          "fill-opacity": 0.25,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_muqinhefusuhehu2km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_muqinhefusuhehu2km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FF8C66",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E68A00"
+        }
+      },
+      {
+        "id": "hhbshcq_xiajibushuibushuihehu10km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_xiajibushuibushuihehu10km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFC066",
+          "fill-opacity": 0.2,
+          "fill-outline-color": "#E69F00"
+        }
+      },
+      {
+        "id": "hhbshcq_xiajibushuibushuihehu5km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_xiajibushuibushuihehu5km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFB366",
+          "fill-opacity": 0.25,
+          "fill-outline-color": "#E69F00"
+        }
+      },
+      {
+        "id": "hhbshcq_xiajibushuibushuihehu2km",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbshcq_xiajibushuibushuihehu2km",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#FFA666",
+          "fill-opacity": 0.3,
+          "fill-outline-color": "#E69F00"
+        }
+      },
+      {
+        "id": "lake",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "lake",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "#78BFFF",
+          "fill-opacity": 0.6,
+          "fill-outline-color": "#4D94E7"
+        }
+      },
+      {
+        "id": "hhbs_huabeidiqubushuihu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_huabeidiqubushuihu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#78BFFF",
+          "fill-opacity": 0.6,
+          "fill-outline-color": "#4D94E7"
+        }
+      },
+      {
+        "id": "hhbs_changtaihu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_changtaihu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#78BFFF",
+          "fill-opacity": 0.6,
+          "fill-outline-color": "#4D94E7"
+        }
+      },
+      {
+        "id": "hhbs_muqinhefusuhu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_muqinhefusuhu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#78BFFF",
+          "fill-opacity": 0.6,
+          "fill-outline-color": "#4D94E7"
+        }
+      },
+      {
+        "id": "hhbs_xiajibushuibushuihu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_xiajibushuibushuihu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "#78BFFF",
+          "fill-opacity": 0.6,
+          "fill-outline-color": "#4D94E7"
+        }
+      },
+      {
+        "id": "chengshijianchengqu",
+        "source": "chengshijianchengqu",
+        "source-layer": "chengshijianchengqu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "type": "line",
+        "layout": {
+          "visibility": "none",
+          "line-join": "round",
+          "line-cap": "round"
+        },
+        "paint": {
+          "line-color": "#847eff",
+          "line-width": 1,
+          "line-opacity": 1,
+          "line-dasharray": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "id": "reservoirL1",
+        "type": "fill",
+        "source": "sourceHaihe",
+        "source-layer": "reservoirL1",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 5,
+        "maxzoom": 13,
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            5, "#cce2ff",
+            7, "#cce2ff",
+            7.01, "hsl(214, 99%, 50%)"
+          ],
+          "fill-outline-color": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            5, "#cce2ff",
+            7, "#cce2ff",
+            7.01, "hsl(214, 99%, 50%)"
+          ]
+        }
+      },
+      {
+        "id": "haiheRiverQJ",
+        "type": "line",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverQJ",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 5,
+        "maxzoom": 7,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            "#cce2ff",
+            7,
+            "#cce2ff"
+          ],
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            4,
+            [
+              "case",
+              [
+                "==",
+                [
+                  "get",
+                  "mt"
+                ],
+                0
+              ],
+              0.5,
+              0.5
+            ],
+            7,
+            [
+              "case",
+              [
+                "==",
+                [
+                  "get",
+                  "mt"
+                ],
+                0
+              ],
+              2,
+              1
+            ],
+            13,
+            [
+              "case",
+              [
+                "==",
+                [
+                  "get",
+                  "mt"
+                ],
+                0
+              ],
+              4,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "id": "riverL1-1",
+        "type": "line",
+        "source": "sourceHaihe",
+        "source-layer": "riverL1",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 7,
+        "filter": [
+          "any",
+          [
+            "==",
+            "rank",
+            0
+          ],
+          [
+            "==",
+            "mt",
+            1
+          ]
+        ],
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(214, 99%, 50%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            0.5,
+            7,
+            1,
+            13,
+            2
+          ],
+          "line-opacity": {
+            "stops": [
+              [
+                12,
+                1
+              ],
+              [
+                16,
+                0.8
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "id": "riverL1-2",
+        "type": "line",
+        "source": "sourceHaihe",
+        "source-layer": "riverL1",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 7,
+        "filter": [
+          "all",
+          [
+            "==",
+            "rank",
+            1
+          ],
+          [
+            "!=",
+            "mt",
+            1
+          ]
+        ],
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(214, 99%, 50%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            1,
+            7,
+            2,
+            13,
+            4
+          ],
+          "line-opacity": {
+            "stops": [
+              [
+                12,
+                1
+              ],
+              [
+                16,
+                0.8
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "id": "riverL2",
+        "type": "line",
+        "source": "sourceHaihe",
+        "source-layer": "riverL2",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 8,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(214, 99%, 50%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            7,
+            0.8,
+            13,
+            1.5
+          ],
+          "line-opacity": {
+            "stops": [
+              [
+                10,
+                1
+              ],
+              [
+                16,
+                0.3
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "id": "riverL3",
+        "type": "line",
+        "source": "sourceHaihe",
+        "source-layer": "riverL3",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 9,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(214, 99%, 50%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            7,
+            0.5,
+            13,
+            1
+          ],
+          "line-opacity": {
+            "stops": [
+              [
+                10,
+                1
+              ],
+              [
+                16,
+                0.3
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "id": "riverL4",
+        "type": "line",
+        "source": "sourceHaihe",
+        "source-layer": "riverL4",
+        "metadata": {
+          "category": "haihe"
+        },
+        "minzoom": 10,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(214, 99%, 50%)",
+          "line-width": 0.5,
+          "line-opacity": {
+            "stops": [
+              [
+                10,
+                1
+              ],
+              [
+                16,
+                0.3
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "id": "hhbs_huabeidiqubushuihe",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_huabeidiqubushuihe",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#4D94E7",
+          "line-width": 2.5
+        }
+      },
+      {
+        "id": "hhbs_changtaihe",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_changtaihe",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#4D94E7",
+          "line-width": 2.5
+        }
+      },
+      {
+        "id": "hhbs_muqinhefusuhe",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_muqinhefusuhe",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#4D94E7",
+          "line-width": 2.5
+        }
+      },
+      {
+        "id": "hhbs_muqinhefusuliuyuzhiguanhe",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_muqinhefusuliuyuzhiguanhe",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#4D94E7",
+          "line-width": 2.5
+        }
+      },
+      {
+        "id": "quanyufanwei",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "quanyufanwei",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(83, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "dixiashuichubeiqu",
+        "type": "fill",
+        "source": "vector_layer_",
+        "source-layer": "dixiashuichubeiqu",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "fill-color": "hsl(346, 70%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "#333"
+        }
+      },
+      {
+        "id": "hhbs_xiajibushuibushuihe",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_xiajibushuibushuihe",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#4D94E7",
+          "line-width": 2.5
+        }
+      },
+      {
+        "id": "ydslx_ljayh",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_ljayh",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_nsbdzx",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_nsbdzx",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_yhrjbd",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_yhrjbd",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_wsyh",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_wsyh",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_wjzyh",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_wjzyh",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_tjgq",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_tjgq",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_pzyh",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_pzyh",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "ydslx_nsbddx",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_nsbddx",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#8B60D1",
+          "line-width": 2
+        }
+      },
+      {
+        "id": "expressway",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "expressway",
+        "minzoom": 6,
+        "maxzoom": 12,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#FF6666",
+          "line-width": 1.5
+        }
+      },
+      {
+        "id": "railway",
+        "type": "line",
+        "source": "vector_layer_",
+        "source-layer": "railway",
+        "minzoom": 6,
+        "maxzoom": 12,
+        "layout": {
+          "visibility": "none"
+        },
+        "paint": {
+          "line-color": "#999999",
+          "line-width": 1
+        }
+      },
+      {
+        "id": "capitalLabels",
+        "type": "symbol",
+        "source": "sourceVTMap",
+        "source-layer": "city",
+        "minzoom": 5,
+        "maxzoom": 16,
+        "filter": [
+          "==",
+          "capital",
+          1
+        ],
+        "layout": {
+          "icon-allow-overlap": false,
+          "icon-image": "首都",
+          "icon-optional": false,
+          "icon-size": [
+            "interpolate",
+            [
+              "linear",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            6,
+            0.7,
+            14,
+            0.9
+          ],
+          "text-anchor": "bottom",
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "微软雅黑 Bold"
+          ],
+          "text-max-width": 8,
+          "text-padding": 2,
+          "text-size": [
+            "interpolate",
+            [
+              "linear",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            16,
+            7,
+            18,
+            9,
+            25,
+            11,
+            28
+          ],
+          "text-offset": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            6,
+            [
+              "literal",
+              [
+                0,
+                -0.5
+              ]
+            ],
+            14,
+            [
+              "literal",
+              [
+                0,
+                -1
+              ]
+            ]
+          ],
+          "visibility": "visible"
+        },
+        "paint": {
+          "icon-halo-color": "hsl(0, 0%, 100%)",
+          "icon-halo-width": 1,
+          "text-color": "hsl(48, 4%, 22%)",
+          "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+          "text-halo-width": 1.6
+        }
+      },
+      {
+        "id": "provinceLabel",
+        "type": "symbol",
+        "source": "sourceVTMap",
+        "source-layer": "province",
+        "minzoom": 3,
+        "maxzoom": 9,
+        "filter": [
+          "!=",
+          "name",
+          "北京市"
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "微软雅黑 Bold"
+          ],
+          "text-letter-spacing": 0.1,
+          "text-max-width": 8,
+          "text-size": [
+            "interpolate",
+            [
+              "linear",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            12,
+            7,
+            14,
+            9,
+            22
+          ],
+          "visibility": "visible"
+        },
+        "paint": {
+          "icon-halo-blur": 0,
+          "icon-halo-color": "hsla(0, 100%, 100%, 0.85)",
+          "icon-halo-width": 1.5,
+          "text-color": "hsl(240, 6%, 13%)",
+          "text-halo-blur": 0,
+          "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+          "text-halo-width": 1.5,
+          "text-opacity": [
+            "step",
+            [
+              "zoom"
+            ],
+            0,
+            3,
+            0.6,
+            5,
+            0.8
+          ]
+        }
+      },
+      {
+        "id": "cityLabels",
+        "type": "symbol",
+        "source": "sourceVTMap",
+        "source-layer": "city",
+        "minzoom": 5,
+        "maxzoom": 16,
+        "filter": [
+          "all",
+          [
+            "!=",
+            "capital",
+            1
+          ],
+          [
+            "!=",
+            "name",
+            "天津市"
+          ]
+        ],
+        "layout": {
+          "text-anchor": "bottom",
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "微软雅黑 Regular"
+          ],
+          "text-max-width": 8,
+          "text-padding": 2,
+          "text-size": [
+            "interpolate",
+            [
+              "linear",
+              1
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            10,
+            7,
+            12,
+            9,
+            16,
+            11,
+            20
+          ],
+          "visibility": "visible"
+        },
+        "paint": {
+          "icon-halo-color": "hsl(0, 0%, 100%)",
+          "icon-halo-width": 1,
+          "text-color": "hsl(48, 4%, 22%)",
+          "text-halo-color": "hsla(0, 100%, 100%, 0.8)",
+          "text-halo-width": 1.6
+        }
+      },
+      {
+        "id": "county_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "county_nameP",
+        "minzoom": 6,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#606060",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1
+        }
+      },
+      {
+        "id": "shuiziyuanfenquL2_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "shuiziyuanfenquL2_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2D6BB3",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "shuiziyuanfenquL3_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "shuiziyuanfenquL3_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 9,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2D6BB3",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "shuiwendizhidanyuanL2_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "shuiwendizhidanyuanL2_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#5A9436",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "shuiwendizhidanyuanL3_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "shuiwendizhidanyuanL3_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 9,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#5A9436",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "swdzcs_qiancengshentouxishu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_qiancengshentouxishu_nameP",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": [
+            "coalesce",
+            [
+              "get",
+              "name"
+            ],
+            [
+              "get",
+              "NAME"
+            ],
+            ""
+          ],
+          "text-font": [
+            "Open Sans Regular"
+          ],
+          "text-size": 12,
+          "text-anchor": "center",
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#1d3557",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1
+        }
+      },
+      {
+        "id": "swdzcs_shencengshentouxishu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "swdzcs_shencengshentouxishu_nameP",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": [
+            "coalesce",
+            [
+              "get",
+              "name"
+            ],
+            [
+              "get",
+              "NAME"
+            ],
+            ""
+          ],
+          "text-font": [
+            "Open Sans Regular"
+          ],
+          "text-size": 12,
+          "text-anchor": "center",
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#1d3557",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1
+        }
+      },
+      {
+        "id": "lake_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "lake_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 11,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "reservoirL1_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "reservoirL1_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 11,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#1A5FA8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "nationalRiverL0-2",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "nationalRiverL0",
+        "minzoom": 5,
+        "maxzoom": 7,
+        "filter": [
+          "!",
+          [
+            "match",
+            [
+              "get",
+              "name"
+            ],
+            [
+              "滦河",
+              "永定河",
+              "漳河",
+              "桑干河",
+              "海河",
+              "闪电河"
+            ],
+            true,
+            false
+          ]
+        ],
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(206, 78%, 75%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            3,
+            [
+              "*",
+              1,
+              [
+                "match",
+                [
+                  "get",
+                  "name"
+                ],
+                [
+                  "长江",
+                  "黄河"
+                ],
+                2,
+                1
+              ]
+            ],
+            7,
+            [
+              "*",
+              1.5,
+              [
+                "match",
+                [
+                  "get",
+                  "name"
+                ],
+                [
+                  "长江",
+                  "黄河"
+                ],
+                2,
+                1
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "id": "nationalRiverL1",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "nationalRiverL1",
+        "minzoom": 7,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(206, 78%, 75%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            7,
+            [
+              "*",
+              1.5,
+              [
+                "match",
+                [
+                  "get",
+                  "name"
+                ],
+                [
+                  "长江",
+                  "黄河"
+                ],
+                2,
+                1
+              ]
+            ],
+            9,
+            [
+              "*",
+              2,
+              [
+                "match",
+                [
+                  "get",
+                  "name"
+                ],
+                [
+                  "长江",
+                  "黄河"
+                ],
+                2,
+                1
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "id": "nationalRiverL2",
+        "type": "line",
+        "source": "sourceVTMap",
+        "source-layer": "nationalRiverL2",
+        "minzoom": 7,
+        "layout": {
+          "line-cap": "round",
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "hsl(206, 78%, 75%)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            7,
+            0.5,
+            9,
+            1
+          ]
+        }
+      },
+      {
+        "id": "haiheRiverQJLabel-1",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverQJLabel",
+        "minzoom": 3,
+        "maxzoom": 11,
+        "filter": [
+          "==",
+          [
+            "get",
+            "rank"
+          ],
+          1
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                3,
+                14
+              ],
+              [
+                7,
+                18
+              ]
+            ]
+          },
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-allow-overlap": true,
+          "visibility":"none"
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "haiheRiverQJLabel-2",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverQJLabel",
+        "minzoom": 3,
+        "maxzoom": 5,
+        "filter": [
+          "==",
+          [
+            "get",
+            "rank"
+          ],
+          0
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                3,
+                14
+              ],
+              [
+                7,
+                16
+              ]
+            ]
+          },
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-allow-overlap": true,
+          "visibility":"none"
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "haiheRiverQJLabel-3",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverQJLabel",
+        "minzoom": 5,
+        "maxzoom": 6.5,
+        "filter": [
+          "!",
+          [
+            "in",
+            [
+              "get",
+              "rank"
+            ],
+            [
+              "literal",
+              [
+                0,
+                1,
+                2,
+                4,
+                5,
+                9,
+                13,
+                24
+              ]
+            ]
+          ]
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                5,
+                12
+              ],
+              [
+                6,
+                18
+              ]
+            ]
+          },
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-allow-overlap": true,
+          "visibility":"none"
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "haiheRiverQJLabel-4",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverQJLabel",
+        "minzoom": 6.5,
+        "maxzoom": 7,
+        "filter": [
+          "!",
+          [
+            "in",
+            [
+              "get",
+              "rank"
+            ],
+            [
+              "literal",
+              [
+                0,
+                1
+              ]
+            ]
+          ]
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": 18,
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-allow-overlap": true,
+          "visibility":"none"
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "riverL1Label-1",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverLabel",
+        "minzoom": 7,
+        "maxzoom": 9,
+        "filter": [
+          "==",
+          [
+            "get",
+            "rank"
+          ],
+          1
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                7,
+                18
+              ],
+              [
+                9,
+                22
+              ]
+            ]
+          },
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-allow-overlap": true
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "riverL1Label-2",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "haiheRiverLabel",
+        "minzoom": 8,
+        "maxzoom": 9,
+        "filter": [
+          "==",
+          [
+            "get",
+            "rank"
+          ],
+          2
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                7,
+                12
+              ],
+              [
+                9,
+                16
+              ]
+            ]
+          },
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-allow-overlap": true
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "riverL3Label",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "riverL3Label",
+        "minzoom": 10,
+        "filter": [
+          "==",
+          [
+            "get",
+            "layer"
+          ],
+          [
+            "step",
+            [
+              "zoom"
+            ],
+            "1.2",
+            10,
+            "1.2",
+            11,
+            "0.6",
+            12,
+            "0.3",
+            13,
+            "0.15",
+            14,
+            "0.075",
+            15,
+            "0.0375"
+          ]
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                10,
+                12
+              ],
+              [
+                16,
+                16
+              ]
+            ]
+          },
+          "text-letter-spacing": 0.1,
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-rotate": [
+            "get",
+            "angle"
+          ],
+          "text-rotation-alignment": "map",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "riverL2Label",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "riverL2Label",
+        "minzoom": 10,
+        "filter": [
+          "==",
+          [
+            "get",
+            "layer"
+          ],
+          [
+            "step",
+            [
+              "zoom"
+            ],
+            "1.2",
+            10,
+            "1.2",
+            11,
+            "0.6",
+            12,
+            "0.3",
+            13,
+            "0.15",
+            14,
+            "0.075",
+            15,
+            "0.0375"
+          ]
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                10,
+                12
+              ],
+              [
+                16,
+                16
+              ]
+            ]
+          },
+          "text-letter-spacing": 0.1,
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-rotate": [
+            "get",
+            "angle"
+          ],
+          "text-rotation-alignment": "map",
+          "text-allow-overlap": false,
+          "visibility": "visible"
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "riverL1Label",
+        "type": "symbol",
+        "source": "sourceHaihe",
+        "source-layer": "riverL1Label",
+        "minzoom": 9,
+        "filter": [
+          "==",
+          [
+            "get",
+            "layer"
+          ],
+          [
+            "step",
+            [
+              "zoom"
+            ],
+            "1.2",
+            10,
+            "1.2",
+            11,
+            "0.6",
+            12,
+            "0.3",
+            13,
+            "0.15",
+            14,
+            "0.075",
+            15,
+            "0.0375"
+          ]
+        ],
+        "layout": {
+          "text-field": [
+            "get",
+            "name"
+          ],
+          "text-font": [
+            "方正宋体左斜_GBK Regular"
+          ],
+          "text-size": {
+            "stops": [
+              [
+                10,
+                18
+              ],
+              [
+                16,
+                24
+              ]
+            ]
+          },
+          "text-letter-spacing": 0.1,
+          "text-anchor": "center",
+          "text-offset": [
+            0,
+            0
+          ],
+          "text-rotate": [
+            "get",
+            "angle"
+          ],
+          "text-rotation-alignment": "map",
+          "text-allow-overlap": false
+        },
+        "paint": {
+          "text-color": "hsl(214, 99%, 50%)",
+          "text-halo-color": "hsl(0, 0%, 100%)",
+          "text-halo-width": 2
+        }
+      },
+      {
+        "id": "hhbs_jinghangdayunhe_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_jinghangdayunhe_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 11,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_huabeidiqubushuihe_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_huabeidiqubushuihe_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_huabeidiqubushuihu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_huabeidiqubushuihu_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_changtaihe_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_changtaihe_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_changtaihu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_changtaihu_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_muqinhefusuhe_nemeP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_muqinhefusuhe_nemeP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_muqinhefusuhu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_muqinhefusuhu_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_muqinhefusuliuyuzhiguanhe_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_muqinhefusuliuyuzhiguanhe_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "quanyufanwei_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "quanyufanwei_nameP",
+        "minzoom": 3,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": [
+            "coalesce",
+            [
+              "get",
+              "name"
+            ],
+            [
+              "get",
+              "NAME"
+            ],
+            ""
+          ],
+          "text-font": [
+            "Open Sans Regular"
+          ],
+          "text-size": 12,
+          "text-anchor": "center",
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#1d3557",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1
+        }
+      },
+      {
+        "id": "dixiashuichubeiqu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "dixiashuichubeiqu_nameP",
+        "minzoom": 3,
+        "maxzoom": 16,
+        "layout": {
+          "text-field": [
+            "coalesce",
+            [
+              "get",
+              "name"
+            ],
+            [
+              "get",
+              "NAME"
+            ],
+            ""
+          ],
+          "text-font": [
+            "Open Sans Regular"
+          ],
+          "text-size": 12,
+          "text-anchor": "center",
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#1d3557",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1
+        }
+      },
+      {
+        "id": "hhbs_xiajibushuibushuihe_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_xiajibushuibushuihe_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "hhbs_xiajibushuibushuihu_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "hhbs_xiajibushuibushuihu_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#2774C7",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_ljayh_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_ljayh_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_nsbdzx_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_nsbdzx_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_yhrjbd_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_yhrjbd_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_wsyh_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_wsyh_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_wjzyh_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_wjzyh_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_tjgq_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_tjgq_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_pzyh_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_pzyh_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "ydslx_nsbddx_nameP",
+        "type": "symbol",
+        "source": "vector_layer_",
+        "source-layer": "ydslx_nsbddx_nameP",
+        "minzoom": 5,
+        "maxzoom": 12,
+        "layout": {
+          "text-field": "{name}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 10,
+          "text-anchor": "center",
+          "text-allow-overlap": false,
+          "visibility": "none"
+        },
+        "paint": {
+          "text-color": "#6A40A8",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      },
+      {
+        "id": "zwnyh_fill",
+        "type": "fill",
+        "source": "zwnyh",
+        "minzoom": 3,
+        "maxzoom": 17,
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "fill-color": "rgba(41, 128, 185, 0.18)",
+          "fill-outline-color": "rgba(41, 128, 185, 0.6)"
+        }
+      },
+      {
+        "id": "zwnyh_line",
+        "type": "line",
+        "source": "zwnyh",
+        "minzoom": 3,
+        "maxzoom": 17,
+        "layout": {
+          "visibility": "visible"
+        },
+        "paint": {
+          "line-color": "rgba(41, 128, 185, 0.9)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            0.4,
+            10,
+            0.8,
+            15,
+            1.5
+          ],
+          "line-dasharray": [
+            4,
+            2
+          ]
+        }
+      },
+      {
+        "id": "zhszydd_line",
+        "type": "line",
+        "source": "zhszydd",
+        "minzoom": 3,
+        "maxzoom": 17,
+        "layout": {
+          "visibility": "visible",
+          "line-cap": "round",
+          "line-join": "round"
+        },
+        "paint": {
+          "line-color": "rgba(230, 126, 34, 1)",
+          "line-width": [
+            "interpolate",
+            [
+              "linear"
+            ],
+            [
+              "zoom"
+            ],
+            5,
+            1,
+            10,
+            2.5,
+            15,
+            4
+          ],
+          "line-blur": 0.5
+        }
+      },
+      {
+        "id": "zhszydd_label",
+        "type": "symbol",
+        "source": "zhszydd",
+        "minzoom": 8,
+        "maxzoom": 17,
+        "layout": {
+          "text-field": "{STNM}",
+          "text-font": [
+            "Microsoft YaHei Regular"
+          ],
+          "text-size": 11,
+          "text-offset": [
+            0,
+            0.8
+          ],
+          "text-anchor": "center",
+          "symbol-placement": "line",
+          "text-allow-overlap": false,
+          "visibility": "visible"
+        },
+        "paint": {
+          "text-color": "rgba(180, 80, 20, 1)",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
+        }
+      }
+    ]
+  }

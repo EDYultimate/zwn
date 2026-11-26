@@ -1,0 +1,148 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+body{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.map {
+    overflow: hidden;
+}
+
+.map .esriMapContainer {
+    position: relative;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.map .esriMapContainer .esriMapLayers {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.map .esriMapContainer .esriMapLayers .layerTile {
+    position: absolute;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.map .esriMapContainer .esriMapLayers > div {
+    pointer-events: none;
+}
+
+.map .esriMapContainer .esriMapLayers > div[data-reference="true"] {
+    z-index: 1;
+}
+
+.map .esriMapContainer .esriMapContainer {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.esriControlsBR {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    z-index: 30;
+    text-align: right;
+}
+
+.esriControlsBR.withPanArrows {
+    right: 25px;
+}
+
+.esriAttribution {
+    font-size: 13px;
+    line-height: 15px;
+    color: #666666;
+    display: inline-block;
+    text-align: left;
+    vertical-align: bottom;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 4px;
+    margin: 0 5px 0 0;
+    background: rgba(255,255,255,0.7);
+    background: repeat left top url("../images/map/70-percent-white.png")\9;
+}
+
+.esriAttributionOpen {
+    white-space: normal;
+    cursor: pointer;
+}
+
+.map .esriMapContainer .fixedPan {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url("../images/map/fixed-pan-sprite.png");
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.map .esriMapContainer .panUp {
+    background-position: -16px 0px;
+    top: 5px;
+}
+
+.map .esriMapContainer .panUpperRight {
+    background-position: -32px 0px;
+    right: 5px;
+    top: 5px;
+}
+
+.map .esriMapContainer .panRight {
+    background-position: -32px -16px;
+    right: 5px;
+}
+
+.map .esriMapContainer .panLowerRight {
+    background-position: -32px -32px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.map .esriMapContainer .panDown {
+    background-position: -16px -32px;
+    bottom: 5px;
+}
+
+.map .esriMapContainer .panLowerLeft {
+    background-position: -47px -32px;
+    left: 5px;
+    bottom: 5px;
+}
+
+.map .esriMapContainer .panLeft {
+    background-position: -47px -16px;
+    left: 5px;
+}
+
+.map .esriMapContainer .panUpperLeft {
+    background-position: -47px 0px;
+    left: 5px;
+    top: 5px;
+}

@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    labels:
+      - "description=海河下游局水务总览前端"
+      - "url=http://localhost:8000"
