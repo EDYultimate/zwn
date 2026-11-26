@@ -1,0 +1,78 @@
+#spring:
+#  # 数据源配置
+#  datasource:
+#    driver-class-name: dm.jdbc.driver.DmDriver
+#    url: jdbc:dm://10.3.247.73:5236/HWWR?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+#    username: hwwr
+#    password: HW_wr_001
+#    hikari:
+#      connection-timeout: 30000
+#      maximum-pool-size: 20
+#      minimum-idle: 5
+#
+#  # JPA配置
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.DmDialect
+#        format_sql: true
+#
+## MyBatis Plus配置
+#mybatis-plus:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: cn.lonwin.module.system.entity
+#
+## JWT配置
+#jwt:
+#  secret: lonwin-secret-key-for-jwt-token-generation
+#  expiration: 86400
+#  refresh-expiration: 604800
+
+# ============================================================================
+# 本文件是模块内的「配置模板」，仅作说明；运行时生效的配置在启动模块
+#   lonwin-start/src/main/resources/application.yml  (dev 环境再由 application-dev.yml 覆盖)
+# 因为 Spring Boot 只加载最终 classpath 上的那一份 application.yml。
+#
+# ---- 双通道开关（对应 lonwin.agent.*）---------------------------------------
+# lonwin:
+#   agent:
+#     # 工具侧：业务数据接口 + 页面能力检索
+#     tools:
+#       enabled: true                 # false = 不注册任何工具侧工具
+#       permission:
+#         enabled: false              # 工具侧权限总开关，false = 一键关闭全部放行
+#       max-tools: 60
+#     # 知识侧：向量库检索（独立 Python 服务 BGE-M3 + Qdrant）
+#     knowledge:
+#       enabled: true                 # 只有工具侧接口时改为 false
+#       degrade-on-error: true        # 知识服务不可用时不中断工具侧问答
+#       embed-url: http://127.0.0.1:7340
+#       qdrant-url: http://127.0.0.1:7333
+#       qdrant-api-key: ${QDRANT_API_KEY:}
+#       collection-chunks: kp_chunks
+#       collection-tables: kp_tables
+#       collection-docs: kp_docs
+#       dense-vector: dense
+#       sparse-vector: sparse
+#       prefetch-limit: 20
+#       top-k: 8
+#       max-text-chars: 900
+#       embedder-id: bge-m3@2026-11
+#       connect-timeout-seconds: 3
+#       read-timeout-seconds: 10
+#
+# 组合速查：
+#   tools=true  knowledge=true   融合问答（默认）
+#   tools=true  knowledge=false  只有工具侧接口
+#   tools=false knowledge=true   纯文档问答
+#   tools=false knowledge=false  不接工具，仅概念/寒暄
+#
+# 知识侧权限：当前设计不做（Qdrant 不带 query_filter，也不读 DataScopeContext）。
+# 权限抽象接口：cn.lonwin.module.agent.support.AgentToolAccessPolicy
+# 独立启动的 Python 资产：lonwin-module-agent/knowledge/README.md
+# ============================================================================

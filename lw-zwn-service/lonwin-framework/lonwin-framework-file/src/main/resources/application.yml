@@ -1,0 +1,44 @@
+# ============================================================================
+# 本文件是「模块独立运行」时的参考模板。
+# 集成到 lonwin-start 时，Spring Boot 只加载启动模块 classpath 根下的 application.yml，
+# 依赖 jar 中的同名文件不会生效 —— 真正生效的配置在：
+#   lw-zwn-service/lonwin-start/src/main/resources/application.yml  (file 段)
+# ============================================================================
+spring:
+  application:
+    name: lonwin-framework-file
+  servlet:
+    multipart:
+      # 单个文件最大 100MB
+      max-file-size: 100MB
+      # 单次请求所有文件总大小
+      max-request-size: 200MB
+      # 文件阈值，超过写入临时磁盘
+      file-size-threshold: 10MB
+# 额外放开tomcat限制（关键，只配上面不够）
+server:
+  tomcat:
+    max-http-form-post-size: 200MB
+
+# 文件存储：本地 MinIO（S3 协议）
+# 7350 是本地 S3 API 宿主端口（容器内 9000），7351 只是 Web 控制台。
+# 注：主启动模块 lonwin-start 的 application.yml 会覆盖本文件，此处同步仅为一致。
+file:
+  bucketName: yqbucket
+  local:
+    enable: false
+    basePath: /home/java1/tjwr/uploadfiles
+  oss:
+    enable: true
+    endpoint: http://127.0.0.1:7350
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:Lonwin6_minio_20241214}
+    region: us-east-1
+    path-style-access: true
+  # 知识库原文查看端点
+  view:
+    enabled: true
+    bucket: yqbucket
+    allowed-prefixes: [docFiles, imgFiles]
+    inline-extensions: [pdf, png, jpg, jpeg, gif, webp, svg, txt]
+    try-leading-slash-key: true

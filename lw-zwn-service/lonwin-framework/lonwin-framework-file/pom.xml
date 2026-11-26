@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<parent>
+    <groupId>cn.lonwin</groupId>
+    <artifactId>lonwin-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</parent>
+
+<artifactId>lonwin-framework-file</artifactId>
+<name>lonwin-framework-file</name>
+<description>文件上传下载框架</description>
+
+<dependencies>
+    <!-- 文件存储能力（FileTemplate） -->
+    <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-common-oss</artifactId>
+    </dependency>
+    <!-- 数据访问能力（MyBatis Plus 入库） -->
+    <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-data</artifactId>
+    </dependency>
+    <!-- Web 类能力（MultipartFile、@RestController 等注解；运行时 web 容器由引入方提供） -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+    </dependency>
+    <!-- 文件查看端点的 @ConditionalOnProperty 开关 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-autoconfigure</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <!-- Hutool 加密工具（MD5 计算等） -->
+    <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-crypto</artifactId>
+    </dependency>
+
+</dependencies>
+</project>

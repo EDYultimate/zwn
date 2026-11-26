@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lonwin-module-knowledge</artifactId>
+    <packaging>pom</packaging>
+    <name>lonwin-module-knowledge</name>
+    <description>
+        知识模块（聚合）：文档解析/入库 + 混合检索。
+        拆成 api（纯契约，供 agent 编排层依赖）与 biz（实现，由启动模块装配），
+        保证 lonwin-module-agent 不会因为知识实现的依赖而被污染，也不会产生循环依赖。
+    </description>
+
+    <modules>
+        <module>lonwin-module-knowledge-api</module>
+        <module>lonwin-module-knowledge-biz</module>
+    </modules>
+</project>

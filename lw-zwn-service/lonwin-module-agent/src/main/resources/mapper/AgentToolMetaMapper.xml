@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lonwin.module.agent.mapper.AgentToolMetaMapper">
+
+    <!-- 结果映射：CLOB 列显式指定 TypeHandler，达梦下用字符流写、getString 读 -->
+    <resultMap id="BaseResultMap" type="cn.lonwin.module.agent.entity.AgentToolMetaEntity">
+        <id column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="TITLE" property="title" jdbcType="VARCHAR"/>
+        <result column="DESCRIPTION" property="description" jdbcType="CLOB"
+                typeHandler="cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler"/>
+        <result column="EXAMPLES_JSON" property="examplesJson" jdbcType="CLOB"
+                typeHandler="cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler"/>
+        <result column="CATEGORY" property="category" jdbcType="VARCHAR"/>
+        <result column="ENABLED" property="enabled" jdbcType="NUMERIC"/>
+        <result column="PARAM_DESC_JSON" property="paramDescJson" jdbcType="CLOB"
+                typeHandler="cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler"/>
+        <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="UPDATED_AT" property="updatedAt" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 基础查询列 -->
+    <sql id="Base_Column_List">
+        NAME, TITLE, DESCRIPTION, EXAMPLES_JSON, CATEGORY, ENABLED,
+        PARAM_DESC_JSON, UPDATED_BY, UPDATED_AT
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM AGENT_TOOL_META
+        ORDER BY NAME
+    </select>
+
+    <select id="selectByName" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM AGENT_TOOL_META
+        WHERE NAME = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 工具名作为业务主键，由应用层传入，不用数据库自增 -->
+    <insert id="insertOne">
+        INSERT INTO AGENT_TOOL_META
+            (NAME, TITLE, DESCRIPTION, EXAMPLES_JSON, CATEGORY, ENABLED,
+             PARAM_DESC_JSON, UPDATED_BY, UPDATED_AT, CREATE_TIME, UPDATE_TIME)
+        VALUES
+            (#{entity.name,jdbcType=VARCHAR},
+             #{entity.title,jdbcType=VARCHAR},
+             #{entity.description,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+             #{entity.examplesJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+             #{entity.category,jdbcType=VARCHAR},
+             #{entity.enabled,jdbcType=NUMERIC},
+             #{entity.paramDescJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+             #{entity.updatedBy,jdbcType=VARCHAR},
+             #{entity.updatedAt,jdbcType=VARCHAR},
+             CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+
+    <update id="updateOne">
+        UPDATE AGENT_TOOL_META
+        SET TITLE = #{entity.title,jdbcType=VARCHAR},
+            DESCRIPTION = #{entity.description,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+            EXAMPLES_JSON = #{entity.examplesJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+            CATEGORY = #{entity.category,jdbcType=VARCHAR},
+            ENABLED = #{entity.enabled,jdbcType=NUMERIC},
+            PARAM_DESC_JSON = #{entity.paramDescJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+            UPDATED_BY = #{entity.updatedBy,jdbcType=VARCHAR},
+            UPDATED_AT = #{entity.updatedAt,jdbcType=VARCHAR},
+            UPDATE_TIME = CURRENT_TIMESTAMP
+        WHERE NAME = #{entity.name,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteByName">
+        DELETE FROM AGENT_TOOL_META WHERE NAME = #{name,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM AGENT_TOOL_META
+    </delete>
+
+</mapper>

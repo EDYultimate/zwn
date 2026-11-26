@@ -1,0 +1,6 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.lonwin.common.core.config.SwaggerConfig,\
+  cn.lonwin.common.core.config.JacksonConfig,\
+  cn.lonwin.common.core.config.WebMvcConfig,\
+  cn.lonwin.common.core.exception.GlobalExceptionHandler

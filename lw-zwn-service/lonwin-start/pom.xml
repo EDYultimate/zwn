@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lonwin-start</artifactId>
+    <name>lonwin-start</name>
+    <description>单体启动模块</description>
+    <packaging>jar</packaging>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-water</artifactId>
+        </dependency>
+
+        <!-- 视频监控模块（视频点位 / 播放 / 定时截图） -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-video</artifactId>
+        </dependency>
+
+
+        <!-- 系统模块 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-system</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-agent</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-knowledge-biz</artifactId>
+        </dependency>
+
+        <!-- 代码生成模块 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-codegen</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-file</artifactId>
+        </dependency>
+
+        <!-- Web框架 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-web</artifactId>
+        </dependency>
+
+        <!-- 数据框架 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-data</artifactId>
+        </dependency>
+
+        <!-- 权限控制 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-security</artifactId>
+        </dependency>
+
+        <!-- 日志框架 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-log</artifactId>
+        </dependency>
+
+        <!-- SpringDoc OpenAPI (API文档) -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Actuator (健康检查、监控) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+        <!-- 达梦数据库驱动 -->
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>DmJdbcDriver18</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>lonwin-platform</finalName>
+        <plugins>
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>cn.lonwin.LonwinApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- 资源过滤插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

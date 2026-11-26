@@ -1,0 +1,205 @@
+# 开发环境配置
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  # ========== 数据源配置（通用多数据源）==========
+  # 在此添加任意数据源，key 即为 @DS 注解的值，master 为默认主库
+  # 新增库只需加节点，无需改 Java 代码，Mapper 上用 @DS("key") 切换
+  datasource:
+    # ---------- 主数据源 master（HWWR 库）----------
+    # 视频监控模块的点位状态表 VIDEO_POINT_STATUS 与抓拍记录表 VIDEO_SNAPSHOT
+    # 建在本库（脚本 sql/video_monitor.sql），页面数据只读这两张表
+    master:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://10.3.247.73:5236/WHWR?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      username: WHWR
+      password: WH_wr_001
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 20
+        minimum-idle: 5
+        pool-name: lonwin-master-hikari
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1 FROM DUAL
+        validation-timeout: 3000
+        initialization-fail-timeout: -1
+
+    # ---------- 副数据源 ydh（YDH_SZLS 库）----------
+    # Mapper 使用 @DS("ydh") 注解后走此库
+    ydh:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://10.3.247.73:5236/YDH_SZLS?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      username: YDH_SZLS
+      password: Hwcc1234!ydh_szls
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 20
+        minimum-idle: 5
+        pool-name: lonwin-ydh-hikari
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1 FROM DUAL
+        validation-timeout: 3000
+        initialization-fail-timeout: -1
+
+    # ---------- 副数据源 weihe（WEIHE 库，视频点位台账 tr_Spd）----------
+    # 只读：视频点位的在线状态由定时截图实测后写回 master 的 VIDEO_POINT_STATUS，
+    # 本库不做任何写入
+    weihe:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://10.3.247.73:5236/WEIHE?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      username: WEIHE
+      password: Hwcc1234!weihe
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 20
+        minimum-idle: 5
+        pool-name: lonwin-master-hikari
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1 FROM DUAL
+        validation-timeout: 3000
+        initialization-fail-timeout: -1
+
+    # ---------- 副数据源 gwapp（GWAPP 库，迁自旧调水报表项目）----------
+    # Mapper 使用 @DS("gwapp") 注解后走此库
+    gwapp:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://10.3.247.73:5236/GWAPP?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      username: gwapp
+      password: GWAPP_gwapp_001
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 20
+        minimum-idle: 5
+        pool-name: lonwin-gwapp-hikari
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1 FROM DUAL
+        validation-timeout: 3000
+        initialization-fail-timeout: -1
+
+    # ---------- 副数据源 wiuser（10.3.247.73 WI_USER 模式，取用水模块 2026-08-27 起直连原库，弃用 HWWR 迁移表）----------
+    # Mapper 使用 @DS("wiuser") 注解后走此库
+    wiuser:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://10.3.247.73:5236?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      username: YDH
+      password: YDH_ydh_073
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 20
+        minimum-idle: 5
+        pool-name: lonwin-wiuser-hikari
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1 FROM DUAL
+        validation-timeout: 3000
+        initialization-fail-timeout: -1
+
+    # ---------- 副数据源 portalsys（PORTAL_SYS 库，字典/配置表）----------
+    # Mapper 使用 @DS("portalsys") 注解后走此库（dev 账号与旧调水报表项目一致）
+    # 注意：URL 不带模式名（YDH 不拥有 PORTAL_SYS 模式，带上会 SET SCHEMA 报错），SQL 内用 PORTAL_SYS. 前缀限定
+    portalsys:
+      driver-class-name: dm.jdbc.driver.DmDriver
+      url: jdbc:dm://10.3.247.73:5236?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      username: YDH
+      password: YDH_ydh_073
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 10
+        minimum-idle: 2
+        pool-name: lonwin-portalsys-hikari
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1 FROM DUAL
+        validation-timeout: 3000
+        initialization-fail-timeout: -1
+
+  # JPA配置
+  jpa:
+    hibernate:
+      # ddl-auto取值说明：
+        # none-不做任何DDL的操作；
+        # validate-校验实体与表结构是否一致，不一致会抛异常；
+        # update-表不存在则创建，存在则尝试更新结构（不删字段）
+        # create-启动时删除旧表并新建
+        # create-drop-启动建表，关闭应用删表（一般用于测试）
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        # 达梦数据库方言（使用Oracle方言兼容）
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: true
+        jdbc:
+          batch_size: 20
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+        generate_statistics: true
+        # 达梦数据库特定配置
+        default_schema: HWWR
+        # 序列优化
+        use_sql_comments: tru
+
+  # 控制台彩色输出
+  output:
+    ansi:
+      enabled: always
+
+  # 开发工具
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: static/**,public/**
+
+# MyBatis Plus配置
+mybatis-plus:
+  # 配置mybatis xml文件路径
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 缓存配置
+    cache-enabled: true
+    # 延迟加载
+    lazy-loading-enabled: false
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+    banner: false
+
+# JWT配置
+jwt:
+  secret: lonwin-dev-jwt-secret-key-2024-for-development-environment-only
+  expiration: 86400
+  refresh-expiration: 604800
+  header: Authorization
+  token-start-with: Bearer
+
+# 日志配置
+logging:
+  level:
+    cn.lonwin: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+  # 输出编码固定 UTF-8（中文 Windows 下 JVM 默认 GBK 会导致控制台/文件中文乱码）
+  charset:
+    console: UTF-8
+    file: UTF-8
+  file:
+    name: ./logs/lonwin-dev.log
+
+
+# 权限登录的配置
+lonwin:
+  # ========== 智能问答模块配置 ==========
+  agent:
+    qwen:
+      # 内网大模型接口（OpenAI 兼容）
+      base-url: http://10.3.34.79/localApi/v1
+      # 密钥与出口 IP 绑定；生产环境建议用环境变量注入，勿提交仓库
+      api-key: ${MODELARK_API_KEY:mak-dpt03-db748f993c43862e0efc28f09968aea0}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lonwin.module.agent.mapper.AgentUiCapabilityMapper">
+
+    <!-- 结果映射：BASELINE_JSON / OVERRIDE_JSON 是 CLOB -->
+    <resultMap id="BaseResultMap" type="cn.lonwin.module.agent.entity.AgentUiCapabilityEntity">
+        <result column="CLIENT" property="client" jdbcType="VARCHAR"/>
+        <result column="ROUTE" property="route" jdbcType="VARCHAR"/>
+        <result column="TITLE" property="title" jdbcType="VARCHAR"/>
+        <result column="REQUIRED_ACT_URL" property="requiredActUrl" jdbcType="VARCHAR"/>
+        <result column="VERSION" property="version" jdbcType="VARCHAR"/>
+        <result column="BASELINE_JSON" property="baselineJson" jdbcType="CLOB"
+                typeHandler="cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler"/>
+        <result column="OVERRIDE_JSON" property="overrideJson" jdbcType="CLOB"
+                typeHandler="cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler"/>
+        <result column="OVERRIDDEN" property="overridden" jdbcType="NUMERIC"/>
+        <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="UPDATED_AT" property="updatedAt" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 基础查询列 -->
+    <sql id="Base_Column_List">
+        CLIENT, ROUTE, TITLE, REQUIRED_ACT_URL, VERSION, BASELINE_JSON,
+        OVERRIDE_JSON, OVERRIDDEN, UPDATED_BY, UPDATED_AT
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM AGENT_UI_CAPABILITY
+        ORDER BY CLIENT, ROUTE
+    </select>
+
+    <select id="selectByClientAndRoute" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM AGENT_UI_CAPABILITY
+        WHERE CLIENT = #{client,jdbcType=VARCHAR}
+          AND ROUTE = #{route,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 新页面：只写基线，人工覆盖列留空 -->
+    <insert id="insertBaseline">
+        INSERT INTO AGENT_UI_CAPABILITY
+            (CLIENT, ROUTE, TITLE, REQUIRED_ACT_URL, VERSION, BASELINE_JSON,
+             OVERRIDE_JSON, OVERRIDDEN, CREATE_TIME, UPDATE_TIME)
+        VALUES
+            (#{entity.client,jdbcType=VARCHAR},
+             #{entity.route,jdbcType=VARCHAR},
+             #{entity.title,jdbcType=VARCHAR},
+             #{entity.requiredActUrl,jdbcType=VARCHAR},
+             #{entity.version,jdbcType=VARCHAR},
+             #{entity.baselineJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+             NULL, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+
+    <!-- 前端定时上报只更新基线：绝不触碰 OVERRIDE_JSON / OVERRIDDEN / 修改人信息，
+         否则页面上人工改过的说明会被代码声明悄悄冲掉 -->
+    <update id="updateBaseline">
+        UPDATE AGENT_UI_CAPABILITY
+        SET TITLE = #{entity.title,jdbcType=VARCHAR},
+            REQUIRED_ACT_URL = #{entity.requiredActUrl,jdbcType=VARCHAR},
+            VERSION = #{entity.version,jdbcType=VARCHAR},
+            BASELINE_JSON = #{entity.baselineJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+            UPDATE_TIME = CURRENT_TIMESTAMP
+        WHERE CLIENT = #{entity.client,jdbcType=VARCHAR}
+          AND ROUTE = #{entity.route,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 配置页保存人工覆盖 -->
+    <update id="updateOverride">
+        UPDATE AGENT_UI_CAPABILITY
+        SET OVERRIDE_JSON = #{entity.overrideJson,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+            OVERRIDDEN = 1,
+            UPDATED_BY = #{entity.updatedBy,jdbcType=VARCHAR},
+            UPDATED_AT = #{entity.updatedAt,jdbcType=VARCHAR},
+            UPDATE_TIME = CURRENT_TIMESTAMP
+        WHERE CLIENT = #{entity.client,jdbcType=VARCHAR}
+          AND ROUTE = #{entity.route,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 恢复单页代码默认 -->
+    <update id="removeOverride">
+        UPDATE AGENT_UI_CAPABILITY
+        SET OVERRIDE_JSON = NULL,
+            OVERRIDDEN = 0,
+            UPDATED_BY = #{operator,jdbcType=VARCHAR},
+            UPDATED_AT = #{updatedAt,jdbcType=VARCHAR},
+            UPDATE_TIME = CURRENT_TIMESTAMP
+        WHERE CLIENT = #{client,jdbcType=VARCHAR}
+          AND ROUTE = #{route,jdbcType=VARCHAR}
+          AND OVERRIDE_JSON IS NOT NULL
+    </update>
+
+    <select id="countOverrides" resultType="int">
+        SELECT COUNT(*) FROM AGENT_UI_CAPABILITY WHERE OVERRIDE_JSON IS NOT NULL
+    </select>
+
+    <!-- 一键还原：清空人工覆盖，BASELINE_JSON（代码默认）原样保留 -->
+    <update id="clearOverrides">
+        UPDATE AGENT_UI_CAPABILITY
+        SET OVERRIDE_JSON = NULL,
+            OVERRIDDEN = 0,
+            UPDATED_BY = #{operator,jdbcType=VARCHAR},
+            UPDATED_AT = #{updatedAt,jdbcType=VARCHAR},
+            UPDATE_TIME = CURRENT_TIMESTAMP
+        WHERE OVERRIDE_JSON IS NOT NULL
+    </update>
+
+    <delete id="deleteByClient">
+        DELETE FROM AGENT_UI_CAPABILITY WHERE CLIENT = #{client,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByClientAndRoute">
+        DELETE FROM AGENT_UI_CAPABILITY
+        WHERE CLIENT = #{client,jdbcType=VARCHAR}
+          AND ROUTE = #{route,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lonwin.module.video.mapper.VideoPointMapper">
+
+    <!-- 视频点位台账：监管单位可按配置切换，为空时取全部 -->
+    <select id="selectZwnPointList" resultType="java.util.Map">
+        select a.*, b.KEYNAME as RIVERID_NAME, c.DEPTNAME as DEPT_NAME
+        from WEIHE.TR_SPD a
+        left join WEIHE.DICT_SPJK b on a.RIVERID = b.ID
+        left join WEIHE.TR_DEPT c on a.MANAGEDEPT = c.ID
+        <where>
+            <if test="manageDept != null and manageDept != ''">
+                a.MANAGEDEPT = #{manageDept}
+            </if>
+        </where>
+    </select>
+
+</mapper>

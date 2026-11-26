@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lonwin.module.water.mapper.SysTest2Mapper">
+
+    <!-- 结果映射 -->
+    <resultMap id="BaseResultMap" type="cn.lonwin.module.water.entity.SysTest2Entity">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="DESCRIPTION" property="description" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 基础查询SQL -->
+    <sql id="selectList_common">
+        SELECT mt.*
+        FROM SYS_TEST2 mt
+        <where>
+            <if test="query.id != null and query.id != ''">
+                AND (mt.ID LIKE CONCAT('%', #{query.id}, '%'))
+            </if>
+            <if test="query.description != null and query.description != ''">
+                AND (mt.DESCRIPTION LIKE CONCAT('%', #{query.description}, '%'))
+            </if>
+            <if test="query.name != null and query.name != ''">
+                AND (mt.NAME LIKE CONCAT('%', #{query.name}, '%'))
+            </if>
+        </where>
+    </sql>
+
+    <!-- 查询列表 -->
+    <select id="selectList" resultMap="BaseResultMap">
+        <include refid="selectList_common"/>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="selectListByPage" resultMap="BaseResultMap">
+        <include refid="selectList_common"/>
+    </select>
+
+</mapper>

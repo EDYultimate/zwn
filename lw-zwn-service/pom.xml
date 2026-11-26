@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 父工程继承 Spring Boot 父POM -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.11</version>
+  </parent>
+
+  <groupId>cn.lonwin</groupId>
+  <artifactId>lonwin-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>lonwin-parent</name>
+  <description>Lonwin开发部署运维一体化平台 - 父工程</description>
+
+  <modules>
+    <module>lonwin-common</module>
+    <module>lonwin-framework</module>
+<!--    <module>lonwin-module-example</module>-->
+    <module>lonwin-module-system</module>
+    <module>lonwin-module-codegen</module>
+    <module>lonwin-module-water</module>
+    <module>lonwin-module-video</module>
+    <module>lonwin-module-agent</module>
+    <module>lonwin-module-knowledge</module>
+    <module>lonwin-start</module>
+  </modules>
+
+  <properties>
+    <!-- 开发语言 -->
+    <java.release>17</java.release>
+    <java.version>${java.release}</java.version>
+    <!-- 字符集 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+    <!-- 核心应用框架 -->
+    <spring-boot.version>3.5.11</spring-boot.version>
+    <!-- ORM框架 -->
+    <mybatis-plus.version>3.5.9</mybatis-plus.version>
+    <!-- 数据库驱动版本 -->
+    <dameng-jdbc.version>8.1.3.140</dameng-jdbc.version>
+    <!-- 微服务框架 -->
+    <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
+    <!-- 定时任务调度 -->
+    <powerjob.version>4.3.9</powerjob.version>
+    <!-- 工作流 -->
+    <flowable.version>7.2.0</flowable.version>
+    <!-- 对象存储 -->
+    <seaweedfs.version>4.00</seaweedfs.version>
+    <!-- 分布式锁 -->
+    <redisson.version>3.52.0</redisson.version>
+    <!-- OAuth2.0 + OIDC -->
+    <spring-authorization-server.version>1.5.1</spring-authorization-server.version>
+    <!-- expiringmap  -->
+    <expiringmap.version>0.5.8</expiringmap.version>
+    <!-- MapStruct和Lombok版本 -->
+    <mapstruct.version>1.5.5.Final</mapstruct.version>
+    <lombok.version>1.18.30</lombok.version>
+    <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+    <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+    <aws.version>1.11.543</aws.version>
+    <!-- Hutool 工具包 -->
+    <hutool.version>5.8.46</hutool.version>
+    <!-- JavaCV 视频处理（视频流截帧，与截图源模块保持一致） -->
+    <javacv.version>1.5.10</javacv.version>
+
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- 导入 Spring Boot BOM（覆盖某些版本时用） -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- 导入 Spring Cloud Alibaba BOM -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- MyBatis Plus (Spring Boot 3专用)，记得还有jsqlparser -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-jsqlparser</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+
+      <!-- 达梦数据库驱动 -->
+      <dependency>
+        <groupId>com.dameng</groupId>
+        <artifactId>DmJdbcDriver18</artifactId>
+        <version>${dameng-jdbc.version}</version>
+      </dependency>
+
+      <!-- Redisson Spring Boot Starter -->
+      <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson-spring-boot-starter</artifactId>
+        <version>${redisson.version}</version>
+      </dependency>
+
+      <!-- JWT 相关依赖版本管理 -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.11.5</version> <!-- 推荐使用 0.11.x 或 0.12.x 版本 -->
+      </dependency>
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>0.11.5</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>0.11.5</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <!-- SpringDoc OpenAPI 3 (替代旧版 Springfox/Swagger2) -->
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.8.16</version>
+      </dependency>
+
+      <!-- MapStruct 核心 API -->
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>${mapstruct.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct-processor</artifactId>
+        <version>${mapstruct.version}</version>
+      </dependency>
+
+      <!-- expiringmap -->
+      <dependency>
+        <groupId>net.jodah</groupId>
+        <artifactId>expiringmap</artifactId>
+        <version>${expiringmap.version}</version>
+      </dependency>
+
+      <!--集成芯盾所引入jar包-->
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.4.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.bitbucket.b_c</groupId>
+        <artifactId>jose4j</artifactId>
+        <version>0.7.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>8.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba.fastjson2</groupId>
+        <artifactId>fastjson2</artifactId>
+        <version>2.0.43</version>
+      </dependency>
+
+      <!-- JavaCV（含各平台 FFmpeg 本地库，用于视频流截帧） -->
+      <dependency>
+        <groupId>org.bytedeco</groupId>
+        <artifactId>javacv-platform</artifactId>
+        <version>${javacv.version}</version>
+      </dependency>
+
+      <!-- 配置本项目内的模块依赖版本号 -->
+      <!-- Hutool 工具包 -->
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-core</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-crypto</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-common-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-common-oss</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-data</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-web</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-security</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-file</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-log</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+<!--      <dependency>-->
+<!--        <groupId>cn.lonwin</groupId>-->
+<!--        <artifactId>lonwin-module-example</artifactId>-->
+<!--        <version>${project.version}</version>-->
+<!--      </dependency>-->
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-codegen</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-water</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- 视频监控模块 -->
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-video</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- 智能问答模块 -->
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-agent</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- 知识模块：agent 只依赖 api（纯契约），启动模块依赖 biz（实现） -->
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-knowledge-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-knowledge-biz</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-module-system</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <!-- 所有模块都需要的通用依赖 -->
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+    </dependency>
+
+
+    <!--监控-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!-- 引入prometheus依赖-->
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-prometheus</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!--测试依赖-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <parameters>true</parameters>
+            <annotationProcessorPaths>
+              <!-- 顺序很重要：Lombok -> MapStruct绑定 -> MapStruct -->
+              <!-- Lombok 注解处理器 -->
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+              </path>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${lombok-mapstruct-binding.version}</version>
+              </path>
+              <path>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+              </path>
+
+              <!-- MyBatis-Plus 注解处理器 -->
+              <path>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus.version}</version>
+              </path>
+            </annotationProcessorPaths>
+            <compilerArgs>
+              <!-- MapStruct默认组件模型为spring -->
+              <arg>-Amapstruct.defaultComponentModel=spring</arg>
+              <!-- 生成MapStruct调试信息 -->
+              <arg>-Amapstruct.verbose=true</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+
+        <!-- Spring Boot Maven插件 -->
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <configuration>
+            <excludes>
+              <exclude>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+              </exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- 通用插件配置（所有模块都会应用） -->
+    <plugins>
+      <!-- 编译器插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+
+      <!-- 资源处理插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

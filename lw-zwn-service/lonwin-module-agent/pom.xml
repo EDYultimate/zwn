@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lonwin-module-agent</artifactId>
+    <name>lonwin-module-agent</name>
+    <description>智能问答模块（编排层：调用大模型 + 聚合各业务模块工具，不持有业务数据）</description>
+
+    <dependencies>
+        <!-- 公共核心：Result / BaseController / LoginUserDTO / UserContext / BusinessException -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-common-core</artifactId>
+        </dependency>
+
+        <!-- Web框架 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-web</artifactId>
+        </dependency>
+
+        <!-- 安全框架：@CurrentUser / TokenCacheService / AuthProperties -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-security</artifactId>
+        </dependency>
+
+        <!--
+          知识侧只依赖纯契约包：KnowledgeGateway / KnowledgeHit / KnowledgeException。
+          实现由 lonwin-module-knowledge-biz 在启动模块装配，同 JVM 内直接注入，
+          不走 HTTP/Feign，也不依赖 Qdrant/BGE-M3/MinIO 客户端（这些全部归 knowledge 模块）。
+        -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-knowledge-api</artifactId>
+        </dependency>
+
+        <!--
+          水业务模块：仅用于「证照 + 行政区划」能力清单直连真实数据。
+          这是对「编排层不依赖业务模块」的一处<b>有意例外</b>：
+          client.WaterCertGatewayImpl 注入 EcCertService / WrAdBService 做参数搬运，
+          避免在 agent 里重写一遍 WR_WPC_SUP_B / WR_AD_B 的查询与校验逻辑。
+          其它业务数据（调水量、水位、取水许可概况）仍走 WaterDataGateway 端口；
+          依赖方向是 agent → water 单向，water 不依赖 agent，无循环。
+        -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-module-water</artifactId>
+        </dependency>
+
+        <!-- 后端dto验证 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- AOP：数据权限切面 DataScopeAspect（单位上下文统一注入，业务方法不再透传 unitCode） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- 数据访问：与 lonwin-module-water 完全一致的三件套。
+             entity + @Mapper extends BaseMapper + resources/mapper/*.xml；
+             framework-data 提供 @MapperScan、@DS 多数据源与统一分页/字段填充配置，
+             默认数据源 master 即 application-dev.yml 的 WHWR 库。 -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>DmJdbcDriver18</artifactId>
+        </dependency>
+
+        <!--
+          能力清单集中在 cn.lonwin.module.agent.feignclient 包，推荐「一个文件一份清单」：
+            - @AgentToolContract 接口 = 契约（@AgentTool/@AgentToolParam 结构化 Schema）
+            - 同文件的嵌套 Impl    = 实现（直接注入业务 Service，契约与实现同文件）
+            - 示例：WaterCertToolApi（证照 + 行政区划），新增能力只加这一个文件
+          历史写法（AgentToolApi + AgentToolApiImpl、WaterDataGateway 网关）继续兼容，
+          新能力不要沿用，避免实现类无限膨胀。
+          拆微服务时把 Impl 里的 Service 调用换成 Feign/HTTP 即可，注解与提示词零改动。
+        -->
+    </dependencies>
+</project>

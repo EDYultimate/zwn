@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lonwin.module.agent.mapper.AgentConfigLogMapper">
+
+    <!-- 结果映射（排查用；写入走 insertLog） -->
+    <resultMap id="BaseResultMap" type="cn.lonwin.module.agent.entity.AgentConfigLogEntity">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="CFG_TYPE" property="cfgType" jdbcType="VARCHAR"/>
+        <result column="CFG_KEY" property="cfgKey" jdbcType="VARCHAR"/>
+        <result column="ACTION" property="action" jdbcType="VARCHAR"/>
+        <result column="PAYLOAD" property="payload" jdbcType="CLOB"
+                typeHandler="cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler"/>
+        <result column="OPERATOR" property="operator" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 每次配置修改 / 恢复 / 一键还原写一条 -->
+    <insert id="insertLog">
+        INSERT INTO AGENT_CONFIG_LOG
+            (ID, CFG_TYPE, CFG_KEY, ACTION, PAYLOAD, OPERATOR, CREATE_TIME)
+        VALUES
+            (#{entity.id,jdbcType=VARCHAR},
+             #{entity.cfgType,jdbcType=VARCHAR},
+             #{entity.cfgKey,jdbcType=VARCHAR},
+             #{entity.action,jdbcType=VARCHAR},
+             #{entity.payload,jdbcType=CLOB,typeHandler=cn.lonwin.module.agent.mapper.typehandler.AgentClobTypeHandler},
+             #{entity.operator,jdbcType=VARCHAR},
+             CURRENT_TIMESTAMP)
+    </insert>
+
+</mapper>

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  证照管理（取水许可电子证照）
+  可写主表：WR_WPC_SUP_B            a —— 含准予未发的证，包含 EC_BASE_INFO_WR 中所有的 FIR_CERT_NUM_CODE
+  外部只读：EC_BASE_INFO_WR          b —— 仅已发证，a.WPC_CD = b.FIR_CERT_NUM_CODE
+  外部只读：EC_B_WATER_ENG           c —— 取水口，c.EC_BASE_INFO_ID = b.ID
+  外部只读：WR_AD_B                  —— 行政区划码表，按 AD_CD 用标量子查询取名称（AD_CD 不唯一，禁止 JOIN）
+  性能约定：列表 / 详情 / 分页只查主表 a，区划名称走标量子查询；只读表 b、c 由 Service 按本批编码/ID
+  批量 IN 补充，避免每次请求对 EC_BASE_INFO_WR 全表 GROUP BY、对 EC_B_WATER_ENG 全表扫描。
+  涉及只读表字段的筛选使用 EXISTS 半连接，仅在用户实际筛选时才出现。
+-->
+<mapper namespace="cn.lonwin.module.water.mapper.EcCertMapper">
+
+    <!-- 证照基本信息结果映射 -->
+    <resultMap id="CertVOResultMap" type="cn.lonwin.module.water.model.vo.EcCertVO">
+        <id column="WPC_CD" property="wpcCd"/>
+        <result column="EC_ID" property="ecId"/>
+        <result column="WPC_CD" property="cert"/>
+        <result column="WUR_NM" property="owner"/>
+        <result column="ORG_CD" property="code"/>
+        <result column="PRJ_NM" property="proj"/>
+        <result column="RV_NM" property="river"/>
+        <result column="PER_QTY" property="amt"/>
+        <result column="SUP_MAN_NM" property="org"/>
+        <result column="SUP_MAN_CD" property="supManCd"/>
+        <result column="RV_SEC" property="reach"/>
+        <result column="AD_CD" property="adCd"/>
+        <result column="AD_NM" property="adNm"/>
+        <result column="ADDR" property="addr"/>
+        <result column="WUSE_TP" property="wuseTp"/>
+        <result column="WDE_TP" property="wdeTp"/>
+        <result column="WSRC_TP" property="wsrcTp"/>
+        <result column="INTK_TP" property="intkTp"/>
+        <result column="STT" property="stt"/>
+        <result column="IS_KEY_WDE" property="isKeyWde"/>
+        <result column="IS_LM_IRR" property="isLmIrr"/>
+        <result column="IS_TYP_SML_IRR" property="isTypSmlIrr"/>
+        <result column="CERT_NUM_CODE" property="certNumCode"/>
+        <result column="BIZ_CODE" property="bizCode"/>
+        <result column="OVERALL_STATE" property="overallState"/>
+        <result column="IS_VALID" property="isValid"/>
+        <result column="IS_PER" property="isPer"/>
+        <result column="DATA_STATUS" property="dataStatus"/>
+        <result column="RIVER_INNER" property="riverInner"/>
+        <result column="WAT_USAGE_DES" property="watUsageDes"/>
+        <result column="WAT_SOU_DES" property="watSouDes"/>
+        <result column="INTAKING_TYPE" property="intakingType"/>
+        <result column="INT_LOCATION_FULL" property="intLocationFull"/>
+        <result column="INT_LOC_DIV_CODE" property="intLocDivCode"/>
+        <result column="VAL_PER_FROM" property="valPerFrom"/>
+        <result column="VAL_PER_TO" property="valPerTo"/>
+        <result column="EXP_FLAG" property="expFlag"/>
+    </resultMap>
+
+    <!-- 取水口信息结果映射 -->
+    <resultMap id="IntakeVOResultMap" type="cn.lonwin.module.water.model.vo.EcIntakeVO">
+        <result column="INTAKE_NO" property="no"/>
+        <result column="INTAKE_NM" property="name"/>
+        <result column="POS" property="pos"/>
+        <result column="ENG" property="eng"/>
+        <result column="WAT_SOU_TYPE" property="src"/>
+        <result column="EC_ID" property="ecId"/>
+        <result column="WPC_CD" property="wpcCd"/>
+    </resultMap>
+
+    <!-- 主表列：列表 / 详情 / 分页只查 WR_WPC_SUP_B，行政区名称用标量子查询补，避免每次全表 GROUP BY 大表 -->
+    <sql id="certColumns">
+        a.WPC_CD            AS WPC_CD,
+        a.WPC_NO            AS WPC_NO,
+        a.STT               AS STT,
+        a.IS_KEY_WDE        AS IS_KEY_WDE,
+        a.IS_LM_IRR         AS IS_LM_IRR,
+        a.IS_TYP_SML_IRR    AS IS_TYP_SML_IRR,
+        a.SUP_MAN_CD        AS SUP_MAN_CD,
+        a.SUP_MAN_NM        AS SUP_MAN_NM,
+        a.RV_SEC            AS RV_SEC,
+        a.AD_CD             AS AD_CD,
+        <!-- 行政区名称用标量子查询取一条：WR_AD_B 的 AD_CD 在库里并非严格唯一，
+             直接 JOIN 会让同一张证按匹配行数重复出现（曾把许可水量 76854.38 放大成 125430.50） -->
+        (SELECT MAX(AD_NM) FROM WR_AD_B WHERE AD_CD = a.AD_CD) AS AD_NM,
+        a.ORG_CD            AS ORG_CD,
+        a.WUR_NM            AS WUR_NM,
+        a.PRJ_NM            AS PRJ_NM,
+        a.RV_NM             AS RV_NM,
+        a.ADDR              AS ADDR,
+        a.PER_QTY           AS PER_QTY,
+        a.WUSE_TP           AS WUSE_TP,
+        a.WDE_TP            AS WDE_TP,
+        a.WSRC_TP           AS WSRC_TP,
+        a.INTK_TP           AS INTK_TP
+    </sql>
+
+    <!-- 只读扩展列：按本批取水许可编码批量 IN 查询，一次取回后在内存合并 -->
+    <sql id="extColumns">
+        b.FIR_CERT_NUM_CODE AS WPC_CD,
+        b.ID                AS EC_ID,
+        b.CERT_NUM_CODE     AS CERT_NUM_CODE,
+        b.STATUS            AS BIZ_CODE,
+        b.OVERALL_STATE     AS OVERALL_STATE,
+        b.IS_VALID          AS IS_VALID,
+        b.IS_PER            AS IS_PER,
+        b.DATA_STATUS       AS DATA_STATUS,
+        b.RIVER_INNER       AS RIVER_INNER,
+        b.WAT_USAGE_DES     AS WAT_USAGE_DES,
+        b.WAT_SOU_DES       AS WAT_SOU_DES,
+        b.INTAKING_TYPE     AS INTAKING_TYPE,
+        b.INT_LOCATION_FULL AS INT_LOCATION_FULL,
+        b.INT_LOC_DIV_CODE  AS INT_LOC_DIV_CODE,
+        TO_CHAR(b.VAL_PER_FROM, 'YYYY-MM-DD') AS VAL_PER_FROM,
+        TO_CHAR(b.VAL_PER_TO, 'YYYY-MM-DD') AS VAL_PER_TO,
+        CASE WHEN b.IS_PER = '1'
+                  OR b.DATA_STATUS = '18'
+                  OR (b.VAL_PER_TO IS NOT NULL AND b.VAL_PER_TO &gt;= SYSDATE AND b.VAL_PER_TO &lt;= SYSDATE + 60)
+             THEN '1' ELSE '0' END AS EXP_FLAG
+    </sql>
+
+    <!-- 列表 / 详情 / 分页共用 FROM：
+         只查主表 a；行政区名称由 certColumns 里的标量子查询取（WR_AD_B.AD_CD 不唯一，JOIN 会放大行）。 -->
+    <sql id="certFrom">
+        FROM WR_WPC_SUP_B a
+    </sql>
+
+    <!-- 查询条件（与前端筛选区一一对应）。两条规则：
+         ① 类型 / 状态（发证状态 issued、河道内外 inpos、水源类型 srcCodes、水量区间 amtRange）：
+            直接比较数据库码值字段，不匹配任何中文标签；
+         ② 字符串（编码、编号、名称、单位、行政区）：统一 LIKE 模糊匹配，不做精确等值。
+         只读扩展表 EC_BASE_INFO_WR 的条件走 EXISTS 半连接，不 JOIN，避免放大行数。 -->
+    <sql id="certWhere">
+        <where>
+            <!-- ===== 字符串：统一模糊 ===== -->
+            <if test="query.wpcCd != null and query.wpcCd != ''">
+                AND a.WPC_CD LIKE '%' || #{query.wpcCd} || '%'
+            </if>
+            <if test="query.cert != null and query.cert != ''">
+                AND a.WPC_NO LIKE '%' || #{query.cert} || '%'
+            </if>
+            <if test="query.owner != null and query.owner != ''">
+                AND a.WUR_NM LIKE '%' || #{query.owner} || '%'
+            </if>
+            <if test="query.code != null and query.code != ''">
+                AND a.ORG_CD LIKE '%' || #{query.code} || '%'
+            </if>
+            <if test="query.river != null and query.river != ''">
+                AND a.RV_NM LIKE '%' || #{query.river} || '%'
+            </if>
+            <if test="query.org != null and query.org != ''">
+                AND a.SUP_MAN_NM LIKE '%' || #{query.org} || '%'
+            </if>
+            <!-- 行政区编码：前缀模糊（选市级编码 130400 能带出下属县区） -->
+            <if test="query.adCd != null and query.adCd != ''">
+                AND a.AD_CD LIKE #{query.adCd} || '%'
+            </if>
+            <!-- 行政区（编码或名称）：编码模糊 + 区划码表名称模糊 -->
+            <if test="query.area != null and query.area != ''">
+                AND (a.AD_CD LIKE '%' || #{query.area} || '%'
+                     OR EXISTS (SELECT 1 FROM WR_AD_B ad2
+                                 WHERE ad2.AD_CD = a.AD_CD
+                                   AND ad2.AD_NM LIKE '%' || #{query.area} || '%'))
+            </if>
+
+            <!-- ===== 类型 / 状态：数据库码值等值 ===== -->
+            <!-- 发证状态：STT=1 已发证；NULL / 空串 / 其他码值都算「准予未发」，
+                 与 EcCertService.decorate 的展示口径（非 1 即准予未发）一致。
+                 不能用 NVL(STT,'0')='0'：那会漏掉空串与 '2' 等其它状态码的记录 -->
+            <if test='query.issued == "1"'>
+                AND a.STT = '1'
+            </if>
+            <if test='query.issued == "0"'>
+                AND NVL(a.STT, '0') <![CDATA[ <> ]]> '1'
+            </if>
+            <!-- 河道内外：RIVER_INNER 码值等值 -->
+            <if test="query.inpos != null and query.inpos != ''">
+                AND EXISTS (SELECT 1 FROM EC_BASE_INFO_WR e
+                             WHERE e.FIR_CERT_NUM_CODE = a.WPC_CD
+                               AND e.RIVER_INNER = #{query.inpos})
+            </if>
+            <!-- 水源类型：WSRC_TP 码值 IN -->
+            <if test="query.srcCodes != null and query.srcCodes.size() &gt; 0">
+                AND a.WSRC_TP IN
+                <foreach collection="query.srcCodes" item="code" open="(" separator="," close=")">
+                    #{code}
+                </foreach>
+            </if>
+
+            <!-- ===== 数值区间 ===== -->
+            <choose>
+                <when test="query.amtRange == 'lt100'">
+                    AND a.PER_QTY <![CDATA[ < ]]> 100
+                </when>
+                <when test="query.amtRange == '100-1000'">
+                    AND a.PER_QTY <![CDATA[ >= ]]> 100 AND a.PER_QTY <![CDATA[ <= ]]> 1000
+                </when>
+                <when test="query.amtRange == 'gt1000'">
+                    AND a.PER_QTY <![CDATA[ > ]]> 1000
+                </when>
+            </choose>
+
+            <!-- ===== 布尔：临近过期 ===== -->
+            <if test="query.expOnly != null and query.expOnly">
+                AND EXISTS (SELECT 1 FROM EC_BASE_INFO_WR e
+                             WHERE e.FIR_CERT_NUM_CODE = a.WPC_CD
+                               AND e.VAL_PER_TO IS NOT NULL
+                               AND e.VAL_PER_TO &gt;= SYSDATE
+                               AND e.VAL_PER_TO &lt;= SYSDATE + 60)
+            </if>
+        </where>
+    </sql>
+
+    <!-- 根据条件 查询 取水许可电子证照基本信息列表 -->
+    <select id="selectEcBaseInfoList" resultMap="CertVOResultMap">
+        SELECT
+        <include refid="certColumns"/>
+        <include refid="certFrom"/>
+        <include refid="certWhere"/>
+        ORDER BY a.WPC_CD
+    </select>
+
+    <!-- 分页查询（MyBatis-Plus 分页插件自动改写，不写 LIMIT） -->
+    <select id="selectEcBaseInfoPage" resultMap="CertVOResultMap">
+        SELECT
+        <include refid="certColumns"/>
+        <include refid="certFrom"/>
+        <include refid="certWhere"/>
+        ORDER BY a.WPC_CD
+    </select>
+
+    <!-- 根据取水许可证编码获取证照基本信息（单表；只读扩展信息由 Service 批量补充） -->
+    <select id="selectEcBaseInfoByWpcCd" resultMap="CertVOResultMap">
+        SELECT
+        <include refid="certColumns"/>
+        <include refid="certFrom"/>
+        WHERE a.WPC_CD = #{wpcCd}
+    </select>
+
+    <!-- 按一批取水许可编码批量取只读扩展信息，替代全表 GROUP BY 的派生表 -->
+    <select id="selectEcBaseInfoByWpcCds" resultMap="CertVOResultMap">
+        SELECT
+        <include refid="extColumns"/>
+        FROM EC_BASE_INFO_WR b
+        WHERE b.FIR_CERT_NUM_CODE IN
+        <foreach collection="wpcCds" item="cd" open="(" separator="," close=")">#{cd}</foreach>
+        ORDER BY b.FIR_CERT_NUM_CODE, b.ID DESC
+    </select>
+
+    <!-- 按一批证照 ID 批量取取水口，避免无条件全表扫描 EC_B_WATER_ENG -->
+    <select id="selectWaterIntakeByEcIds" resultMap="IntakeVOResultMap">
+        SELECT
+            c.ID                AS INTAKE_ID,
+            c.ENG_CODE          AS INTAKE_NO,
+            c.WAT_ENG_NAME      AS INTAKE_NM,
+            c.INT_LOCATION_FULL AS POS,
+            c.WAT_ENG_TYPE      AS ENG,
+            c.WAT_SOU_TYPE      AS WAT_SOU_TYPE,
+            c.EC_BASE_INFO_ID   AS EC_ID,
+            c.CERT_NUM_CODE     AS WPC_CD
+        FROM EC_B_WATER_ENG c
+        WHERE c.EC_BASE_INFO_ID IN
+        <foreach collection="ecIds" item="id" open="(" separator="," close=")">#{id}</foreach>
+        ORDER BY c.ENG_CODE
+    </select>
+
+    <!-- 证件数 / 许可水量 / 取水口数 -->
+    <select id="selectEcBaseInfoCount" resultType="java.util.Map">
+        SELECT
+            (SELECT COUNT(*) FROM WR_WPC_SUP_B a
+              WHERE 1 = 1
+              <if test="wpcCd != null and wpcCd != ''">
+                  AND a.WPC_CD = #{wpcCd}
+              </if>
+            ) AS CERT_CNT,
+            (SELECT COALESCE(SUM(a.PER_QTY), 0) FROM WR_WPC_SUP_B a
+              WHERE 1 = 1
+              <if test="wpcCd != null and wpcCd != ''">
+                  AND a.WPC_CD = #{wpcCd}
+              </if>
+            ) AS PERMIT_QTY,
+            (SELECT COUNT(*) FROM EC_B_WATER_ENG c
+              <if test="wpcCd != null and wpcCd != ''">
+                WHERE c.CERT_NUM_CODE = #{wpcCd}
+                   OR c.EC_BASE_INFO_ID IN (
+                       SELECT b.ID FROM EC_BASE_INFO_WR b WHERE b.FIR_CERT_NUM_CODE = #{wpcCd}
+                   )
+              </if>
+            ) AS INTAKE_CNT
+        FROM DUAL
+    </select>
+
+    <!-- 获取取水口列表 -->
+    <select id="selectWaterIntakeList" resultMap="IntakeVOResultMap">
+        SELECT
+            c.ID                AS INTAKE_ID,
+            c.ENG_CODE          AS INTAKE_NO,
+            c.WAT_ENG_NAME      AS INTAKE_NM,
+            c.INT_LOCATION_FULL AS POS,
+            c.WAT_ENG_TYPE      AS ENG,
+            c.WAT_SOU_TYPE      AS WAT_SOU_TYPE,
+            c.EC_BASE_INFO_ID   AS EC_ID,
+            COALESCE(b.FIR_CERT_NUM_CODE, c.CERT_NUM_CODE) AS WPC_CD
+        FROM EC_B_WATER_ENG c
+        LEFT JOIN EC_BASE_INFO_WR b ON c.EC_BASE_INFO_ID = b.ID
+        <where>
+            <if test="wpcCd != null and wpcCd != ''">
+                AND (b.FIR_CERT_NUM_CODE = #{wpcCd} OR c.CERT_NUM_CODE = #{wpcCd})
+            </if>
+        </where>
+        ORDER BY c.ENG_CODE
+    </select>
+
+    <!-- 根据证照id获取取水口详情 -->
+    <select id="selectWaterIntakeByEcId" resultMap="IntakeVOResultMap">
+        SELECT
+            c.ID                AS INTAKE_ID,
+            c.ENG_CODE          AS INTAKE_NO,
+            c.WAT_ENG_NAME      AS INTAKE_NM,
+            c.INT_LOCATION_FULL AS POS,
+            c.WAT_ENG_TYPE      AS ENG,
+            c.WAT_SOU_TYPE      AS WAT_SOU_TYPE,
+            c.EC_BASE_INFO_ID   AS EC_ID,
+            COALESCE(b.FIR_CERT_NUM_CODE, c.CERT_NUM_CODE) AS WPC_CD
+        FROM EC_B_WATER_ENG c
+        LEFT JOIN EC_BASE_INFO_WR b ON c.EC_BASE_INFO_ID = b.ID
+        WHERE c.EC_BASE_INFO_ID = #{ecBaseInfoId}
+        ORDER BY c.ENG_CODE
+    </select>
+
+    <!-- 以所属河流为分组查询许可水量总和 -->
+    <select id="selectRiverPermitQty" resultType="cn.lonwin.module.water.model.vo.EcGroupVO">
+        SELECT a.RV_NM AS NAME, COALESCE(SUM(a.PER_QTY), 0) AS QTY
+        FROM WR_WPC_SUP_B a
+        WHERE a.RV_NM IS NOT NULL
+        GROUP BY a.RV_NM
+        ORDER BY QTY DESC
+    </select>
+
+    <!-- 以监管单位为分组查询取水许可证的个数 -->
+    <select id="selectSupManCertCount" resultType="cn.lonwin.module.water.model.vo.EcGroupVO">
+        SELECT a.SUP_MAN_NM AS NAME, COUNT(*) AS QTY
+        FROM WR_WPC_SUP_B a
+        WHERE a.SUP_MAN_NM IS NOT NULL
+        GROUP BY a.SUP_MAN_NM
+        ORDER BY QTY DESC
+    </select>
+
+    <!-- 以所属河流为分组查询取水口的个数（一次预聚合，避免逐行相关子查询） -->
+    <select id="selectRiverIntakeCount" resultType="cn.lonwin.module.water.model.vo.EcGroupVO">
+        SELECT a.RV_NM AS NAME, COALESCE(SUM(ic.CNT), 0) AS QTY
+        FROM WR_WPC_SUP_B a
+        LEFT JOIN (
+            SELECT b.FIR_CERT_NUM_CODE AS WPC_CD, COUNT(*) AS CNT
+            FROM EC_B_WATER_ENG c
+            JOIN EC_BASE_INFO_WR b ON c.EC_BASE_INFO_ID = b.ID
+            GROUP BY b.FIR_CERT_NUM_CODE
+        ) ic ON ic.WPC_CD = a.WPC_CD
+        WHERE a.RV_NM IS NOT NULL
+        GROUP BY a.RV_NM
+        ORDER BY QTY DESC
+    </select>
+
+    <!-- 新增取水许可证信息（ID 为数据库自增列，不显式插入） -->
+    <insert id="insertEcWpcSup" parameterType="cn.lonwin.module.water.entity.EcWpcSupEntity">
+        INSERT INTO WR_WPC_SUP_B (
+            WPC_CD, STT, IS_KEY_WDE, IS_LM_IRR, IS_TYP_SML_IRR, SUP_MAN_CD, SUP_MAN_NM,
+            RV_SEC, AD_CD, ORG_CD, WUR_NM, WPC_NO, PRJ_NM, RV_NM, ADDR, PER_QTY,
+            WUSE_TP, WDE_TP, WSRC_TP, INTK_TP
+        ) VALUES (
+            #{wpcCd}, #{stt}, #{isKeyWde}, #{isLmIrr}, #{isTypSmlIrr}, #{supManCd}, #{supManNm},
+            #{rvSec}, #{adCd}, #{orgCd}, #{wurNm}, #{wpcNo}, #{prjNm}, #{rvNm}, #{addr}, #{perQty},
+            #{wuseTp}, #{wdeTp}, #{wsrcTp}, #{intkTp}
+        )
+    </insert>
+
+    <!-- 编辑取水许可证信息 -->
+    <update id="updateEcWpcSup" parameterType="cn.lonwin.module.water.entity.EcWpcSupEntity">
+        UPDATE WR_WPC_SUP_B
+        <set>
+            <if test="stt != null">STT = #{stt},</if>
+            <if test="isKeyWde != null">IS_KEY_WDE = #{isKeyWde},</if>
+            <if test="isLmIrr != null">IS_LM_IRR = #{isLmIrr},</if>
+            <if test="isTypSmlIrr != null">IS_TYP_SML_IRR = #{isTypSmlIrr},</if>
+            <if test="supManCd != null">SUP_MAN_CD = #{supManCd},</if>
+            <if test="supManNm != null">SUP_MAN_NM = #{supManNm},</if>
+            <if test="rvSec != null">RV_SEC = #{rvSec},</if>
+            <if test="adCd != null">AD_CD = #{adCd},</if>
+            <if test="orgCd != null">ORG_CD = #{orgCd},</if>
+            <if test="wurNm != null">WUR_NM = #{wurNm},</if>
+            <if test="wpcNo != null">WPC_NO = #{wpcNo},</if>
+            <if test="prjNm != null">PRJ_NM = #{prjNm},</if>
+            <if test="rvNm != null">RV_NM = #{rvNm},</if>
+            <if test="addr != null">ADDR = #{addr},</if>
+            <if test="perQty != null">PER_QTY = #{perQty},</if>
+            <if test="wuseTp != null">WUSE_TP = #{wuseTp},</if>
+            <if test="wdeTp != null">WDE_TP = #{wdeTp},</if>
+            <if test="wsrcTp != null">WSRC_TP = #{wsrcTp},</if>
+            <if test="intkTp != null">INTK_TP = #{intkTp},</if>
+        </set>
+        WHERE WPC_CD = #{wpcCd}
+    </update>
+
+    <!-- 删除取水许可证信息 -->
+    <delete id="deleteEcWpcSup">
+        DELETE FROM WR_WPC_SUP_B WHERE WPC_CD = #{wpcCd}
+    </delete>
+
+    <!-- 取水许可编码是否存在 -->
+    <select id="countByWpcCd" resultType="int">
+        SELECT COUNT(*) FROM WR_WPC_SUP_B WHERE WPC_CD = #{wpcCd}
+    </select>
+
+</mapper>

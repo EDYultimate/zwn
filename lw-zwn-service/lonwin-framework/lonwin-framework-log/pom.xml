@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<parent>
+    <groupId>cn.lonwin</groupId>
+    <artifactId>lonwin-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</parent>
+
+<artifactId>lonwin-framework-log</artifactId>
+<name>lonwin-framework-log</name>
+<description>日志框架（操作日志切面 + 异步同步权限系统）</description>
+
+<dependencies>
+    <!-- 公共核心（StringUtils/UUIDUtils/UserContext等） -->
+    <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-common-core</artifactId>
+    </dependency>
+
+    <!-- 权限框架（PowersProperties配置、PowerSysUtil调用权限系统） -->
+    <dependency>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-framework-security</artifactId>
+    </dependency>
+
+    <!-- Web（Servlet API、请求上下文） -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- AOP切面 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+
+    <!-- JSON序列化（日志参数/结果序列化） -->
+    <dependency>
+        <groupId>com.alibaba.fastjson2</groupId>
+        <artifactId>fastjson2</artifactId>
+    </dependency>
+</dependencies>
+</project>

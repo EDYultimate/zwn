@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.lonwin</groupId>
+        <artifactId>lonwin-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lonwin-module-video</artifactId>
+    <name>lonwin-module-video</name>
+    <description>视频监控模块：视频点位、视频播放、定时截图与截图展示</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-common-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-data</artifactId>
+        </dependency>
+
+        <!-- 截图存 MinIO 时复用对象存储模板（file.oss.enable=true 时才注册 OssTemplate） -->
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-common-oss</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.lonwin</groupId>
+            <artifactId>lonwin-framework-security</artifactId>
+        </dependency>
+
+        <!-- MyBatis Plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+
+        <!-- 达梦驱动 -->
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>DmJdbcDriver18</artifactId>
+        </dependency>
+
+        <!-- 后端 dto 验证 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- MapStruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+
+        <!-- 平台接口响应解析 -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+        </dependency>
+
+        <!-- JavaCV 视频流截帧（版本由父 pom 统一管理） -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+        </dependency>
+    </dependencies>
+</project>

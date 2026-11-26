@@ -1,0 +1,438 @@
+# ========== 服务器配置 ==========
+server:
+  port: 9080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  tomcat:
+    connection-timeout: 30000
+    max-connections: 10000
+    accept-count: 100
+    threads:
+      max: 200
+      min-spare: 10
+      max-queue-size: 100
+    basedir: ./temp/tomcat
+    # 表单POST请求体最大大小（文件上传关键配置，默认仅2MB）
+    max-http-form-post-size: 200MB
+    # Tomcat单次读取/吞入的最大字节数（默认2MB，过小会导致大文件上传连接被断开）
+    max-swallow-size: 200MB
+
+# ========== Spring配置 ==========
+spring:
+  # 应用信息
+  application:
+    name: lonwin-platform
+    version: 1.0.0
+
+  # 文件上传配置（关键：默认 max-file-size 仅 1MB，max-request-size 仅 10MB）
+  servlet:
+    multipart:
+      # 单个文件最大 100MB
+      max-file-size: 100MB
+      # 单次请求所有文件总大小
+      max-request-size: 200MB
+      # 文件阈值，超过写入临时磁盘
+      file-size-threshold: 10MB
+      # 启用文件上传
+      enabled: true
+
+  # 激活的环境配置
+  profiles:
+    active: dev
+    group:
+      dev: dev
+      test: test,dev
+      prod: prod
+
+  # Jackson配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+    deserialization:
+      fail-on-unknown-properties: false
+    default-property-inclusion: non_null
+
+
+# ========== 文件存储配置 ==========
+# 注意：此配置必须放在主启动模块的 application.yml 中才会生效
+# （依赖 jar 中的 application.yml 不会被加载）
+file:
+  # 默认存储桶。yqbucket 即本地 MinIO 中已有的知识库原文桶
+  # （docFiles / imgFiles 目录，Qdrant payload 的 filePath 指向这里）
+  bucketName: yqbucket
+
+  # 本地文件存储：接入 MinIO 后关闭（matchIfMissing=true，必须显式写 false）
+  local:
+    enable: false
+    # 切回本地磁盘时把上面的 oss.enable 改 false、local.enable 改 true
+    basePath: /home/java1/tjwr/uploadfiles
+
+  # MinIO / S3 兼容对象存储
+  oss:
+    enable: true
+    # 7350 是本地 S3 API 宿主端口（容器内 9000），7351 只是 Web 控制台。
+    # 本地端口映射见 D:\dockerVolumes\knowledge\docker-compose.yml（7 开头）；
+    # 连服务器 MinIO 时用环境变量 MINIO_ENDPOINT=http://<服务器IP>:9000 覆盖。
+    endpoint: ${MINIO_ENDPOINT:http://127.0.0.1:7350}
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:lonwin_local_minio_2026}
+    # MinIO 不校验 region，但 AWS SDK 需要非空值
+    region: us-east-1
+    # MinIO 必须用 path-style（http://host/bucket/key）
+    path-style-access: true
+    max-connections: 100
+
+  # 知识库原文查看端点（lonwin-framework-file / ResourceViewController）
+  view:
+    enabled: true
+    # 留空则跟随 file.bucketName；历史库独立桶时可单独指定
+    bucket: yqbucket
+    allowed-prefixes: [docFiles, imgFiles]
+    inline-extensions: [pdf, png, jpg, jpeg, gif, webp, svg, txt]
+    # 兼容 knowledge-platform 写入的带前导斜杠对象 key
+    try-leading-slash-key: true
+
+
+# ========== SpringDoc配置 ==========
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true
+    default-model-expand-depth: 2
+    default-model-rendering: example
+  packages-to-scan: cn.lonwin
+  default-produces-media-type: application/json
+  default-consumes-media-type: application/json
+  show-actuator: true
+  cache:
+    disabled: true
+
+# ========== Actuator配置 ==========
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+      show-components: always
+  info:
+    env:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.security: debug
+
+
+
+# 权限登录的配置
+lonwin:
+    auth:
+      mode: none
+      # jwt的配置
+      jwt:
+        encryption-key: SCohMtxkDqIt8v0VR5FVK2g8CT8DlxYy7cXO43ypMJo
+        signing-key: 4Qy93T0Cea_s5J1IM8d_NZknAKVka_d7p_Inkm1WMckboJWBbte9JuxuUIaYgUg72WDwYhwGrqWKeW1ba6OVVQ
+      # 权限系统的配置
+      powers:
+        baseUrl: http://10.3.34.202:8187/powers_sys
+        publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAerz5rUe1SSJqXsfOMUwttWN3JjA8kspjTSq2Pa5znpVOh3A4pUXfmVUS21HbhWItSBFQYooyph5d0bqgVCZDMb2FQh2eQEWGhlptQdvb81ceBjgWAeocDsa1wAKlTiRL6v0FyYRwHOtBuQHlaDESNmEgpLjhTJqyb1sBjTOjmQIDAQAB
+        account: lh_pjkjz
+        accountName: 潘家口水库矩阵化管理平台
+        syncLogUrl: ${lonwin.auth.powers.baseUrl}/sysfront/log/
+
+    # 菜单系统配置（对接外部菜单系统：推送菜单 / 获取导航路径前缀）
+    # apiKey/apiSecret 由菜单系统分配；apiSecret 为 base64 编码的 RSA 公钥
+    menu-push:
+      # 菜单系统基础地址（测试环境）
+      baseUrl: http://10.3.34.202:8456/hw_eg_powers_sys
+      # 推送菜单接口路径
+      pushUrl: /api/menu/push
+      # 获取导航路径前缀接口路径
+      prefixUrl: /api/menu/prefixMenu
+      # 业务系统在菜单系统注册的账号
+      apiKey: flood_001
+      # 菜单系统分配的 apiSecret（base64 公钥，需替换为真实值）
+      apiSecret: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCmwAZy5QH7i3CY92IkNdFn4dy1SLMa43Xgdf56mR/kcOwxpFc+wK/Ujs7mWErM0Oxq7bnpilQe8lMWXT3C/TIndP3dYcuelBh4+TKboIinRAPcRLpad38ErNL7ZIMhHCQfsO9KqI02GtjCa4tVTPA26XZMhiR/BBuBegGiyFY9dwIDAQAB
+      # 时间戳防重放有效期（毫秒，默认 5 分钟）
+      timestampValidMillis: 300000
+      # HTTP 超时配置
+      connectTimeoutMs: 5000
+      readTimeoutMs: 15000
+
+    # 外部系统文件访问（open API）配置
+    open-file:
+      # 是否启用（默认关闭，需显式开启）
+      enabled: false
+      # 分配给外部系统的访问账号
+      apiKey: external_demo
+      # 本系统的 apiSecret（base64 私钥，对外发放对应公钥，需替换为真实值）
+      apiSecret: REPLACE_WITH_BASE64_RSA_PRIVATE_KEY
+      # 时间戳防重放有效期（毫秒，默认 5 分钟）
+      timestampValidMillis: 300000
+
+    # 操作日志配置（同步到权限系统）
+    log:
+      # 是否开启操作日志同步
+      enabled: false
+
+    # ========== 视频监控平台（lonwin-module-video）配置 ==========
+    spjk:
+      # 平台基础地址
+      base-url: http://10.3.70.33:8060
+      # 接入账号
+      account: zwnszy
+      # 平台分配的 RSA 公钥（用于生成 sptoken）
+      public-key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCLCFtvKMBxduTMZRx/+BljwZUojt4wKxPjx4Sm/PcEVaLQIjcj9EJyKKTUsGShOAhgSlZIJF5O9/B96VuY+Jtz6F4ZWYrakARK5ZR6gaDDJ41UwmY67tTmDogvLI6qt45i/rRC/XbZTtprirWtYPOmp8sY/Z6dNDleA8AxvRmf3QIDAQAB
+      # 截图保存目录（Windows）
+      save-path: D:/workdir/zwn_pic
+      # 截图保存目录（Linux，按 os.name 自动识别）
+      linux-save-path: /home/java1/workdir/zwn_pic
+      # 本机 IP（参与 sptoken 生成，留空自动获取）
+      local-ip:
+      connect-timeout-seconds: 15
+      read-timeout-seconds: 30
+      grab-timeout-seconds: 30
+      # FFmpeg 本地库（javacpp）解压缓存目录，留空用 {user.home}/.javacpp/cache。
+      # Linux 若报 "Could not initialize class org.bytedeco.ffmpeg.global.avutil"，
+      # 通常是该目录不可写或所在分区 noexec，改成可写可执行的目录即可
+      native-cache-dir: /home/java1/workdir/javacpp-cache
+      # 本地 tr_Spd 表的监管单位过滤值
+      manage-dept: dept_zwnjszyc
+      # 是否开启定时截图（默认 true；置 false 则整个定时任务不注册，不再自动抓拍）
+      capture-enabled: true
+      # 首次执行延迟（毫秒，默认 5 分钟）
+      capture-initial-delay: 300000
+      # 执行间隔（毫秒，默认 1 小时）
+      capture-fixed-rate: 3600000
+      # 截图存储方式：local=本地磁盘（save-path / linux-save-path 下按日期分目录）；
+      #              minio=对象存储（需 file.oss.enable=true，否则自动降级为 local 并打告警）
+      snapshot-storage: local
+      # minio 桶名，留空跟随 file.bucketName（当前 yqbucket）
+      minio-bucket:
+      # minio 中截图目录前缀（对象 key 形如 video/snapshots/2026-11-19/timed/编码_名称/xxx.jpg）
+      minio-snapshot-dir: video/snapshots
+      # minio 模式下是否同时在本地保留一份副本（排查 / 迁移用）
+      minio-keep-local: false
+      # 截图图片 URL 前缀（/api 由 vite/nginx 代理去掉后落到后端 /video/snapshots/image）
+      image-url-prefix: '/api/video/snapshots/image?path='
+      # 监管单位编码 → 页面展示名称，按实际台账编码补充
+      org-mapping: {}
+      # 重点点位编码（列表「详情」按钮高亮）
+      main-point-codes: []
+
+      # ===== 异常图片智能识别（截图后调用目标检测服务） =====
+      # 是否开启：true=每轮截图后识别图片，命中异常类别即记为「异常抓拍」
+      detect-enabled: true
+      # 目标检测服务地址（YOLO 多模型检测服务，接口文档 /docs）
+      detect-base-url: http://10.3.34.192:8001
+      # 检测模型 ID（服务端 /api/v1/models 返回的 model_id），可配多个串联推理；
+      # lonwin-odm-100 = COCO 通用目标检测（80 类，含人/车/动物/日常物品等），留空用服务端默认
+      detect-model-ids:
+        - lonwin-odm-100
+      # 置信度阈值
+      detect-confidence-threshold: 0.7
+      # 单张图片最多返回的检测目标数
+      detect-max-detections: 50
+      # 只检测指定类别（留空=检测所选模型的全部类别）
+      detect-target-classes: []
+      # 判定为「异常抓拍」的类别：命中任意一个即视为异常
+      detect-abnormal-labels:
+        - person
+        - bicycle
+        - car
+        - truck
+        - boat
+      # 检测 / 标注接口超时（秒）
+      detect-timeout-seconds: 60
+      # 是否调用 /api/v1/annotate 生成标注图（与截图同位置，点位目录下 anno 子目录）
+      detect-annotate: true
+      # 识别为异常抓拍后，是否把标注图另存一条抓拍记录（group=abnormal）；
+      # 原定时抓拍记录保持 group=timed，页面「定时拍摄」与「异常抓拍」各有一张图
+      detect-save-annotated-snapshot: true
+
+    # ========== 智能问答模块配置 ==========
+    agent:
+      # 单次提问最多连续调用工具轮数
+      max-tool-rounds: 3
+      # 单条回答最多返回的跳转按钮数量
+      max-actions: 3
+      qwen:
+        # 内网大模型接口（OpenAI 兼容）
+        base-url: http://10.3.34.79/localApi/v1
+        # 密钥与出口 IP 绑定；生产环境建议用环境变量注入，勿提交仓库
+        api-key: ${MODELARK_API_KEY:}
+        model: qwen3
+        # 输出上限：详细答案（结论+逐项明细+口径+分段）需要足够空间，截断会破坏 JSON 结构
+        # 若平台报 40005（输入 + max_tokens 超模型上下文）再下调
+        max-tokens: 2048
+        # 模型上下文窗口（输入 + max_tokens）。qwen3 平台为 32000，超限直接报 40005；
+        # 编排层按它算输入预算，超预算先裁剪历史/工具观测，不会把 40005 抛给用户
+        context-tokens: 32000
+        # 平台估算 token 的换算比例（字符数 / 1.6）。本地预算必须用同一公式才能对齐上游判定
+        chars-per-token: 1.6
+        temperature: 0.2
+        connect-timeout-seconds: 10
+        read-timeout-seconds: 120
+        # 是否保留 qwen3 思考过程（关闭更省 token、响应更快）
+        thinking-enabled: false
+        # 流式调用（SSE）：工具轮发进度、最终回答逐字推给前端，显著降低首字等待
+        # 置 false 则整条链路退回阻塞式（排查网关不支持 SSE 时使用）
+        stream-enabled: true
+        # 平台 5xx 故障的最大重试次数；4xx 请求侧错误一律不重试
+        stream-max-retries: 3
+      # 会话记忆配置
+      memory:
+        # 每个会话最多保留的消息条数（一问一答为 2 条）
+        max-messages: 20
+      # ==================== 通道开关 ====================
+      # 工具侧与知识侧是两个独立的「是否接入」开关，在配置文件里切换即可，无需改代码。
+      #   tools.enabled=true  + knowledge.enabled=true  = 融合问答（默认）
+      #   tools.enabled=true  + knowledge.enabled=false = 只有工具侧接口（纯数据问答）
+      #   tools.enabled=false + knowledge.enabled=true  = 只有知识侧（纯文档问答）
+      #   tools.enabled=false + knowledge.enabled=false = 不接任何工具，仅概念/寒暄
+      # 只有工具侧接口时，把 knowledge.enabled 置 false 即可：
+      # 编排层会自动移除 kb.search 工具与提示词里的知识章节，即使 BGE-M3 / Qdrant 未启动也不受影响。
+      # ==================================================
+      # 工具注册与治理（工具侧）
+      tools:
+        # 是否接入工具侧通道（业务数据接口 + 页面能力检索）
+        enabled: true
+        # 工具侧数据接口权限：现阶段只保留抽象接口 AgentToolAccessPolicy，默认关闭=全部放行。
+        # 置 true 后走自定义策略 Bean（没有则回落到原有 ActUrl 功能权限校验）。
+        permission:
+          enabled: false
+        # 工具数量上限（0=不限制）。超过直接启动失败，避免提示词膨胀导致模型选错工具
+        max-tools: 60
+        # 工具元数据（描述/示例/启停）存储方式：
+        #   db     = 达梦数据库 AGENT_TOOL_META（在线配置每次修改即落库，默认）；
+        #   file   = JSON 文件（旧实现，单机调试用，需手工执行 refresh 才生效）；
+        #   memory = 仅内存，重启还原为注解默认值。
+        meta-store: db
+        # 元数据文件路径，仅 meta-store=file 时有效
+        meta-file: ./config/agent-tool-meta.json
+      # 前端页面能力声明：
+      #   db = AGENT_UI_CAPABILITY 表（默认，基线声明与页面人工配置都落库，重启不丢）；
+      #   file / memory 为旧实现，在线配置页在旧实现下不可用。
+      # BASELINE_JSON 由前端启动全量上报写入，OVERRIDE_JSON 由配置页人工修改写入，
+      # 前端定时同步只更新基线，不会冲掉页面上改过的内容。
+      ui-capability:
+        store: db
+        # 声明文件路径，仅 store=file 时有效
+        file: ./config/agent-ui-capabilities.json
+      # 用户问题预处理：组装模型消息前先清理口语噪声、解析年份/口径/意图
+      # （只做字符级清理与标注，不改写业务语义；怀疑误伤关键限定词时置 false 回到原始问句）
+      preprocess:
+        enabled: true
+      # ---------------- 知识侧（向量库，可参考的依据） ----------------
+      # 与工具侧在编排层融合：工具结果标 source=api，知识片段标 source=kb，
+      # 由提示词里的「来源优先级规则」裁决冲突，不做跨源 RRF、不共用一个向量集合。
+      # 知识侧按当前设计【不做任何权限过滤】：Qdrant 请求不带 query_filter，也不读单位上下文。
+      # 依赖的独立进程见 lonwin-module-agent/knowledge/（BGE-M3 推理服务 + Qdrant）。
+      knowledge:
+        # 是否接入知识侧通道。只有工具侧接口时置 false
+        enabled: true
+        # 历史兼容字段：实现已唯一（lonwin-module-knowledge-biz 的 LocalKnowledgeGateway），
+        # 该值不再影响装配，保留只为旧配置文件不报错。
+        # 容器里有且只有一个 KnowledgeGateway Bean，由上面的 enabled 统一控制。
+        mode: local
+        # 知识服务不可用时降级为「知识库暂不可用」，不中断工具侧问答
+        degrade-on-error: true
+        # BGE-M3 推理服务（独立 Python 进程，可单独启动）
+        # 本地宿主端口 7340（容器内 8000），见 D:\dockerVolumes\knowledge\docker-compose.yml
+        embed-url: http://127.0.0.1:7340
+        # BGE-M3 API key：服务侧设了 BGE_API_KEY 时必填，会作为 header `api-key` 发送。
+        # 默认值与本地 D:\dockerVolumes\knowledge\docker-compose.yml 的 BGE_API_KEY 默认一致，
+        # 本地开箱即用；连服务器上的 BGE-M3 时用环境变量 BGE_API_KEY 传服务器密钥覆盖。
+        # 注意：Spring 占位符默认值用单冒号 `:`；shell 风格的 `:-` 会把 `-` 一起当成默认值，
+        # 发出的 `api-key: -lonwin_local_bge_2026` 会被服务端判为 401。
+        embed-api-key: ${BGE_API_KEY:lonwin_local_bge_2026}
+        # Qdrant REST 地址：本地宿主端口 7333（容器内 6333），gRPC 7334
+        qdrant-url: http://127.0.0.1:7333
+        # Qdrant API key：客户端会作为 header `api-key` 发送（QdrantClient.headers() 已实现）。
+        # 默认值与本地 D:\dockerVolumes\knowledge\docker-compose.yml 的 QDRANT_API_KEY 默认值一致，
+        # 故本地起 Qdrant（带鉴权）+ 本地 Spring Boot 开箱即用、无需额外配置。
+        # 连服务器上的 Qdrant 时：把 qdrant-url 改成 http://<服务器IP>:6333（服务器侧是 6333，本地是 7333），
+        # 并通过环境变量 QDRANT_API_KEY 传服务器侧密钥（覆盖下面默认值）。
+        qdrant-api-key: ${QDRANT_API_KEY:lonwin_local_qdrant_2026}
+        # 集合名必须与 knowledge/migration/01_create_collections.py 一致
+        collection-chunks: kp_chunks
+        collection-tables: kp_tables
+        collection-docs: kp_docs
+        # 命名向量名，与建集合脚本一致
+        dense-vector: dense
+        sparse-vector: sparse
+        # 每路 prefetch 候选数（需 >= top-k）
+        prefetch-limit: 20
+        # 最终拼进大模型上下文的片段数。
+        # 5 条时「预案由哪几个子流域组成、各自怎么防」这类跨章节问题只能拿到目录页，
+        # 模型只好用「包含在目录中」凑表格；8 条能覆盖目录 + 若干正文页，代价是 prompt 变长。
+        top-k: 8
+        # 单片段进 prompt 的最大字符数（PDF 一页正文常 900~1500 字，700 会把措施段截掉）
+        max-text-chars: 900
+        # 入库脚本写入 payload 的嵌入模型标识；换模型必须整库重灌
+        embedder-id: bge-m3@2026-11
+        connect-timeout-seconds: 3
+        read-timeout-seconds: 10
+        # ---------------- 文件上传与 MinIO 存储（lonwin-module-knowledge-biz）----------------
+        # 硬约束：所有上传文件一律写入 MinIO，不管文件名是否相同、fileHash 是否相同、
+        # 是否被判为重复附件。去重只决定是否切片入 Qdrant，绝不跳过对象写入。
+        # key 前缀沿用 docFiles / imgFiles，可直接被 /docFiles/**、/resourceShow/file 查看。
+        storage:
+          enabled: true
+          # 留空跟随 file.bucketName（当前 yqbucket）
+          bucket: ""
+          source-prefix: docFiles/knowledge
+          image-prefix: imgFiles/knowledge
+          max-batch-size: 50
+        # ---------------- 检索策略 ----------------
+        retrieval:
+          rrf-k: 60
+          # 阶段 1 关闭：存量 867 条 payload 没有 groupId，打开会把同文档多 chunk 误压成一条。
+          # 阶段 2 新数据带上 groupId 后改为 true，同名 PDF/Word/Excel 只留最高分。
+          fold-by-group: false
+          keep-cross-source-complement: true
+          max-prefetch: 50
+        # ---------------- 上传即入库（解析 / 切片 / 编码 / Qdrant upsert）----------------
+        # 上传成功后立刻触发索引。默认异步：HTTP 上传线程只投递任务，
+        # BGE-M3 编码与 Qdrant upsert 在 kb-index-* 独立线程池执行，接口 RT 不受影响。
+        # 需要「上传返回时 Qdrant 已可见」时把 sync 置 true（会拉长上传耗时，仅建议验收/小文件）。
+        index:
+          enabled: true
+          sync: false
+          batch-size: 16
+          chunk-min: 300
+          chunk-max: 500
+          hard-max: 600
+          table-rows-per-point: 15
+          context-header: true
+          encode-timeout-seconds: 600
+          # 定时兜底：只扫 PENDING / FAILED，补偿进程重启或依赖抖动；不是主路径
+          scan-enabled: true
+          scan-interval-ms: 30000
+          max-scan-batch: 20
+          core-pool-size: 2
+          queue-capacity: 200
+      # 单位（组织）数据权限：切面统一处理，业务方法不再出现 unitCode 参数
+      data-scope:
+        # 是否启用；当前阶段以功能实现为主，默认关闭（查询不做单位过滤）
+        enabled: false
+        # 解析不到用户单位时是否拒绝（true=返回 403；false=告警后放行）
+        strict: false
+      # 是否启用演示数据网关（true=返回 DEMO 数据；接入真实数据源后关闭）
+      demo-data: true

@@ -1,0 +1,1240 @@
+2026-11-04T09:37:49.187+08:00  INFO 25652 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 25652 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T09:37:49.189+08:00 DEBUG 25652 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T09:37:49.189+08:00  INFO 25652 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T09:37:49.573+08:00  INFO 25652 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T09:37:49.581+08:00  INFO 25652 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T09:37:50.235+08:00  INFO 25652 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T09:37:50.246+08:00  INFO 25652 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T09:37:50.246+08:00  INFO 25652 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T09:37:50.297+08:00  INFO 25652 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T09:37:50.297+08:00  INFO 25652 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1080 ms
+2026-11-04T09:37:50.429+08:00 DEBUG 25652 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T09:37:50.430+08:00 DEBUG 25652 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T09:37:50.526+08:00  INFO 25652 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T09:37:50.550+08:00  INFO 25652 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T09:37:50.564+08:00  INFO 25652 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T09:37:50.688+08:00  INFO 25652 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T09:37:50.704+08:00  INFO 25652 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T09:37:50.742+08:00  INFO 25652 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T09:37:50.814+08:00  WARN 25652 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T09:37:50.818+08:00  WARN 25652 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T09:37:50.825+08:00  INFO 25652 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@d271a54']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T09:37:50.981+08:00  INFO 25652 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T09:37:50.985+08:00  INFO 25652 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T09:37:51.092+08:00  WARN 25652 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T09:37:51.107+08:00  WARN 25652 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T09:37:51.112+08:00 DEBUG 25652 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T09:37:51.201+08:00 DEBUG 25652 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T09:37:51.210+08:00 DEBUG 25652 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T09:37:51.217+08:00 DEBUG 25652 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:19
+2026-11-04T09:37:51.591+08:00 DEBUG 25652 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 32 mappings in 'requestMappingHandlerMapping'
+2026-11-04T09:37:51.645+08:00 DEBUG 25652 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T09:37:51.790+08:00  INFO 25652 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T09:37:51.857+08:00  WARN 25652 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7a797a37-2477-46b7-ae18-b875c0a4a9ba
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T09:37:51.864+08:00  INFO 25652 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T09:37:51.979+08:00 DEBUG 25652 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T09:37:52.154+08:00 DEBUG 25652 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T09:37:52.210+08:00 DEBUG 25652 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T09:37:52.649+08:00  INFO 25652 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T09:37:52.666+08:00  INFO 25652 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 3.81 seconds (process running for 4.026)
+2026-11-04T09:37:52.701+08:00  WARN 25652 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T09:38:29.869+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T09:38:29.870+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T09:38:29.870+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T09:38:29.870+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T09:38:29.870+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T09:38:29.872+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1e79b0fc
+2026-11-04T09:38:29.874+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@5e81b406
+2026-11-04T09:38:29.874+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T09:38:29.874+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-11-04T09:38:29.889+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T09:38:29.987+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T09:38:29.994+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T09:38:30.016+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T09:38:30.027+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T09:38:30.027+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T09:38:30.256+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T09:38:30.258+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T09:38:30.273+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T09:38:30.274+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T09:38:30.287+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T09:38:30.287+08:00  INFO 25652 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T09:38:30.327+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T09:38:30.377+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@2bde3780]
+2026-11-04T09:38:30.406+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T09:38:30.483+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T09:38:30.484+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T09:38:30.484+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T09:38:30.484+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T09:38:30.533+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=null, question=今年调水量是多少)]
+2026-11-04T09:38:30.579+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler cn.lonwin.common.core.exception.GlobalExceptionHandler#handleBusinessException(BusinessException, HttpServletRequest)
+2026-11-04T09:38:30.579+08:00 ERROR 25652 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.c.c.e.GlobalExceptionHandler         : 业务异常: 未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key, URL: /api/agent/chat
+
+BusinessException(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key)
+	at cn.lonwin.module.agent.client.QwenClient.chat(QwenClient.java:62)
+	at cn.lonwin.module.agent.service.AgentChatService.chat(AgentChatService.java:92)
+	at cn.lonwin.module.agent.controller.AgentChatController.chat(AgentChatController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at cn.lonwin.framework.security.filter.GlobalAuthenticationFilter.doFilterInternal(GlobalAuthenticationFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+
+2026-11-04T09:38:30.592+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T09:38:30.592+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key, data=null, times (truncated)...]
+2026-11-04T09:38:30.593+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [BusinessException(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key)]
+2026-11-04T09:38:30.594+08:00 DEBUG 25652 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T10:53:06.637+08:00  INFO 27828 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 27828 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T10:53:06.638+08:00 DEBUG 27828 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T10:53:06.638+08:00  INFO 27828 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T10:53:07.058+08:00  INFO 27828 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T10:53:07.067+08:00  INFO 27828 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T10:53:07.735+08:00  INFO 27828 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T10:53:07.743+08:00  INFO 27828 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T10:53:07.743+08:00  INFO 27828 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T10:53:07.776+08:00  INFO 27828 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T10:53:07.776+08:00  INFO 27828 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1107 ms
+2026-11-04T10:53:07.893+08:00 DEBUG 27828 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T10:53:07.893+08:00 DEBUG 27828 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T10:53:07.972+08:00  INFO 27828 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T10:53:07.993+08:00  INFO 27828 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T10:53:08.007+08:00  INFO 27828 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T10:53:08.127+08:00  INFO 27828 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T10:53:08.141+08:00  INFO 27828 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T10:53:08.172+08:00  INFO 27828 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T10:53:08.230+08:00  WARN 27828 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T10:53:08.233+08:00  WARN 27828 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T10:53:08.241+08:00  INFO 27828 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@5649f55']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T10:53:08.397+08:00  INFO 27828 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T10:53:08.400+08:00  INFO 27828 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T10:53:08.478+08:00  WARN 27828 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T10:53:08.494+08:00  WARN 27828 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T10:53:08.498+08:00 DEBUG 27828 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T10:53:08.592+08:00 DEBUG 27828 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T10:53:08.601+08:00 DEBUG 27828 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T10:53:08.608+08:00 DEBUG 27828 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:28
+2026-11-04T10:53:08.691+08:00  INFO 27828 --- [lonwin-platform] [main] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册完成，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T10:53:09.003+08:00 DEBUG 27828 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 32 mappings in 'requestMappingHandlerMapping'
+2026-11-04T10:53:09.047+08:00 DEBUG 27828 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T10:53:09.122+08:00  INFO 27828 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T10:53:09.154+08:00  WARN 27828 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7d6da61a-ba21-4732-bcfd-a540627c48ff
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T10:53:09.158+08:00  INFO 27828 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T10:53:09.218+08:00 DEBUG 27828 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T10:53:09.313+08:00 DEBUG 27828 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T10:53:09.345+08:00 DEBUG 27828 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T10:53:09.576+08:00  INFO 27828 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T10:53:09.586+08:00  INFO 27828 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 3.289 seconds (process running for 3.498)
+2026-11-04T10:53:09.605+08:00  WARN 27828 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T10:53:41.705+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T10:53:41.705+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T10:53:41.705+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T10:53:41.705+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T10:53:41.705+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T10:53:41.706+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@514f2b5c
+2026-11-04T10:53:41.706+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1d63f6be
+2026-11-04T10:53:41.706+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T10:53:41.707+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-11-04T10:53:41.717+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T10:53:41.752+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T10:53:41.753+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T10:53:41.760+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T10:53:41.767+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T10:53:41.767+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T10:53:41.793+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T10:53:41.794+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T10:53:41.801+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T10:53:41.801+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T10:53:41.808+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T10:53:41.808+08:00  INFO 27828 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T10:53:41.819+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T10:53:41.826+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@68544f99]
+2026-11-04T10:53:41.834+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T10:53:41.872+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T10:53:41.872+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T10:53:41.872+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T10:53:41.874+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T10:53:41.889+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=null, question=今年调水量是多少)]
+2026-11-04T10:53:41.916+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler cn.lonwin.common.core.exception.GlobalExceptionHandler#handleBusinessException(BusinessException, HttpServletRequest)
+2026-11-04T10:53:41.917+08:00 ERROR 27828 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.c.c.e.GlobalExceptionHandler         : 业务异常: 未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key, URL: /api/agent/chat
+
+BusinessException(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key)
+	at cn.lonwin.module.agent.client.QwenClient.chat(QwenClient.java:62)
+	at cn.lonwin.module.agent.service.AgentChatService.chat(AgentChatService.java:94)
+	at cn.lonwin.module.agent.controller.AgentChatController.chat(AgentChatController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at cn.lonwin.framework.security.filter.GlobalAuthenticationFilter.doFilterInternal(GlobalAuthenticationFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+
+2026-11-04T10:53:41.921+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T10:53:41.922+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key, data=null, times (truncated)...]
+2026-11-04T10:53:41.922+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [BusinessException(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key)]
+2026-11-04T10:53:41.922+08:00 DEBUG 27828 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T10:54:32.647+08:00  INFO 27844 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 27844 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T10:54:32.648+08:00 DEBUG 27844 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T10:54:32.649+08:00  INFO 27844 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T10:54:33.059+08:00  INFO 27844 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T10:54:33.067+08:00  INFO 27844 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T10:54:33.709+08:00  INFO 27844 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T10:54:33.718+08:00  INFO 27844 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T10:54:33.718+08:00  INFO 27844 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T10:54:33.752+08:00  INFO 27844 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T10:54:33.752+08:00  INFO 27844 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1075 ms
+2026-11-04T10:54:33.867+08:00 DEBUG 27844 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T10:54:33.868+08:00 DEBUG 27844 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T10:54:33.955+08:00  INFO 27844 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T10:54:33.977+08:00  INFO 27844 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T10:54:33.991+08:00  INFO 27844 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T10:54:34.111+08:00  INFO 27844 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T10:54:34.125+08:00  INFO 27844 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T10:54:34.155+08:00  INFO 27844 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T10:54:35.214+08:00  WARN 27844 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T10:54:35.220+08:00  WARN 27844 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T10:54:35.229+08:00  INFO 27844 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@196d684b']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T10:54:35.379+08:00  INFO 27844 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T10:54:35.382+08:00  INFO 27844 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T10:54:35.457+08:00  WARN 27844 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T10:54:35.481+08:00  WARN 27844 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T10:54:35.487+08:00 DEBUG 27844 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T10:54:35.578+08:00 DEBUG 27844 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T10:54:35.587+08:00 DEBUG 27844 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T10:54:35.594+08:00 DEBUG 27844 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:22
+2026-11-04T10:54:35.675+08:00  INFO 27844 --- [lonwin-platform] [main] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册完成，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T10:54:35.985+08:00 DEBUG 27844 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 32 mappings in 'requestMappingHandlerMapping'
+2026-11-04T10:54:36.027+08:00 DEBUG 27844 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T10:54:36.102+08:00  INFO 27844 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T10:54:36.133+08:00  WARN 27844 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c8ddd751-6bb1-4133-a6fb-e02856ee6255
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T10:54:36.137+08:00  INFO 27844 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T10:54:36.202+08:00 DEBUG 27844 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T10:54:36.298+08:00 DEBUG 27844 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T10:54:36.329+08:00 DEBUG 27844 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T10:54:36.561+08:00  INFO 27844 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T10:54:36.570+08:00  INFO 27844 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 4.246 seconds (process running for 4.44)
+2026-11-04T10:54:36.588+08:00  WARN 27844 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T10:55:02.159+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T10:55:02.159+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T10:55:02.159+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T10:55:02.159+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T10:55:02.159+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T10:55:02.159+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@43300e64
+2026-11-04T10:55:02.161+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@57421e4e
+2026-11-04T10:55:02.161+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T10:55:02.161+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-11-04T10:55:02.171+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T10:55:02.205+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T10:55:02.206+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T10:55:02.215+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T10:55:02.220+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T10:55:02.220+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T10:55:02.234+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T10:55:02.234+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T10:55:02.242+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T10:55:02.242+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T10:55:02.249+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T10:55:02.249+08:00  INFO 27844 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T10:55:02.261+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T10:55:02.268+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@48d64b0d]
+2026-11-04T10:55:02.276+08:00 DEBUG 27844 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:30:17.439+08:00  INFO 12860 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 12860 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T11:30:17.440+08:00 DEBUG 12860 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T11:30:17.441+08:00  INFO 12860 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T11:30:17.837+08:00  INFO 12860 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T11:30:17.844+08:00  INFO 12860 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T11:30:18.501+08:00  INFO 12860 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T11:30:18.508+08:00  INFO 12860 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T11:30:18.508+08:00  INFO 12860 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T11:30:18.540+08:00  INFO 12860 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T11:30:18.541+08:00  INFO 12860 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1072 ms
+2026-11-04T11:30:18.666+08:00 DEBUG 12860 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T11:30:18.666+08:00 DEBUG 12860 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T11:30:18.749+08:00  INFO 12860 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T11:30:18.770+08:00  INFO 12860 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T11:30:18.783+08:00  INFO 12860 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T11:30:18.895+08:00  INFO 12860 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T11:30:18.908+08:00  INFO 12860 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T11:30:18.937+08:00  INFO 12860 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T11:30:18.996+08:00  WARN 12860 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T11:30:18.998+08:00  WARN 12860 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T11:30:19.006+08:00  INFO 12860 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@25b20860']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T11:30:19.144+08:00  INFO 12860 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T11:30:19.146+08:00  INFO 12860 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T11:30:19.219+08:00  WARN 12860 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T11:30:19.232+08:00  WARN 12860 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T11:30:19.240+08:00 DEBUG 12860 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T11:30:19.329+08:00 DEBUG 12860 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T11:30:19.338+08:00 DEBUG 12860 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T11:30:19.344+08:00 DEBUG 12860 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:20
+2026-11-04T11:30:19.433+08:00  INFO 12860 --- [lonwin-platform] [main] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T11:30:19.434+08:00  INFO 12860 --- [lonwin-platform] [main] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册完成 v1，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:30:19.764+08:00 DEBUG 12860 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 37 mappings in 'requestMappingHandlerMapping'
+2026-11-04T11:30:19.811+08:00 DEBUG 12860 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T11:30:19.898+08:00  INFO 12860 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T11:30:19.932+08:00  WARN 12860 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3c631aff-79b4-441e-a3a2-7c723c758247
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T11:30:19.936+08:00  INFO 12860 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T11:30:20.001+08:00 DEBUG 12860 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T11:30:20.111+08:00 DEBUG 12860 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T11:30:20.146+08:00 DEBUG 12860 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T11:30:20.420+08:00  INFO 12860 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T11:30:20.428+08:00  INFO 12860 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 3.319 seconds (process running for 3.508)
+2026-11-04T11:30:20.447+08:00  WARN 12860 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T11:30:57.418+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T11:30:57.419+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T11:30:57.419+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T11:30:57.419+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T11:30:57.419+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T11:30:57.420+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4290332d
+2026-11-04T11:30:57.420+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3f3e6c03
+2026-11-04T11:30:57.420+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T11:30:57.420+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-04T11:30:57.430+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T11:30:57.461+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T11:30:57.462+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T11:30:57.470+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T11:30:57.476+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T11:30:57.477+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T11:30:57.500+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T11:30:57.500+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T11:30:57.518+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T11:30:57.518+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T11:30:57.536+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T11:30:57.537+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T11:30:57.561+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T11:30:57.568+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@492fa98]
+2026-11-04T11:30:57.575+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:02.542+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/agent/tools
+2026-11-04T11:31:02.543+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/agent/tools
+2026-11-04T11:31:02.543+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/agent/tools", parameters={}
+2026-11-04T11:31:02.543+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#list()
+2026-11-04T11:31:02.544+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T11:31:02.549+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:02.552+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=操作成功, data=[AgentToolMetaVO(name=policy.search, title=制度条文检索, description=在水利 (truncated)...]
+2026-11-04T11:31:02.556+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:07.309+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] o.s.security.web.FilterChainProxy        : Securing PUT /api/agent/tools/water.transfer.annual
+2026-11-04T11:31:07.309+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] o.s.security.web.FilterChainProxy        : Secured PUT /api/agent/tools/water.transfer.annual
+2026-11-04T11:31:07.310+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] o.s.web.servlet.DispatcherServlet        : PUT "/api/agent/tools/water.transfer.annual", parameters={}
+2026-11-04T11:31:07.310+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#update(String, AgentToolMeta)
+2026-11-04T11:31:07.329+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentToolMeta(name=null, title=null, description=查询某一自然年的全年调水总量（演示环境返回 DEMO 数据）。, examples=[今年调水多少,  (truncated)...]
+2026-11-04T11:31:07.351+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-3] c.l.m.a.t.m.JsonFileAgentToolMetaStore   : [agent-tool] 工具元数据已保存：water.transfer.annual → D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json
+2026-11-04T11:31:07.353+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-3] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:07.354+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-3] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:07.354+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-3] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 已应用元数据覆盖 1 项，生效工具 4 个
+2026-11-04T11:31:07.354+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-3] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v1 → v2，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:07.354+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:07.354+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已生效, data=AgentToolMetaVO(name=water.transfer.annual, title=年度调水量, descriptio (truncated)...]
+2026-11-04T11:31:07.366+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:12.114+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/tools/refresh
+2026-11-04T11:31:12.114+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/tools/refresh
+2026-11-04T11:31:12.114+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/tools/refresh", parameters={}
+2026-11-04T11:31:12.114+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#refresh()
+2026-11-04T11:31:12.116+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:12.117+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:12.118+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 已应用元数据覆盖 1 项，生效工具 4 个
+2026-11-04T11:31:12.118+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v2 → v3，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:12.118+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:12.118+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已刷新, data={version=3, size=4, tools=[policy.search, water.level.station, wate (truncated)...]
+2026-11-04T11:31:12.119+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:17.280+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.security.web.FilterChainProxy        : Securing PUT /api/agent/tools/water.level.station
+2026-11-04T11:31:17.281+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.security.web.FilterChainProxy        : Secured PUT /api/agent/tools/water.level.station
+2026-11-04T11:31:17.281+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.web.servlet.DispatcherServlet        : PUT "/api/agent/tools/water.level.station", parameters={}
+2026-11-04T11:31:17.281+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#update(String, AgentToolMeta)
+2026-11-04T11:31:17.281+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentToolMeta(name=null, title=null, description=null, examples=null, category=null, enabled=false,  (truncated)...]
+2026-11-04T11:31:17.285+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.t.m.JsonFileAgentToolMetaStore   : [agent-tool] 工具元数据已保存：water.level.station → D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json
+2026-11-04T11:31:17.285+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=2 个
+2026-11-04T11:31:17.286+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=2 个
+2026-11-04T11:31:17.286+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具 water.level.station 已被管理端停用，本次不注册
+2026-11-04T11:31:17.286+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 已应用元数据覆盖 2 项，生效工具 3 个
+2026-11-04T11:31:17.286+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v3 → v4，共 3 个：[policy.search, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:17.287+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:17.287+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已生效, data=AgentToolMetaVO(name=water.level.station, title=闸站水位, description=查 (truncated)...]
+2026-11-04T11:31:17.287+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:17.484+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/tools/refresh
+2026-11-04T11:31:17.485+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/tools/refresh
+2026-11-04T11:31:17.486+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/tools/refresh", parameters={}
+2026-11-04T11:31:17.486+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#refresh()
+2026-11-04T11:31:17.487+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-8] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=2 个
+2026-11-04T11:31:17.487+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-8] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=2 个
+2026-11-04T11:31:17.487+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-8] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具 water.level.station 已被管理端停用，本次不注册
+2026-11-04T11:31:17.487+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-8] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 已应用元数据覆盖 2 项，生效工具 3 个
+2026-11-04T11:31:17.487+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-8] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v4 → v5，共 3 个：[policy.search, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:17.488+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:17.488+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已刷新, data={version=5, size=3, tools=[policy.search, water.transfer.annual, wa (truncated)...]
+2026-11-04T11:31:17.488+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:17.686+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing DELETE /api/agent/tools/water.level.station
+2026-11-04T11:31:17.687+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured DELETE /api/agent/tools/water.level.station
+2026-11-04T11:31:17.687+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : DELETE "/api/agent/tools/water.level.station", parameters={}
+2026-11-04T11:31:17.687+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#reset(String)
+2026-11-04T11:31:17.691+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.m.a.t.m.JsonFileAgentToolMetaStore   : [agent-tool] 工具元数据已删除（恢复注解默认值）：water.level.station
+2026-11-04T11:31:17.693+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:17.693+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:17.693+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 已应用元数据覆盖 1 项，生效工具 4 个
+2026-11-04T11:31:17.693+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v5 → v6，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:17.693+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:17.693+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已恢复默认, data=null, timestamp=1793763077693, requestId=req_1793763077693_06f6d3 (truncated)...]
+2026-11-04T11:31:17.695+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:17.890+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/tools/refresh
+2026-11-04T11:31:17.891+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/tools/refresh
+2026-11-04T11:31:17.891+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/tools/refresh", parameters={}
+2026-11-04T11:31:17.891+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#refresh()
+2026-11-04T11:31:17.892+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:17.893+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=1 个
+2026-11-04T11:31:17.893+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 已应用元数据覆盖 1 项，生效工具 4 个
+2026-11-04T11:31:17.893+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v6 → v7，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:17.894+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:17.894+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已刷新, data={version=7, size=4, tools=[policy.search, water.level.station, wate (truncated)...]
+2026-11-04T11:31:17.894+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:21.911+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T11:31:21.912+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T11:31:21.912+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T11:31:21.912+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T11:31:21.914+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=null, question=今年调水量是多少)]
+2026-11-04T11:31:21.942+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-6] c.l.m.agent.datascope.DataScopeAspect    : [agent] 数据权限切面已关闭（lonwin.agent.data-scope.enabled=false），查询不做单位过滤
+2026-11-04T11:31:21.944+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler cn.lonwin.common.core.exception.GlobalExceptionHandler#handleBusinessException(BusinessException, HttpServletRequest)
+2026-11-04T11:31:21.944+08:00 ERROR 12860 --- [lonwin-platform] [http-nio-9080-exec-6] c.l.c.c.e.GlobalExceptionHandler         : 业务异常: 未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key, URL: /api/agent/chat
+
+BusinessException(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key)
+	at cn.lonwin.module.agent.client.QwenClient.chat(QwenClient.java:62)
+	at cn.lonwin.module.agent.service.AgentChatService.chat(AgentChatService.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89)
+	at cn.lonwin.module.agent.datascope.DataScopeAspect.around(DataScopeAspect.java:54)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:649)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:631)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:71)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at cn.lonwin.module.agent.service.AgentChatService$$SpringCGLIB$$0.chat(<generated>)
+	at cn.lonwin.module.agent.controller.AgentChatController.chat(AgentChatController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at cn.lonwin.framework.security.filter.GlobalAuthenticationFilter.doFilterInternal(GlobalAuthenticationFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+
+2026-11-04T11:31:21.946+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:21.946+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key, data=null, times (truncated)...]
+2026-11-04T11:31:21.947+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [BusinessException(code=2000, message=未配置大模型密钥，请在 application.yml 配置 lonwin.agent.qwen.api-key)]
+2026-11-04T11:31:21.947+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:21.998+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.security.web.FilterChainProxy        : Securing DELETE /api/agent/tools/water.transfer.annual
+2026-11-04T11:31:22.000+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.security.web.FilterChainProxy        : Secured DELETE /api/agent/tools/water.transfer.annual
+2026-11-04T11:31:22.000+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.web.servlet.DispatcherServlet        : DELETE "/api/agent/tools/water.transfer.annual", parameters={}
+2026-11-04T11:31:22.000+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#reset(String)
+2026-11-04T11:31:22.003+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.m.a.t.m.JsonFileAgentToolMetaStore   : [agent-tool] 工具元数据已删除（恢复注解默认值）：water.transfer.annual
+2026-11-04T11:31:22.003+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T11:31:22.004+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T11:31:22.004+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-9] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v7 → v8，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:22.005+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:22.005+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已恢复默认, data=null, timestamp=1793763082004, requestId=req_1793763082004_924007 (truncated)...]
+2026-11-04T11:31:22.005+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T11:31:22.201+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/tools/refresh
+2026-11-04T11:31:22.202+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/tools/refresh
+2026-11-04T11:31:22.202+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/tools/refresh", parameters={}
+2026-11-04T11:31:22.202+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentToolAdminController#refresh()
+2026-11-04T11:31:22.202+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T11:31:22.203+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T11:31:22.203+08:00  INFO 12860 --- [lonwin-platform] [http-nio-9080-exec-7] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册表已刷新 v8 → v9，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T11:31:22.203+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T11:31:22.203+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=已刷新, data={version=9, size=4, tools=[policy.search, water.level.station, wate (truncated)...]
+2026-11-04T11:31:22.204+08:00 DEBUG 12860 --- [lonwin-platform] [http-nio-9080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:16:09.269+08:00  INFO 28964 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 28964 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T15:16:09.270+08:00 DEBUG 28964 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T15:16:09.270+08:00  INFO 28964 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T15:16:09.686+08:00  INFO 28964 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T15:16:09.693+08:00  INFO 28964 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T15:16:10.361+08:00  INFO 28964 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T15:16:10.369+08:00  INFO 28964 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T15:16:10.370+08:00  INFO 28964 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T15:16:10.402+08:00  INFO 28964 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T15:16:10.403+08:00  INFO 28964 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1103 ms
+2026-11-04T15:16:10.535+08:00 DEBUG 28964 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T15:16:10.536+08:00 DEBUG 28964 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T15:16:10.627+08:00  INFO 28964 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T15:16:10.649+08:00  INFO 28964 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T15:16:10.663+08:00  INFO 28964 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T15:16:10.783+08:00  INFO 28964 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T15:16:10.797+08:00  INFO 28964 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T15:16:10.826+08:00  INFO 28964 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T15:16:10.888+08:00  WARN 28964 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T15:16:10.890+08:00  WARN 28964 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T15:16:10.898+08:00  INFO 28964 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@3d9c8c3c']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T15:16:11.048+08:00  INFO 28964 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T15:16:11.050+08:00  INFO 28964 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T15:16:11.129+08:00  WARN 28964 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T15:16:11.143+08:00  WARN 28964 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T15:16:11.152+08:00 DEBUG 28964 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T15:16:11.249+08:00 DEBUG 28964 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T15:16:11.256+08:00 DEBUG 28964 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T15:16:11.264+08:00 DEBUG 28964 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:20
+2026-11-04T15:16:11.348+08:00  INFO 28964 --- [lonwin-platform] [main] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T15:16:11.348+08:00  INFO 28964 --- [lonwin-platform] [main] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册完成 v1，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T15:16:11.692+08:00 DEBUG 28964 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 40 mappings in 'requestMappingHandlerMapping'
+2026-11-04T15:16:11.739+08:00 DEBUG 28964 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T15:16:11.828+08:00  INFO 28964 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T15:16:11.862+08:00  WARN 28964 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c662ebd9-f726-44be-a2ac-2eb66a7278fe
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T15:16:11.866+08:00  INFO 28964 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T15:16:11.933+08:00 DEBUG 28964 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T15:16:12.038+08:00 DEBUG 28964 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T15:16:12.078+08:00 DEBUG 28964 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T15:16:12.352+08:00  INFO 28964 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T15:16:12.361+08:00  INFO 28964 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 3.431 seconds (process running for 3.639)
+2026-11-04T15:16:12.381+08:00  WARN 28964 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T15:16:53.342+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T15:16:53.342+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T15:16:53.342+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T15:16:53.342+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T15:16:53.342+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T15:16:53.343+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5edeb83e
+2026-11-04T15:16:53.343+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@18482805
+2026-11-04T15:16:53.343+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T15:16:53.343+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-04T15:16:53.354+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T15:16:53.388+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T15:16:53.389+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T15:16:53.399+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T15:16:53.405+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T15:16:53.405+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T15:16:53.418+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T15:16:53.419+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T15:16:53.429+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T15:16:53.429+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T15:16:53.441+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T15:16:53.441+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-1] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T15:16:53.453+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T15:16:53.460+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@5f273f2]
+2026-11-04T15:16:53.467+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:17:07.615+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/ui-capabilities
+2026-11-04T15:17:07.616+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/ui-capabilities
+2026-11-04T15:17:07.616+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/ui-capabilities", parameters={}
+2026-11-04T15:17:07.616+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentUiCapabilityController#upload(UiCapabilityUploadDTO)
+2026-11-04T15:17:07.639+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentUiCapabilityController.UiCapabilityUploadDTO(client=web, pages=[UiPageCapability(route=/waterUs (truncated)...]
+2026-11-04T15:17:07.640+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-2] c.l.m.a.u.UiCapabilityService            : [agent] 已接收能力声明：client=web，2 个页面，11 个可引导 target
+2026-11-04T15:17:07.643+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:17:07.643+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=能力声明已接收, data={client=web, pages=2}, timestamp=1793776627640, requestId=req_1 (truncated)...]
+2026-11-04T15:17:07.644+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:17:16.474+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:17:16.475+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:17:16.475+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:17:16.475+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:17:16.477+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=打开超许可预警明细)]
+2026-11-04T15:17:16.504+08:00  INFO 28964 --- [lonwin-platform] [http-nio-9080-exec-4] c.l.m.agent.datascope.DataScopeAspect    : [agent] 数据权限切面已关闭（lonwin.agent.data-scope.enabled=false），查询不做单位过滤
+2026-11-04T15:17:16.506+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:17:16.507+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=好的，「超许可」预警明细弹框已为你准备好，点击下方按 (truncated)...]
+2026-11-04T15:17:16.510+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:17:16.691+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:17:16.692+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:17:16.692+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:17:16.692+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:17:16.693+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=今年许可水量是多少)]
+2026-11-04T15:17:16.693+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:17:16.693+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=全年许可水量为 53631 万m³（河道外 2443 (truncated)...]
+2026-11-04T15:17:16.694+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:17:16.908+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:17:16.908+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:17:16.909+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:17:16.909+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:17:16.909+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=把预警日期切到 2026-09-03)]
+2026-11-04T15:17:16.910+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:17:16.910+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=已把水量监控页的预警日期切换到 2026-09-03 (truncated)...]
+2026-11-04T15:17:16.910+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:17:17.124+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:17:17.124+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:17:17.126+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:17:17.126+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:17:17.126+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=看看民有渠的视频详情)]
+2026-11-04T15:17:17.126+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:17:17.126+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=你好！我是智能问答 Demo（未配置大模型密钥，当前 (truncated)...]
+2026-11-04T15:17:17.127+08:00 DEBUG 28964 --- [lonwin-platform] [http-nio-9080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:18:13.582+08:00  INFO 28196 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 28196 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T15:18:13.584+08:00 DEBUG 28196 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T15:18:13.584+08:00  INFO 28196 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T15:18:13.994+08:00  INFO 28196 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T15:18:14.002+08:00  INFO 28196 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T15:18:14.657+08:00  INFO 28196 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T15:18:14.664+08:00  INFO 28196 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T15:18:14.665+08:00  INFO 28196 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T15:18:14.697+08:00  INFO 28196 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T15:18:14.697+08:00  INFO 28196 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1084 ms
+2026-11-04T15:18:14.838+08:00 DEBUG 28196 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T15:18:14.839+08:00 DEBUG 28196 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T15:18:14.929+08:00  INFO 28196 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T15:18:14.951+08:00  INFO 28196 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T15:18:14.966+08:00  INFO 28196 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T15:18:15.086+08:00  INFO 28196 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T15:18:15.100+08:00  INFO 28196 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T15:18:15.129+08:00  INFO 28196 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T15:18:15.188+08:00  WARN 28196 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T15:18:15.191+08:00  WARN 28196 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T15:18:15.199+08:00  INFO 28196 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@1071ae7c']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T15:18:15.344+08:00  INFO 28196 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T15:18:15.347+08:00  INFO 28196 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T15:18:15.423+08:00  WARN 28196 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T15:18:15.437+08:00  WARN 28196 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T15:18:15.446+08:00 DEBUG 28196 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T15:18:15.545+08:00 DEBUG 28196 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T15:18:15.553+08:00 DEBUG 28196 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T15:18:15.560+08:00 DEBUG 28196 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:11
+2026-11-04T15:18:15.646+08:00  INFO 28196 --- [lonwin-platform] [main] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T15:18:15.647+08:00  INFO 28196 --- [lonwin-platform] [main] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册完成 v1，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T15:18:15.989+08:00 DEBUG 28196 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 40 mappings in 'requestMappingHandlerMapping'
+2026-11-04T15:18:16.037+08:00 DEBUG 28196 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T15:18:16.126+08:00  INFO 28196 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T15:18:16.165+08:00  WARN 28196 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 34c09287-088d-4b2b-84e9-d57dc671c46b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T15:18:16.170+08:00  INFO 28196 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T15:18:16.236+08:00 DEBUG 28196 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T15:18:16.343+08:00 DEBUG 28196 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T15:18:16.379+08:00 DEBUG 28196 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T15:18:16.657+08:00  INFO 28196 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T15:18:16.666+08:00  INFO 28196 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 3.422 seconds (process running for 3.625)
+2026-11-04T15:18:16.706+08:00  WARN 28196 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T15:18:53.009+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T15:18:53.009+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T15:18:53.009+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T15:18:53.009+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T15:18:53.009+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T15:18:53.010+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@85446a
+2026-11-04T15:18:53.010+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@12db2921
+2026-11-04T15:18:53.010+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T15:18:53.010+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-04T15:18:53.020+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T15:18:53.054+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T15:18:53.056+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T15:18:53.063+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T15:18:53.071+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T15:18:53.071+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T15:18:53.296+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T15:18:53.297+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T15:18:53.520+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T15:18:53.520+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T15:18:53.532+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T15:18:53.533+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T15:18:53.544+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T15:18:53.552+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@4f11800b]
+2026-11-04T15:18:53.559+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:18:53.604+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/ui-capabilities
+2026-11-04T15:18:53.605+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/ui-capabilities
+2026-11-04T15:18:53.605+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/ui-capabilities", parameters={}
+2026-11-04T15:18:53.605+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentUiCapabilityController#upload(UiCapabilityUploadDTO)
+2026-11-04T15:18:53.629+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentUiCapabilityController.UiCapabilityUploadDTO(client=web, pages=[UiPageCapability(route=/waterUs (truncated)...]
+2026-11-04T15:18:53.629+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.m.a.u.UiCapabilityService            : [agent] 已接收能力声明：client=web，2 个页面，11 个可引导 target
+2026-11-04T15:18:53.632+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:18:53.632+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=能力声明已接收, data={pages=2, client=web}, timestamp=1793776733630, requestId=req_1 (truncated)...]
+2026-11-04T15:18:53.633+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:18:53.820+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:18:53.821+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:18:53.821+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:18:53.821+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:18:53.824+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=看看民有渠的视频详情)]
+2026-11-04T15:18:53.853+08:00  INFO 28196 --- [lonwin-platform] [http-nio-9080-exec-4] c.l.m.agent.datascope.DataScopeAspect    : [agent] 数据权限切面已关闭（lonwin.agent.data-scope.enabled=false），查询不做单位过滤
+2026-11-04T15:18:53.854+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:18:53.854+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=好的，带你前往「视频监控」页面，并打开「民有渠」的详 (truncated)...]
+2026-11-04T15:18:53.856+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:18:54.040+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:18:54.041+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:18:54.041+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:18:54.041+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:18:54.042+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=带我去视频监控)]
+2026-11-04T15:18:54.042+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:18:54.042+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=好的，带你前往「视频监控」页面。该页可按监管单位、在 (truncated)...]
+2026-11-04T15:18:54.043+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:18:54.259+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:18:54.259+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:18:54.259+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:18:54.259+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:18:54.260+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=只看离线的监控点位)]
+2026-11-04T15:18:54.260+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:18:54.260+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=好的，带你前往「视频监控」页面。该页可按监管单位、在 (truncated)...]
+2026-11-04T15:18:54.261+08:00 DEBUG 28196 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:20:00.687+08:00  INFO 6224 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Starting LonwinApplication v1.0.0 using Java 17.0.14 with PID 6224 (D:\project_woker\zwn\lw-zwn-service\lonwin-start\target\classes started by admin in D:\project_woker\zwn\lw-zwn-service\lonwin-start)
+2026-11-04T15:20:00.688+08:00 DEBUG 6224 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-11-04T15:20:00.688+08:00  INFO 6224 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : The following 1 profile is active: "dev"
+2026-11-04T15:20:01.116+08:00  INFO 6224 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T15:20:01.128+08:00  INFO 6224 --- [lonwin-platform] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2026-11-04T15:20:01.803+08:00  INFO 6224 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9080 (http)
+2026-11-04T15:20:01.810+08:00  INFO 6224 --- [lonwin-platform] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-04T15:20:01.811+08:00  INFO 6224 --- [lonwin-platform] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-11-04T15:20:01.844+08:00  INFO 6224 --- [lonwin-platform] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-04T15:20:01.844+08:00  INFO 6224 --- [lonwin-platform] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1129 ms
+2026-11-04T15:20:01.979+08:00 DEBUG 6224 --- [lonwin-platform] [main] c.l.f.s.f.GlobalAuthenticationFilter     : Filter 'globalAuthenticationFilter' configured for use
+2026-11-04T15:20:01.979+08:00 DEBUG 6224 --- [lonwin-platform] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2026-11-04T15:20:02.071+08:00  INFO 6224 --- [lonwin-platform] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T15:20:02.093+08:00  INFO 6224 --- [lonwin-platform] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-11-04T15:20:02.108+08:00  INFO 6224 --- [lonwin-platform] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T15:20:02.231+08:00  INFO 6224 --- [lonwin-platform] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T15:20:02.246+08:00  INFO 6224 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Starting...
+2026-11-04T15:20:02.276+08:00  INFO 6224 --- [lonwin-platform] [main] com.zaxxer.hikari.HikariDataSource       : lonwin-master-hikari - Start completed.
+2026-11-04T15:20:02.349+08:00  WARN 6224 --- [lonwin-platform] [main] org.hibernate.dialect.Dialect            : HHH000511: The 7.1.8 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2026-11-04T15:20:02.352+08:00  WARN 6224 --- [lonwin-platform] [main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T15:20:02.361+08:00  INFO 6224 --- [lonwin-platform] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'cn.lonwin.framework.data.datasource.DynamicDataSource@5909285b']
+	Database driver: undefined/unknown
+	Database version: 7.1.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T15:20:02.511+08:00  INFO 6224 --- [lonwin-platform] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T15:20:02.514+08:00  INFO 6224 --- [lonwin-platform] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T15:20:02.593+08:00  WARN 6224 --- [lonwin-platform] [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by default name for `id` in Class: "cn.lonwin.module.water.entity.SysTest2Entity",So @TableField will not work!
+2026-11-04T15:20:02.607+08:00  WARN 6224 --- [lonwin-platform] [main] c.b.m.core.injector.methods.SelectList   : [cn.lonwin.module.water.mapper.SysTest2Mapper.selectList] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.SelectList]
+2026-11-04T15:20:02.615+08:00 DEBUG 6224 --- [lonwin-platform] [main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Parsed mapper file: 'URL [jar:file:/D:/mavenRepository/cn/lonwin/lonwin-module-water/1.0-SNAPSHOT/lonwin-module-water-1.0-SNAPSHOT.jar!/mapper/SysTest2Mapper.xml]'
+2026-11-04T15:20:02.714+08:00 DEBUG 6224 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get /172.17.144.1 network interface 
+2026-11-04T15:20:02.723+08:00 DEBUG 6224 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Get network interface info: name:eth21 (Hyper-V Virtual Ethernet Adapter)
+2026-11-04T15:20:02.729+08:00 DEBUG 6224 --- [lonwin-platform] [main] c.b.mybatisplus.core.toolkit.Sequence    : Initialization Sequence datacenterId:30 workerId:27
+2026-11-04T15:20:02.810+08:00  INFO 6224 --- [lonwin-platform] [main] c.l.m.a.tool.meta.AgentToolMetaService   : [agent-tool] 工具元数据加载完成，来源=D:\project_woker\zwn\lw-zwn-service\lonwin-start\config\agent-tool-meta.json，覆盖项=0 个
+2026-11-04T15:20:02.811+08:00  INFO 6224 --- [lonwin-platform] [main] c.l.module.agent.tool.AgentToolRegistry  : [agent] 工具注册完成 v1，共 4 个：[policy.search, water.level.station, water.transfer.annual, water.transfer.monthly]
+2026-11-04T15:20:03.155+08:00 DEBUG 6224 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 40 mappings in 'requestMappingHandlerMapping'
+2026-11-04T15:20:03.204+08:00 DEBUG 6224 --- [lonwin-platform] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui/**, /swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/**, /webjars/*swagger-ui/*swagger-initializer.js, /webjars/*swagger-ui/5.32.0/*swagger-initializer.js] in 'resourceHandlerMapping'
+2026-11-04T15:20:03.297+08:00  INFO 6224 --- [lonwin-platform] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-11-04T15:20:03.333+08:00  WARN 6224 --- [lonwin-platform] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d696d520-5d83-4ba5-a990-cd4863481a5c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-04T15:20:03.339+08:00  INFO 6224 --- [lonwin-platform] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-04T15:20:03.410+08:00 DEBUG 6224 --- [lonwin-platform] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, GlobalAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04T15:20:03.524+08:00 DEBUG 6224 --- [lonwin-platform] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-11-04T15:20:03.562+08:00 DEBUG 6224 --- [lonwin-platform] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-11-04T15:20:03.860+08:00  INFO 6224 --- [lonwin-platform] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9080 (http) with context path '/'
+2026-11-04T15:20:03.869+08:00  INFO 6224 --- [lonwin-platform] [main] cn.lonwin.LonwinApplication              : Started LonwinApplication in 3.509 seconds (process running for 3.716)
+2026-11-04T15:20:03.888+08:00  WARN 6224 --- [lonwin-platform] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T15:21:06.204+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-04T15:21:06.204+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-04T15:21:06.204+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-11-04T15:21:06.205+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-11-04T15:21:06.205+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2026-11-04T15:21:06.205+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@272d0dd3
+2026-11-04T15:21:06.207+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@794daa09
+2026-11-04T15:21:06.207+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-11-04T15:21:06.207+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-11-04T15:21:06.216+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-11-04T15:21:06.251+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-11-04T15:21:06.254+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-11-04T15:21:06.262+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-11-04T15:21:06.268+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Starting...
+2026-11-04T15:21:06.268+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-gwapp-hikari - Start completed.
+2026-11-04T15:21:06.280+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Starting...
+2026-11-04T15:21:06.281+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-wiuser-hikari - Start completed.
+2026-11-04T15:21:06.288+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Starting...
+2026-11-04T15:21:06.288+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-portalsys-hikari - Start completed.
+2026-11-04T15:21:06.298+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Starting...
+2026-11-04T15:21:06.298+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-2] com.zaxxer.hikari.HikariDataSource       : lonwin-ydh-hikari - Start completed.
+2026-11-04T15:21:06.334+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-11-04T15:21:06.342+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@6af105ce]
+2026-11-04T15:21:06.349+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:21:06.396+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/ui-capabilities
+2026-11-04T15:21:06.397+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/ui-capabilities
+2026-11-04T15:21:06.398+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/ui-capabilities", parameters={}
+2026-11-04T15:21:06.398+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentUiCapabilityController#upload(UiCapabilityUploadDTO)
+2026-11-04T15:21:06.421+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentUiCapabilityController.UiCapabilityUploadDTO(client=web, pages=[UiPageCapability(route=/waterUs (truncated)...]
+2026-11-04T15:21:06.421+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-1] c.l.m.a.u.UiCapabilityService            : [agent] 已接收能力声明：client=web，2 个页面，11 个可引导 target
+2026-11-04T15:21:06.424+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:21:06.425+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=能力声明已接收, data={pages=2, client=web}, timestamp=1793776866422, requestId=req_1 (truncated)...]
+2026-11-04T15:21:06.426+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:21:06.456+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:21:06.457+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:21:06.457+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:21:06.457+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:21:06.459+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=demo-test, question=只看离线的监控点位)]
+2026-11-04T15:21:06.490+08:00  INFO 6224 --- [lonwin-platform] [http-nio-9080-exec-4] c.l.m.agent.datascope.DataScopeAspect    : [agent] 数据权限切面已关闭（lonwin.agent.data-scope.enabled=false），查询不做单位过滤
+2026-11-04T15:21:06.492+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:21:06.492+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=demo-test, answer=好的，带你前往「视频监控」页面，并帮你筛选出离线的监 (truncated)...]
+2026-11-04T15:21:06.495+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:21:06.687+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/agent/chat
+2026-11-04T15:21:06.688+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /api/agent/chat
+2026-11-04T15:21:06.688+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/agent/chat", parameters={}
+2026-11-04T15:21:06.688+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentChatController#chat(AgentChatDTO)
+2026-11-04T15:21:06.688+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [AgentChatDTO(sessionId=sec-test, question=正常问题)]
+2026-11-04T15:21:06.690+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:21:06.690+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=回答成功, data=AgentChatVO(sessionId=sec-test, answer=你好！我是智能问答 Demo（未配置大模型密钥，当前为 (truncated)...]
+2026-11-04T15:21:06.691+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-11-04T15:21:07.071+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/agent/ui-capabilities
+2026-11-04T15:21:07.071+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/agent/ui-capabilities
+2026-11-04T15:21:07.071+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/agent/ui-capabilities", parameters={}
+2026-11-04T15:21:07.072+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to cn.lonwin.module.agent.controller.AgentUiCapabilityController#list()
+2026-11-04T15:21:07.072+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/cbor, application/yaml]
+2026-11-04T15:21:07.072+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [Result(code=0, message=操作成功, data=[UiPageCapability(route=/waterUse/qushuijianguan/shuiliangjiankong (truncated)...]
+2026-11-04T15:21:07.074+08:00 DEBUG 6224 --- [lonwin-platform] [http-nio-9080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

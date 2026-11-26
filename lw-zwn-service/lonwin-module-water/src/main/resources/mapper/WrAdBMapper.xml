@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  行政区划基础信息表 WR_AD_B（县级及县级以上行政区划基本信息表）
+  字段：AD_CD 行政区划代码 / AD_NM 名称 / AD_SHNM 简称 / AD_A 面积 / TS 更新时间 / NT 备注 / ISUSE 是否启用
+-->
+<mapper namespace="cn.lonwin.module.water.mapper.WrAdBMapper">
+
+    <resultMap id="AdBResultMap" type="cn.lonwin.module.water.model.vo.WrAdBVO">
+        <id column="AD_CD" property="adCd"/>
+        <result column="AD_NM" property="adNm"/>
+        <result column="AD_SHNM" property="adShnm"/>
+        <result column="AD_A" property="adA"/>
+        <result column="TS" property="ts"/>
+        <result column="NT" property="nt"/>
+        <result column="ISUSE" property="isuse"/>
+    </resultMap>
+
+    <!-- 公共列：时间统一格式化为字符串，避免前端拿到时间戳 -->
+    <sql id="adColumns">
+        AD_CD,
+        AD_NM,
+        AD_SHNM,
+        AD_A,
+        TO_CHAR(TS, 'YYYY-MM-DD HH24:MI:SS') AS TS,
+        NT,
+        ISUSE
+    </sql>
+
+    <!-- 公共条件：代码前缀匹配、名称/简称模糊匹配、启用状态 -->
+    <sql id="adWhere">
+        <where>
+            <if test="query.adCd != null and query.adCd != ''">
+                AND AD_CD LIKE #{query.adCd} || '%'
+            </if>
+            <if test="query.adNm != null and query.adNm != ''">
+                AND AD_NM LIKE '%' || #{query.adNm} || '%'
+            </if>
+            <if test="query.adShnm != null and query.adShnm != ''">
+                AND AD_SHNM LIKE '%' || #{query.adShnm} || '%'
+            </if>
+            <if test="query.isuse != null and query.isuse != ''">
+                AND ISUSE = #{query.isuse}
+            </if>
+        </where>
+    </sql>
+
+    <!-- 列表查询 -->
+    <select id="selectAdBList" resultMap="AdBResultMap">
+        SELECT
+        <include refid="adColumns"/>
+        FROM WR_AD_B
+        <include refid="adWhere"/>
+        ORDER BY AD_CD
+    </select>
+
+    <!-- 分页查询（分页插件自动拼接） -->
+    <select id="selectAdBPage" resultMap="AdBResultMap">
+        SELECT
+        <include refid="adColumns"/>
+        FROM WR_AD_B
+        <include refid="adWhere"/>
+        ORDER BY AD_CD
+    </select>
+
+    <!-- 按代码查询详情 -->
+    <select id="selectAdBByCd" resultMap="AdBResultMap">
+        SELECT
+        <include refid="adColumns"/>
+        FROM WR_AD_B
+        WHERE AD_CD = #{adCd}
+    </select>
+
+    <!-- 按代码查询名称 -->
+    <select id="selectAdNmByCd" resultType="java.lang.String">
+        SELECT AD_NM
+        FROM WR_AD_B
+        WHERE AD_CD = #{adCd}
+    </select>
+
+    <!-- 按名称模糊查询（limit 控制条数，便于下拉联想；ROWNUM 兼容 Oracle / 达梦） -->
+    <select id="selectAdBByName" resultMap="AdBResultMap">
+        SELECT * FROM (
+            SELECT
+            <include refid="adColumns"/>
+            FROM WR_AD_B
+            WHERE AD_NM LIKE '%' || #{adNm} || '%'
+            ORDER BY AD_CD
+        ) t
+        <if test="limit != null and limit > 0">
+            WHERE ROWNUM &lt;= #{limit}
+        </if>
+    </select>
+
+    <!-- 批量按代码查询（编码 → 名称批量翻译） -->
+    <select id="selectAdBByCds" resultMap="AdBResultMap">
+        SELECT
+        <include refid="adColumns"/>
+        FROM WR_AD_B
+        WHERE AD_CD IN
+        <foreach collection="adCds" item="cd" open="(" separator="," close=")">
+            #{cd}
+        </foreach>
+        ORDER BY AD_CD
+    </select>
+
+    <!-- 代码是否已存在 -->
+    <select id="countByCd" resultType="int">
+        SELECT COUNT(1)
+        FROM WR_AD_B
+        WHERE AD_CD = #{adCd}
+    </select>
+
+    <!-- 新增：TS 取数据库当前时间 -->
+    <insert id="insertAdB" parameterType="cn.lonwin.module.water.entity.WrAdBEntity">
+        INSERT INTO WR_AD_B (AD_CD, AD_NM, AD_SHNM, AD_A, TS, NT, ISUSE)
+        VALUES (#{adCd}, #{adNm}, #{adShnm}, #{adA}, SYSDATE, #{nt}, #{isuse})
+    </insert>
+
+    <!-- 编辑：只更新非空字段，TS 自动刷新 -->
+    <update id="updateAdB" parameterType="cn.lonwin.module.water.entity.WrAdBEntity">
+        UPDATE WR_AD_B
+        <set>
+            <if test="adNm != null">AD_NM = #{adNm},</if>
+            <if test="adShnm != null">AD_SHNM = #{adShnm},</if>
+            <if test="adA != null">AD_A = #{adA},</if>
+            <if test="nt != null">NT = #{nt},</if>
+            <if test="isuse != null">ISUSE = #{isuse},</if>
+            TS = SYSDATE,
+        </set>
+        WHERE AD_CD = #{adCd}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteAdBByCd">
+        DELETE
+        FROM WR_AD_B
+        WHERE AD_CD = #{adCd}
+    </delete>
+
+</mapper>
